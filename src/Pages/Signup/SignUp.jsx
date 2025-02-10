@@ -49,7 +49,7 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title> Bistro Boss | Sign Up </title>
+        <title> Tech Horizon | Sign Up </title>
       </Helmet>
 
       <div className="hero bg-base-200 min-h-screen">

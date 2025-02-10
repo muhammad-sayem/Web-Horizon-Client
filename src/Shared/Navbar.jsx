@@ -14,16 +14,16 @@ const Navbar = () => {
             <div className='flex-1'>
                 <Link to='/' className='gap-2 items-center'>
                     <img className='w-12 h-12 mx-auto' src={logo} alt='' />
-                    <span className='font-black text-md md:text-xl'>Tech Horizon</span>
+                    <span className='font-black text-md text-[#6D1212] md:text-xl'>Tech Horizon</span>
                 </Link>
             </div>
             <div className='flex-none'>
                 <ul className='menu menu-horizontal px-1 text-md'>
                     <li>
-                        <Link to='/' className='font-bold text-md'>Home</Link>
+                        <Link to='/' className='font-bold text-md text-[#6D1212] '>Home</Link>
                     </li>
                     <li>
-                        <Link to='/products' className='font-bold text-md'>Products</Link>
+                        <Link to='/products' className='font-bold text-md text-[#6D1212] '>Products</Link>
                     </li>
 
                     {!user && (
