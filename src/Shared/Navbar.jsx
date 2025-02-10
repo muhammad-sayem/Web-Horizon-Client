@@ -3,27 +3,27 @@ import { Link, useNavigate } from 'react-router-dom'
 import logo from "../assets/images/logo.png"
 import { AuthContext } from '../Providers/AuthProvider';
 const Navbar = () => {
-    const { user, signOutUser } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
     const handeSignOut = () => {
-        signOutUser();
+        logOut();
         navigate('/login');
     }
     return (
         <div className='navbar bg-base-100 shadow-sm mx-auto'>
             <div className='flex-1'>
                 <Link to='/' className='gap-2 items-center'>
-                    <img className='w-16 h-16 mx-auto' src={logo} alt='' />
-                    <span className='font-black text-md md:text-2xl'>Tech Horizon</span>
+                    <img className='w-12 h-12 mx-auto' src={logo} alt='' />
+                    <span className='font-black text-md md:text-xl'>Tech Horizon</span>
                 </Link>
             </div>
             <div className='flex-none'>
                 <ul className='menu menu-horizontal px-1 text-md'>
                     <li>
-                        <Link to='/'>Home</Link>
+                        <Link to='/' className='font-bold text-md'>Home</Link>
                     </li>
                     <li>
-                        <Link to='/products'>Products</Link>
+                        <Link to='/products' className='font-bold text-md'>Products</Link>
                     </li>
 
                     {!user && (
@@ -55,7 +55,7 @@ const Navbar = () => {
                             <p className='p-3'> {user?.displayName} </p>
 
                             <li>
-                                <Link to='/my-artifacts'>Dashboard</Link>
+                                <Link to='/dashboard'>Dashboard</Link>
                             </li>
                             <li className='mt-2'>
                                 <button
