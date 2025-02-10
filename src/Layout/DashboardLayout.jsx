@@ -1,10 +1,12 @@
 import React from 'react';
 import DashBoard from '../Components/Dashboard/DashBoard';
+import { Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
     return (
         <div>
             <DashBoard></DashBoard>
+            <Outlet></Outlet>
         </div>
     );
 };
