@@ -1,8 +1,14 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import Statistics from './AdminDashBoard/Statistics';
+import { NavLink } from 'react-router-dom';
+import Statistics from './AdminDashBoard/Statistics'
+import useAuth from '../../Hooks/useAuth';
+import UseRole from '../../Hooks/UseRole';
+
 
 const DashBoard = () => {
+    const {user} = useAuth();
+    const [role, isLoading] = UseRole();
+    console.log(role);
     return (
         <div>
             <h3 > User Related Links </h3>
