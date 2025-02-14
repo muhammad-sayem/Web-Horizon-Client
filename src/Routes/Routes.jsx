@@ -13,6 +13,7 @@ import ReviewProducts from "../Components/DashBoard/ModeratorDashBoard/ReviewPro
 import ReportedContents from "../Components/DashBoard/ModeratorDashBoard/ReportedContents";
 import ManageUsers from "../Components/DashBoard/AdminDashBoard/ManageUsers";
 import ManageCoupons from "../Components/DashBoard/AdminDashBoard/ManageCoupons";
+import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 
 
 export const router = createBrowserRouter([
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/product/:id',
+                element: <ProductDetails></ProductDetails>
             },
         ]
     },
