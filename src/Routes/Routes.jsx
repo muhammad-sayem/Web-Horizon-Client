@@ -6,7 +6,6 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
-import DashBoard from "../Components/Dashboard/DashBoard";
 import MyProfile from "../Components/DashBoard/UserDashBoard/MyProfile";
 import AddProduct from "../Components/DashBoard/UserDashBoard/AddProduct";
 import MyProducts from "../Components/DashBoard/UserDashBoard/MyProducts";
