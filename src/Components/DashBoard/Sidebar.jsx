@@ -14,7 +14,8 @@ const Sidebar = () => {
     return (
         <div className="text-[#FFF5D1] mb-8">
             <h3 className="text-4xl text-center font-bold">Welcome </h3>
-            <h3 className="text-3xl text-center font-semibold mb-20">{user?.displayName} </h3>
+            <h3 className="text-3xl text-center font-semibold">{user?.displayName} </h3>
+            <h3 className="text-3xl text-center font-semibold mb-20">({role}) </h3>
 
             {
                 role === 'User' &&
