@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 const ReviewProducts = () => {
     const axiosSecure = useAxiosSecure();
@@ -35,10 +36,10 @@ const ReviewProducts = () => {
                             products.map(product => (
                                 <tr>
                                     <th>{product.productName}</th>
-                                    <td> <Link to={`/product/${product._id}`} className="bg-yellow-500 px-6"> View Details </Link> </td>
-                                    <td> <Link> Make Featured </Link> </td>
-                                    <td> <Link> Accept </Link> </td>
-                                    <td> <Link> Reject </Link> </td>
+                                    <td> <Link to={`/product/${product._id}`} className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"> View Details </Link> </td>
+                                    <td> <Link className="bg-yellow-300 text-md text-black font-bold px-6 py-2 rounded-xl"> Make Featured </Link> </td>
+                                    <td> <Link className="bg-green-500 text-md text-black font-bold px-6 py-2 rounded-xl"> Accept </Link> </td>
+                                    <td> <Link className="bg-red-500 text-md text-black font-bold px-6 py-2 rounded-xl">   Reject </Link> </td>
                                 </tr>
                             ))
                         }

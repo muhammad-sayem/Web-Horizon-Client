@@ -49,14 +49,15 @@ const ProductDetails = () => {
     const { productName, productImage, productDescription, owner, upvotes, externalLink, tags } = product;
 
     return (
-        <div className="w-9/12 mx-auto mt-12 border-2 border-yellow-500">
-            <div className="flex items-center">
-
+        <div className="w-9/12 mx-auto my-12 border-2 border-yellow-500">
+            <div className="flex items-center mb-6">
+                {/* Logo and name */}
                 <div className="w-1/2 flex items-center gap-x-4">
                     <img className="w-20 h-20 rounded-full" src={productImage} alt="" />
                     <h2 className="text-2xl font-bold"> {productName} </h2>
                 </div>
 
+                {/* Buttons */}
                 <div className="w-1/2">
                     <div className="flex gap-x-3">
                         <Link className="flex justify-center items-centr gap-x-2 text-xl font-bold border-2 w-1/3 py-2 rounded-full hover:bg-[#6D1212] hover:text-[#FFF5D1]"> <FaExternalLinkAlt size={25} /> Visit </Link>
@@ -68,7 +69,19 @@ const ProductDetails = () => {
 
 
                 </div>
+            </div>
 
+            <div className="mb-6">
+                <p className="text-lg"> {productDescription} </p>
+            </div>
+
+            <p className="text-2xl font-black mb-2"> Tags: <br /> </p>
+            <div className="flex gap-x-4">
+                {
+                    tags.map(tag => (
+                        <p className="border-2 px-7 py-1 bg-[#6D1212] text-[#FFF5D1] rounded-xl font-bold"> {tag} </p>
+                    ))
+                }
             </div>
         </div>
     );
