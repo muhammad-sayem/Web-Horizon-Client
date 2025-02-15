@@ -14,6 +14,7 @@ import ReportedContents from "../Components/DashBoard/ModeratorDashBoard/Reporte
 import ManageUsers from "../Components/DashBoard/AdminDashBoard/ManageUsers";
 import ManageCoupons from "../Components/DashBoard/AdminDashBoard/ManageCoupons";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import Products from "../Pages/Products/Products";
 
 
 export const router = createBrowserRouter([
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/products',
+                element: <Products></Products>
             },
             {
                 path: '/product/:id',
