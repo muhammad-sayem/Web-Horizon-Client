@@ -58,6 +58,7 @@ const AddProducts = () => {
             externalLink,
             tags: tagValues,
             status: 'Pending',
+            upvotes: parseInt(0),
             createdAt
         };
 
