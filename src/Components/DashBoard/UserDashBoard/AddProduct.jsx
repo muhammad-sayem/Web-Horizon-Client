@@ -60,6 +60,7 @@ const AddProducts = () => {
             status: 'Pending',
             upvotes: parseInt(0),
             reported: false,
+            featured: false,
             createdAt
         };
 
@@ -70,7 +71,8 @@ const AddProducts = () => {
                 icon: "success"
             });
             navigate('/dashboard/my-products');
-        } catch (err) {
+        } 
+        catch (err) {
             Swal.fire({
                 title: "Something went wrong!!",
                 icon: "error"

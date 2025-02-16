@@ -53,6 +53,7 @@ const ReviewProducts = () => {
     const handleMakeFeatured = async(product) => {
         try{
             await axiosSecure.post('/featured', {...product, featuredAt });
+            await axiosSecure.patch(`/product/feature-true/${product._id}`);
             refetch();
             Swal.fire({
                 title: "Product Featured",
@@ -93,7 +94,7 @@ const ReviewProducts = () => {
 
                                     <td> <Link to={`/product/${product._id}`} className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"> View Details </Link> </td>
 
-                                    <td> <button onClick={()=>handleMakeFeatured(product)} className="bg-yellow-300 text-md text-black font-bold px-6 py-2 rounded-xl"> Make Featured </button> </td>
+                                    <td> <button disabled={product.featured === true} onClick={()=>handleMakeFeatured(product)} className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.featured === true ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-300"}`}> Make Featured </button> </td>
 
                                     <td > <button
                                         disabled={product.status === "Accepted"}
