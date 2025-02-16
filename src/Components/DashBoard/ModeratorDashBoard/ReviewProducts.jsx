@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 
 const ReviewProducts = () => {
     const axiosSecure = useAxiosSecure();
+    const featuredAt = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
 
     const { data: products = [], refetch } = useQuery({
         queryKey: ['products'],
@@ -49,6 +50,24 @@ const ReviewProducts = () => {
         }
     };
 
+    const handleMakeFeatured = async(product) => {
+        try{
+            await axiosSecure.post('/featured', {...product, featuredAt });
+            refetch();
+            Swal.fire({
+                title: "Product Featured",
+                icon: "Success"
+            });
+        }
+        catch(err){
+            console.log(err);
+            Swal.fire({
+                title: "Something Wrong",
+                icon: "error"
+            });
+        }
+    }
+
     // console.log(products);
 
     return (
@@ -74,7 +93,7 @@ const ReviewProducts = () => {
 
                                     <td> <Link to={`/product/${product._id}`} className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"> View Details </Link> </td>
 
-                                    <td> <button className="bg-yellow-300 text-md text-black font-bold px-6 py-2 rounded-xl"> Make Featured </button> </td>
+                                    <td> <button onClick={()=>handleMakeFeatured(product)} className="bg-yellow-300 text-md text-black font-bold px-6 py-2 rounded-xl"> Make Featured </button> </td>
 
                                     <td > <button
                                         disabled={product.status === "Accepted"}
