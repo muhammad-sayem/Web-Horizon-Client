@@ -59,6 +59,7 @@ const AddProducts = () => {
             tags: tagValues,
             status: 'Pending',
             upvotes: parseInt(0),
+            reported: false,
             createdAt
         };
 

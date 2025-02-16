@@ -69,9 +69,9 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
                 <button
                     onClick={updateUpvote}
-                    disabled={hasUpvoted || role === 'Admin' || role === "Moderator"}
+                    disabled={ owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}
                     className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/2 py-2 rounded-full mt-6
-                            ${hasUpvoted || role === 'Admin' || role === "Moderator"
+                            ${ owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                             ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
                             : 'bg-green-500 hover:bg-green-700 hover:text-[#FFF5D1] hover:cursor-pointer'}`}
                 >

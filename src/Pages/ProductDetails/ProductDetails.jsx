@@ -35,10 +35,29 @@ const ProductDetails = () => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
-    const { productName, productImage, productDescription, upvotes, tags } = product;
+    const { productName, productImage, productDescription, upvotes, tags, owner } = product;
+    console.log(product);
+
+    const handleReport = async () => {
+        try {
+            await axiosSecure.patch(`/product/report/${id}`);
+            Swal.fire({
+                title: "Report done",
+                icon: "success"
+            });
+
+        }
+        catch (err) {
+            console.log(err);
+            Swal.fire({
+                title: "Something wrong",
+                icon: "error"
+            });
+        }
+    }
 
     const updateUpvote = async () => {
-        if (hasUpvoted) return; 
+        if (!user || hasUpvoted) return;
 
         try {
             await axiosSecure.patch(`/product/upvote/${id}`);
@@ -82,16 +101,16 @@ const ProductDetails = () => {
 
                         <button
                             onClick={updateUpvote}
-                            disabled={hasUpvoted || role === 'Admin' || role === "Moderator"}
+                            disabled={!user || owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}
                             className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/3 py-2 rounded-full 
-                                ${hasUpvoted || role === 'Admin' || role === "Moderator" 
-                                    ? 'bg-gray-400 text-gray-700 cursor-not-allowed' 
+                                ${!user || owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                                    ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
                                     : 'bg-green-500 hover:bg-green-700 hover:text-[#FFF5D1] hover:cursor-pointer'}`}
                         >
                             <LuTriangle size={25}></LuTriangle> Upvote ({upvotes})
                         </button>
 
-                        <button className="flex justify-center items-center gap-x-2 text-xl text-white bg-red-500 font-bold border-2 w-1/3 py-2 rounded-full hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer">
+                        <button onClick={handleReport} className="flex justify-center items-center gap-x-2 text-xl text-white bg-red-500 font-bold border-2 w-1/3 py-2 rounded-full hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer">
                             <MdReportGmailerrorred size={30}></MdReportGmailerrorred> Report
                         </button>
                     </div>

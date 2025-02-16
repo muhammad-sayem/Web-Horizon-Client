@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ProductCard from "./ProductCard";
+import LoadingSpinner from "../../Shared/LoadingSpinner";
 
 const Products = () => {
     const axiosSecure = useAxiosSecure();
@@ -14,6 +15,10 @@ const Products = () => {
     });
 
     console.log(products);
+
+    if(isLoading){
+        return <LoadingSpinner></LoadingSpinner>
+    }
 
     return (
         <div className="w-11/12 mx-auto mb-12">
