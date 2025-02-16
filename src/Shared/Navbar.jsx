@@ -2,13 +2,23 @@ import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from "../assets/images/logo.png"
 import { AuthContext } from '../Providers/AuthProvider';
+import UseRole from '../Hooks/UseRole';
+import LoadingSpinner from './LoadingSpinner';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [role] = UseRole();
+    console.log(role);
+
+    if(role === undefined){
+        return <LoadingSpinner></LoadingSpinner>
+    }
+
     const handeSignOut = () => {
         logOut();
         navigate('/login');
     }
+
     return (
         <div className='navbar bg-base-100 shadow-sm mx-auto p-0 mb-12'>
             <div className='flex-1'>
@@ -55,7 +65,13 @@ const Navbar = () => {
                             <p className='p-3'> {user?.displayName} </p>
 
                             <li>
-                                <Link to='/dashboard'>Dashboard</Link>
+                                <Link to={
+                                    role === "User" ? "/dashboard/my-profile" :
+                                        role === "Moderator" ? "/dashboard/review-products" :
+                                            role === "Admin" ? "/dashboard/manage-users" : ""
+                                }>
+                                    Dashboard
+                                </Link>
                             </li>
                             <li className='mt-2'>
                                 <button
