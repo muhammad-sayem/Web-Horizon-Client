@@ -74,7 +74,7 @@ const ReviewProducts = () => {
 
                                     <td> <Link to={`/product/${product._id}`} className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"> View Details </Link> </td>
 
-                                    <td> <Link className="bg-yellow-300 text-md text-black font-bold px-6 py-2 rounded-xl"> Make Featured </Link> </td>
+                                    <td> <button className="bg-yellow-300 text-md text-black font-bold px-6 py-2 rounded-xl"> Make Featured </button> </td>
 
                                     <td > <button
                                         disabled={product.status === "Accepted"}

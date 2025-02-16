@@ -35,26 +35,8 @@ const ProductDetails = () => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
-    const { productName, productImage, productDescription, upvotes, tags, owner } = product;
+    const { productName, productImage, productDescription, upvotes, tags, owner, reported } = product;
     console.log(product);
-
-    const handleReport = async () => {
-        try {
-            await axiosSecure.patch(`/product/report/${id}`);
-            Swal.fire({
-                title: "Report done",
-                icon: "success"
-            });
-
-        }
-        catch (err) {
-            console.log(err);
-            Swal.fire({
-                title: "Something wrong",
-                icon: "error"
-            });
-        }
-    }
 
     const updateUpvote = async () => {
         if (!user || hasUpvoted) return;
@@ -75,6 +57,25 @@ const ProductDetails = () => {
             });
         }
     };
+
+    const handleReport = async () => {
+        try {
+            await axiosSecure.patch(`/product/report/${id}`);
+            refetch();
+            Swal.fire({
+                title: "Report done",
+                icon: "success"
+            });
+
+        }
+        catch (err) {
+            console.log(err);
+            Swal.fire({
+                title: "Something wrong",
+                icon: "error"
+            });
+        }
+    }
 
     return (
         <div className='w-2/3 mx-auto mb-8'>
@@ -110,7 +111,7 @@ const ProductDetails = () => {
                             <LuTriangle size={25}></LuTriangle> Upvote ({upvotes})
                         </button>
 
-                        <button onClick={handleReport} className="flex justify-center items-center gap-x-2 text-xl text-white bg-red-500 font-bold border-2 w-1/3 py-2 rounded-full hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer">
+                        <button disabled={reported === true} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${reported === true ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer"}`}>
                             <MdReportGmailerrorred size={30}></MdReportGmailerrorred> Report
                         </button>
                     </div>
