@@ -8,9 +8,9 @@ import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, refetch, isLoading }) => {
+    const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [role] = UseRole();
-    const axiosSecure = useAxiosSecure();
     const [hasUpvoted, setHasUpvoted] = useState(false);
 
     const { _id, productName, productImage, productDescription, owner, upvotes, externalLink, tags, upVotedUsers } = product;
