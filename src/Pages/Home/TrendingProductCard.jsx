@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
-const FeatureProductCard = ({ feaProduct, refetch }) => {
+const TrendingProductCard = ({ treProduct, refetch }) => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [role] = UseRole();
     const [hasUpvoted, setHasUpvoted] = useState(false);
-    const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers } = feaProduct;
+    const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers } = treProduct;
 
     console.log(owner?.email);
     console.log(user?.email);
@@ -69,7 +69,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
             </div>
 
             <div>
-                <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                <button onClick={updateUpvote} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                     ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
                     : 'hover:bg-[#6D1212] hover:text-[#FFF5D1] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
             </div>
@@ -77,4 +77,4 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     );
 };
 
-export default FeatureProductCard;
+export default TrendingProductCard;

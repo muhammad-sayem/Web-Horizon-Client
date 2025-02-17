@@ -2,9 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import FeatureProductCard from "./FeatureProductCard";
+import { useState } from "react";
 
 const FeaturedProducts = () => {
     const axiosSecure = useAxiosSecure();
+    const [showAll, setShowAll] = useState(false);
 
     const {data: featuredProducts = [], isLoading, refetch} = useQuery({
         queryKey: ['featuredProducts'],
@@ -13,6 +15,8 @@ const FeaturedProducts = () => {
             return data;
         }
     });
+
+    const displayProducts = showAll ? featuredProducts : featuredProducts.slice(0, 4);
 
     if(isLoading){
         return <LoadingSpinner></LoadingSpinner>
@@ -26,14 +30,16 @@ const FeaturedProducts = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                 {
-                    featuredProducts.map(feaProduct => <FeatureProductCard
+                    displayProducts.map(feaProduct => <FeatureProductCard
                         key={feaProduct._id}
                         feaProduct={feaProduct}
                         refetch={refetch}
                     ></FeatureProductCard>)
                 }
             </div>
-        </div>
+
+            <button onClick={()=> setShowAll(!showAll)} className="mt-3 bg-[#6D1212] text-[#FFF5D1] px-6 py-3 rounded-xl text-xl"> {showAll ?  "View Less": "View All"} </button>
+        </div> 
     );
 };
 
