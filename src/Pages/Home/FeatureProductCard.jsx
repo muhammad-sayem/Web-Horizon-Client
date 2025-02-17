@@ -13,6 +13,9 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     const [hasUpvoted, setHasUpvoted] = useState(false);
     const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers } = feaProduct;
 
+    console.log(owner?.email);
+    console.log(user?.email);
+
     useEffect(() => {
         if (user?.email && Array.isArray(upVotedUsers) && upVotedUsers.includes(user.email)) {
             setHasUpvoted(true);
@@ -29,11 +32,11 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
 
         try {
             await axiosSecure.patch(`/product/upvote/${_id}`);
-            // await axiosSecure.patch(`/product/featured-upvote/${_id}`);
+            await axiosSecure.patch(`/product/feature-upvote/${_id}`);
             setHasUpvoted(true);
             refetch();
             Swal.fire({
-                title: "Upvode done",
+                title: "Upvote done",
                 icon: "success"
             });
         }
@@ -45,6 +48,10 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
             });
         }
     }
+
+    // const updateUpvote = (id) => {
+    //     console.log("Upvote update clicked", id);
+    // }
 
     return (
         <div className="border-2 rounded-xl flex justify-between items-center px-5 py-3">
@@ -66,7 +73,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
             </div>
 
             <div>
-                <button onClick={updateUpvote} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-[#6D1212] text-[#6D1212] px-4 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-[#6D1212] text-[#6D1212] px-4 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                     ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
                     : 'hover:bg-green-500 hover:text-black hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
             </div>
