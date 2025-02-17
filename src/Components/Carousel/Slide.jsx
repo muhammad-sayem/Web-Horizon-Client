@@ -16,7 +16,7 @@ const Slide = ({ image, text }) => {
                     </h1>
                     <br />
                     <NavLink
-                        to='/artifacts'
+                        to='/products'
                         className='w-full px-5 py-4 mt-4 text-lg font-bold capitalize transition-colors duration-300 transform bg-[#FFF5D1] text-[#6D1212] rounded-md lg:w-auto hover:bg-[#6D1212] hover:text-[#FFF5D1] hover:border-4 border-[#FFF5D1] focus:outline-none focus:bg-[#f6a62e]'
                     >
                         View All Products
