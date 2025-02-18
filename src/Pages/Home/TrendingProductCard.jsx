@@ -60,8 +60,8 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
                     <div className="flex gap-2">
                         <h3 className="text-lg font-bold"> Tags: </h3>
                         {
-                            tags.map(tag => (
-                                <p className="text-lg"> {tag} </p>
+                            tags.map((tag, index) => (
+                                <p key={index} className="text-lg"> {tag} </p>
                             ))
                         }
                     </div>

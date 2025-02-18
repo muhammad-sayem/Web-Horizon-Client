@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 import UseRole from "../../Hooks/UseRole";
 import useAuth from "../../Hooks/useAuth";
 import { useState, useEffect } from "react";
+import ProductReviewModal from "./ProductReviewModal";
+import Reviews from "./Reviews";
 
 const ProductDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -17,7 +19,7 @@ const ProductDetails = () => {
     const [role] = UseRole();
     const [hasUpvoted, setHasUpvoted] = useState(false);
 
-    const { data: product, isLoading, refetch } = useQuery({
+    const { data: product = {}, isLoading, refetch } = useQuery({
         queryKey: ['product', id],
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/product/${id}`);
@@ -85,7 +87,7 @@ const ProductDetails = () => {
                     <h3 className="text-2xl font-black"> {productName} </h3>
                 </div>
 
-                <div>
+                <div className="my-8">
                     <p className="text-lg text-gray-500 my-4"> {productDescription} </p>
 
                     <p className="text-2xl font-black mb-3"> Tags: </p>
@@ -116,6 +118,26 @@ const ProductDetails = () => {
                         </button>
                     </div>
                 </div>
+
+                <div>
+                    <h2 className="text-3xl text-[#6D1212] font-bold my-4"> Reviews </h2>
+                    <Reviews
+                        key={product._id}
+                        product={product}
+                    ></Reviews>
+                </div>
+
+                <div>
+                    <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} className="px-10 py-3 text-lg font-bold bg-[#6D1212] text-[#FFF5D1]"> Add a Review </button>
+                </div>
+
+                {/* Modal Part */}
+                <ProductReviewModal
+                    key={product._id}
+                    product={product}
+                    refetch={refetch}
+                ></ProductReviewModal>
+
             </div>
         </div>
     );

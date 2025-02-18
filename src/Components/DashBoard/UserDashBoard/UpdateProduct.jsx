@@ -80,6 +80,7 @@ const UpdateProduct = () => {
 
     try {
       await axiosSecure.put(`/product/update/${id}`, updatedData);
+      await axiosSecure.put(`/featured/update/${id}`, updatedData);
       refetch();
       Swal.fire({
         title: "Product Updated successfully!!",
