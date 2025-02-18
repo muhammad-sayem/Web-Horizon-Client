@@ -2,12 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import UpdateModal from "./UpdateModal";
+import LoadingSpinner from "../../../Shared/LoadingSpinner";
+import { Link } from "react-router-dom";
 
 const MyProducts = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 
-  const { data: myProducts = [], refetch } = useQuery({
+  const { data: myProducts = [], refetch, isLoading } = useQuery({
     queryKey: ["myProducts"],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/products/${user?.email}`);
@@ -16,6 +19,10 @@ const MyProducts = () => {
   });
 
   console.log(myProducts);
+
+  if(isLoading){
+    return <LoadingSpinner></LoadingSpinner>
+  }
 
   const handleDeleteProduct = async (id) => {
     try {
@@ -68,23 +75,17 @@ const MyProducts = () => {
                     </span>
                   </td>
 
-                  <td> <button onClick={() => document.getElementById(`my_modal_${product._id}`).showModal()} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </button> </td>
+                  <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </Link> </td>
+{/*                   
+                  <td> <button onClick={() => document.getElementById(`my_modal_${product._id}`).showModal()} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </button> </td> */}
 
                   <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-5 py-2 rounded-xl font-bold"> Delete </button> </td>
 
                   {/* Modal */}
-                  <dialog id={`my_modal_${product._id}`} className="modal">
-                    <div className="modal-box">
-                      <h3 className="font-bold text-lg"> {product.productName} </h3>
-                      <p className="py-4">Press ESC key or click the button below to close</p>
-                      <div className="modal-action">
-                        <form method="dialog">
-                          {/* if there is a button in form, it will close the modal */}
-                          <button className="btn">Close</button>
-                        </form>
-                      </div>
-                    </div>
-                  </dialog>
+                  {/* <UpdateModal
+                    key={product._id}
+                    product={product}
+                  ></UpdateModal> */}
 
                 </tr>
 

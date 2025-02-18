@@ -15,6 +15,8 @@ import ManageUsers from "../Components/DashBoard/AdminDashBoard/ManageUsers";
 import ManageCoupons from "../Components/DashBoard/AdminDashBoard/ManageCoupons";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
+import UpdateProduct from "../Components/DashBoard/UserDashBoard/UpdateProduct";
+
 
 
 export const router = createBrowserRouter([
@@ -62,6 +64,10 @@ export const router = createBrowserRouter([
             {
                 path: 'my-products',
                 element: <MyProducts></MyProducts>
+            },
+            {
+                path: 'product/update/:id', 
+                element: <UpdateProduct></UpdateProduct>
             },
             
             // Moderator Related Routes //
