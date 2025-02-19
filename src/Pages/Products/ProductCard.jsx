@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import { useEffect, useState } from "react";
-import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, refetch, isLoading }) => {
