@@ -1,119 +1,144 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
-import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const ReviewProducts = () => {
-    const axiosSecure = useAxiosSecure();
-    const featuredAt = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+  const axiosSecure = useAxiosSecure();
+  const featuredAt = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
 
-    const { data: products = [], refetch } = useQuery({
-        queryKey: ['products'],
-        queryFn: async () => {
-            const { data } = await axiosSecure.get('/all-products');
-            return data;
-        }
-    });
-
-    const handleAccept = async (id) => {
-        try {
-            await axiosSecure.patch(`/product/accept-status/${id}`);
-            refetch()
-            Swal.fire({
-                title: "Product Accepted by a moderator",
-                icon: "success"
-            });
-        }
-        catch (err) {
-            Swal.fire({
-                title: "Something Wrong",
-                icon: "error"
-            });
-        }
-    };
-
-    const handleReject = async (id) => {
-        try {
-            await axiosSecure.patch(`/product/reject-status/${id}`);
-            refetch();
-            Swal.fire({
-                title: "Product Rejected by a moderator",
-                icon: "Success"
-            });
-        }
-        catch (err) {
-            Swal.fire({
-                title: "Something Wrong",
-                icon: "error"
-            });
-        }
-    };
-
-    const handleMakeFeatured = async(product) => {
-        try{
-            await axiosSecure.post('/featured', {...product, featuredAt });
-            await axiosSecure.patch(`/product/feature-true/${product._id}`);
-            refetch();
-            Swal.fire({
-                title: "Product Featured",
-                icon: "Success"
-            });
-        }
-        catch(err){
-            console.log(err);
-            Swal.fire({
-                title: "Something Wrong",
-                icon: "error"
-            });
-        }
+  const { data: products = [], refetch } = useQuery({
+    queryKey: ['products'],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get('/all-products');
+      return data;
     }
+  });
 
-    // console.log(products);
+  const handleAccept = async (id) => {
+    try {
+      await axiosSecure.patch(`/product/accept-status/${id}`);
+      refetch();
+      Swal.fire({
+        title: "Product Accepted by a moderator",
+        icon: "success"
+      });
+    } catch (err) {
+      Swal.fire({
+        title: "Something Wrong",
+        icon: "error"
+      });
+    }
+  };
 
-    return (
-        <div>
-            <div className="overflow-x-auto">
-                <table className="table table-zebra">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>Product Name</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        {
-                            products.map(product => (
-                                <tr>
-                                    <th>{product.productName}</th>
+  const handleReject = async (id) => {
+    try {
+      await axiosSecure.patch(`/product/reject-status/${id}`);
+      refetch();
+      Swal.fire({
+        title: "Product Rejected by a moderator",
+        icon: "success"
+      });
+    } catch (err) {
+      Swal.fire({
+        title: "Something Wrong",
+        icon: "error"
+      });
+    }
+  };
 
-                                    <td> <Link to={`/product/${product._id}`} className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"> View Details </Link> </td>
+  const handleMakeFeatured = async (product) => {
+    try {
+      await axiosSecure.post('/featured', { ...product, featuredAt });
+      await axiosSecure.patch(`/product/feature-true/${product._id}`);
+      refetch();
+      Swal.fire({
+        title: "Product Featured",
+        icon: "success"
+      });
+    } catch (err) {
+      console.log(err);
+      Swal.fire({
+        title: "Something Wrong",
+        icon: "error"
+      });
+    }
+  };
 
-                                    <td> <button disabled={product.featured === true} onClick={()=>handleMakeFeatured(product)} className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.featured === true ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-300"}`}> Make Featured </button> </td>
+  const sortedProducts = [...products].sort((a, b) => {
+    if (a.status === "Pending" && b.status !== "Pending") return -1;
+    if (a.status !== "Pending" && b.status === "Pending") return 1;
+    return 0;
+  });
 
-                                    <td > <button
-                                        disabled={product.status === "Accepted"}
-                                        onClick={() => handleAccept(product._id)}
-                                        className={` text-md text-black font-bold px-6 py-2 rounded-xl ${product.status === 'Accepted' ? "bg-green-900 cursor-not-allowed" : "bg-green-500"}`}> Accept </button> </td>
+  return (
+    <div>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra">
+        
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            {sortedProducts.map(product => (
+              <tr key={product._id}>
+                <th>{product.productName}</th>
 
-                                    <td> <button 
-                                        disabled={product.status === 'Rejected'}
-                                        onClick={() => handleReject(product._id)}
-                                        className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.status === "Rejected" ? "bg-red-900 cursor-not-allowed" : "bg-red-500 "}`}>   Reject </button> </td>
-                                </tr>
-                            ))
-                        }
+                <td>
+                  <Link
+                    to={`/product/${product._id}`}
+                    className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"
+                  >
+                    View Details
+                  </Link>
+                </td>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    );
+                <td>
+                  <button
+                    disabled={product.featured === true}
+                    onClick={() => handleMakeFeatured(product)}
+                    className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.featured ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-300"
+                      }`}
+                  >
+                    Make Featured
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    disabled={product.status === "Accepted"}
+                    onClick={() => handleAccept(product._id)}
+                    className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.status === "Accepted" ? "bg-green-900 cursor-not-allowed" : "bg-green-500"
+                      }`}
+                  >
+                    Accept
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    disabled={product.status === "Rejected"}
+                    onClick={() => handleReject(product._id)}
+                    className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.status === "Rejected" ? "bg-red-900 cursor-not-allowed" : "bg-red-500"
+                      }`}
+                  >
+                    Reject
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default ReviewProducts;

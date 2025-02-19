@@ -1,4 +1,6 @@
+import { FaRegStar } from "react-icons/fa";
 import Rating from "react-rating";
+import { FaStar } from "react-icons/fa";
 
 const ReviewCard = ({ review, refetch }) => {
     const { reviewerName, reviewerImage, reviewDescription, rating } = review;
@@ -10,7 +12,15 @@ const ReviewCard = ({ review, refetch }) => {
                 </div>
                 <h2 className="mb-0 text-center text-xl"> {reviewerName} </h2>
 
-                <p className="mt-2 text-lg text-center font-bold">Rating: {rating} / 5</p>
+                <div className="flex justify-center mt-2">
+                    <Rating
+                        initialRating={rating}
+                        emptySymbol={<FaRegStar className="text-gray-400" size={20} />}
+                        fullSymbol={<FaStar className="text-orange-500" size={20} />}
+                        fractions={2}
+                        readonly
+                    />
+                </div>
             </div>
 
             <div className="w-5/6">

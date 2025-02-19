@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { CgLogOff } from "react-icons/cg";
 
 const ReportedContents = () => {
     const axiosSecure = useAxiosSecure();
@@ -44,7 +43,7 @@ const ReportedContents = () => {
                     {/* head */}
                     <thead>
                         <tr>
-                            <th className="w-1/3">Product Name</th>
+                            <th className="w-1/3 text-center">Product Name</th>
                             <th className="w-1/3"></th>
                             <th className="w-1/3"></th>
                         </tr>
