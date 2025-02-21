@@ -16,6 +16,7 @@ import ManageCoupons from "../Components/DashBoard/AdminDashBoard/ManageCoupons"
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
 import UpdateProduct from "../Components/DashBoard/UserDashBoard/UpdateProduct";
+import Statistics from "../Components/DashBoard/AdminDashBoard/Statistics";
 
 
 
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
             },
             
             // Admin Related Routes //
+            {
+                path: 'statistics',
+                element: <Statistics></Statistics>
+            },
             {
                 path: 'manage-users',
                 element: <ManageUsers></ManageUsers>

@@ -7,6 +7,7 @@ import { TbMessageReportFilled } from "react-icons/tb";
 import { BiSolidCoupon } from "react-icons/bi";
 import UseRole from "../../Hooks/UseRole";
 import { NavLink } from "react-router-dom";
+import { IoStatsChartSharp } from "react-icons/io5";
 
 const Sidebar = () => {
     const [role] = UseRole()
@@ -44,6 +45,8 @@ const Sidebar = () => {
                 role === "Admin" &&
                 <div className='flex flex-col'>
                     {/* <h3 className='mt-6'> Admin Related Links </h3> */}
+                    <NavLink to='/dashboard/statistics' className={({ isActive }) => `flex justify-center items-center gap-x-2 mb-4 py-2 rounded-xl w-11/12 mx-auto text-center text-xl font-bold ${isActive ? 'bg-[#6D1212] text-[#FFF5D1]' : 'bg-[#FFF5D1] text-[#6D1212]'}`}> <IoStatsChartSharp size={25}></IoStatsChartSharp> Statistics </NavLink>
+
                     <NavLink to='/dashboard/manage-users' className={({ isActive }) => `flex justify-center items-center gap-x-2 mb-4 py-2 rounded-xl w-11/12 mx-auto text-center text-xl font-bold ${isActive ? 'bg-[#6D1212] text-[#FFF5D1]' : 'bg-[#FFF5D1] text-[#6D1212]'}`}> <FaUsersCog size={25}></FaUsersCog> Manage Users </NavLink>
 
                     <NavLink to='/dashboard/manage-coupons' className={({ isActive }) => `flex justify-center items-center gap-x-2 mb-4 py-2 rounded-xl w-11/12 mx-auto text-center text-xl font-bold ${isActive ? 'bg-[#6D1212] text-[#FFF5D1]' : 'bg-[#FFF5D1] text-[#6D1212]'}`}> <BiSolidCoupon size={25}></BiSolidCoupon> Manage Coupons </NavLink>
