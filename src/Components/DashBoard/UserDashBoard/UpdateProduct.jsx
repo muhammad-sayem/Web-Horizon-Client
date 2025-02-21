@@ -71,7 +71,7 @@ const UpdateProduct = () => {
 
     const updatedData = {
       productName,
-      productImage: updatedProductImage, 
+      productImage: updatedProductImage,
       productDescription,
       owner,
       externalLink,

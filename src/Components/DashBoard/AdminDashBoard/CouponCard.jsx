@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import CouponCardModal from "./CouponCardModal";
 
 const CouponCard = ({ coupon, refetch }) => {
     const axiosSecure = useAxiosSecure();
@@ -38,15 +39,23 @@ const CouponCard = ({ coupon, refetch }) => {
 
     return (
         <div className="border-2">
-            <h2 className="text-xl font-bold mb-4"> Code: {couponCode} </h2>
-            <p className="text-xl font-bold mb-4"> Expiry Date: {expiryDate} </p>
+            <h2 className="text-xl font-black mb-2"> Code: {couponCode} </h2>
+            <p className="text-md font-bold mb-2"> Expiry Date: {expiryDate} </p>
             <p className="mb-4"> {couponDescription} </p>
-            <p className="text-xl font-bold mb-4"> Discount Amount: {discountAmount} </p>
+            <p className="text-xl font-bold mb-2"> Discount Amount: {discountAmount} </p>
 
             <div className="space-x-3">
-                <button className="btn bg-blue-500 font-bold text-md"> Edit Coupon </button>
-                <button onClick={() => handleDeleteCoupon(_id)} className="btn bg-red-500 font-bold text-md"> Delete Coupon </button>
+                <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="btn bg-blue-500 font-bold text-md"> Edit Coupon </button>
+
+                <tton onClick={() => handleDeleteCoupon(_id)} className="btn bg-red-500 font-bold text-md"> Delete Coupon </tton>
             </div>
+
+            {/* Modal Part */}
+            <CouponCardModal
+                key={coupon._id}
+                coupon={coupon}
+                refetch={refetch}
+            ></CouponCardModal>
         </div>
     );
 };
