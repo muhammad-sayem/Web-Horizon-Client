@@ -20,7 +20,7 @@ const MyProducts = () => {
 
   console.log(myProducts);
 
-  if(isLoading){
+  if (isLoading) {
     return <LoadingSpinner></LoadingSpinner>
   }
 
@@ -28,10 +28,23 @@ const MyProducts = () => {
     try {
       await axiosSecure.delete(`/product/${id}`);
       await axiosSecure.delete(`/featured/${id}`);
-      refetch();
       Swal.fire({
-        title: "Product Deleted Successfully",
-        icon: "success"
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Coupon has been deleted.",
+            icon: "success"
+          });
+        }
       });
     }
     catch (err) {
@@ -76,7 +89,7 @@ const MyProducts = () => {
                   </td>
 
                   <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </Link> </td>
-{/*                   
+                  {/*                   
                   <td> <button onClick={() => document.getElementById(`my_modal_${product._id}`).showModal()} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </button> </td> */}
 
                   <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-5 py-2 rounded-xl font-bold"> Delete </button> </td>
