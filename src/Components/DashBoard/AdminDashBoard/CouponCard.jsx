@@ -38,16 +38,16 @@ const CouponCard = ({ coupon, refetch }) => {
     }
 
     return (
-        <div className="border-2">
-            <h2 className="text-xl font-black mb-2"> Code: {couponCode} </h2>
+        <div className="border border-gray-300 shadow-2xl px-6 py-2 rounded-tr-3xl rounded-bl-3xl">
+            <h2 className="text-xl font-black mb-1"> Code: {couponCode} </h2>
+            <p className="text-md font-bold mb-1"> Discount Amount: {discountAmount} </p>
+            <p className="m2-4 text-xs"> {couponDescription} </p>
             <p className="text-md font-bold mb-2"> Expiry Date: {expiryDate} </p>
-            <p className="mb-4"> {couponDescription} </p>
-            <p className="text-xl font-bold mb-2"> Discount Amount: {discountAmount} </p>
 
-            <div className="space-x-3">
-                <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="btn bg-blue-500 font-bold text-md"> Edit Coupon </button>
+            <div className="space-x-1">
+                <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="bg-blue-500 font-bold text-md px-3 py-1 rounded-md"> Edit Coupon </button>
 
-                <tton onClick={() => handleDeleteCoupon(_id)} className="btn bg-red-500 font-bold text-md"> Delete Coupon </tton>
+                <tton onClick={() => handleDeleteCoupon(_id)} className="bg-red-500 font-bold text-md px-3 py-1 rounded-md"> Delete Coupon </tton>
             </div>
 
             {/* Modal Part */}
