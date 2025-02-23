@@ -17,6 +17,7 @@ import ProductDetails from "../Pages/ProductDetails/ProductDetails";
 import Products from "../Pages/Products/Products";
 import UpdateProduct from "../Components/DashBoard/UserDashBoard/UpdateProduct";
 import Statistics from "../Components/DashBoard/AdminDashBoard/Statistics";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 
@@ -24,6 +25,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
