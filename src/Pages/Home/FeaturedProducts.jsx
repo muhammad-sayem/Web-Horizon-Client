@@ -25,7 +25,7 @@ const FeaturedProducts = () => {
     console.log(featuredProducts);
 
     return (
-        <div className="my-16">
+        <div className="my-8 lg:my-16">
             <h2 className="text-[#6D1212] text-3xl font-bold mb-6"> Featured Products </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">

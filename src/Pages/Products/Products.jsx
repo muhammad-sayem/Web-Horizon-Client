@@ -37,7 +37,7 @@ const Products = () => {
 
     return (
         <div className="w-11/12 mx-auto mb-12">
-            <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#6D1212] border-4 border-[#6D1212] w-1/2 mx-auto mb-6'>
+            <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#6D1212] border-4 border-[#6D1212] w-full lg:w-3/4 mx-auto mb-6'>
                 <input
                     className='flex-grow px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                     type='text'

@@ -81,11 +81,11 @@ const AddProducts = () => {
     }
 
     return (
-        <div className="bg-[#FFF5D1] py-16 my-8 w-10/12 mx-auto rounded-3xl">
+        <div className="bg-[#FFF5D1] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
             <h2 className="text-4xl text-center text-[#6D1212] font-bold mb-8"> Add a Product </h2>
 
             <form onSubmit={handleSubmit}>
-                <div className="w-4/5 mx-auto">
+                <div className="w-full px-6 lg-px-0 lg:w-4/5 mx-auto">
                     <div className="grid md:grid-cols-2 gap-x-4">
 
                         <div className="mb-6">
@@ -195,7 +195,7 @@ const AddProducts = () => {
 
                 </div>
 
-                <div className="w-4/5 mx-auto mt-4">
+                <div className="w-full px-6 lg:px-0 lg:w-4/5 mx-auto mt-4">
                     <button className="btn w-full bg-[#6D1212] text-white text-xl font-bold"> Add Product </button>
                 </div>
             </form>

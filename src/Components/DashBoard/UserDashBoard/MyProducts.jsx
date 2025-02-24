@@ -88,11 +88,10 @@ const MyProducts = () => {
                     </span>
                   </td>
 
-                  <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </Link> </td>
-                  {/*                   
-                  <td> <button onClick={() => document.getElementById(`my_modal_${product._id}`).showModal()} className="bg-blue-400 px-5 py-2 rounded-xl font-bold"> Update </button> </td> */}
+                  <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-2 md:px-5 py-2 rounded-xl font-bold"> Update </Link> </td>
+                  
 
-                  <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-5 py-2 rounded-xl font-bold"> Delete </button> </td>
+                  <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-2 md:px-5 py-2 rounded-xl font-bold"> Delete </button> </td>
 
                   {/* Modal */}
                   {/* <UpdateModal

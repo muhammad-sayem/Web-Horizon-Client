@@ -28,7 +28,7 @@ export default function CouponCarousel() {
 
   return (
     <div className='mx-auto my-12'>
-      <h2 className="text-4xl text-[#6D1212] font-bold mb-8"> Available Offers </h2>
+      <h2 className="text-3xl text-[#6D1212] font-bold mb-8"> Available Offers </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -49,7 +49,7 @@ export default function CouponCarousel() {
           {
             allCoupons.map(coupon => (
               <SwiperSlide>
-                <div className='flex justify-center w-full h-72 bg-[#FFF5D1]'>
+                <div className='flex justify-center w-full h-[350px] md:h-[300px] lg:h-72 bg-[#FFF5D1]'>
                   <div className='text-center py-5'>
                     <div className='flex justify-center items-center gap-x-2 mb-6'>
                       <FaStar size={30}></FaStar> <h2 className='text-3xl font-bold'> Coupon </h2> <FaStar size={30}></FaStar>
@@ -57,7 +57,7 @@ export default function CouponCarousel() {
                     </div>
 
                     <div>
-                      <div className='text-white bg-red-600 px-96 py-1 mb-4'>
+                      <div className='text-white bg-red-600 px-12 md:px-48 lg:px-96 py-1 mb-4'>
                         <h3 className='text-5xl font-bold mb-2'> Flat ${coupon.discountAmount} Off </h3>
                         <p className='text-xl font-bold'> Coupon Code: {coupon.couponCode} </p>
                       </div>

@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from "../../CheckoutForm/CheckoutForm";
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
+
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
@@ -29,8 +30,6 @@ const MyProfile = () => {
     return <LoadingSpinner />;
   }
 
-  console.log(currUser?._id);
-
   const handleSubscribe = async (id) => {
     if (!id) {
       return;
@@ -43,8 +42,7 @@ const MyProfile = () => {
         icon: "success"
       });
       navigate('/dashboard/my-products');
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
       Swal.fire({
         title: "Something went wrong",
@@ -55,46 +53,45 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="w-4/5 mx-auto flex items-center justify-between my-12 shadow-2xl p-5">
-      <div className="flex items-center gap-x-6">
-        <img src={user?.photoURL} className="w-40 h-40 rounded-full" alt="User Avatar" />
-        <div>
-          <h2 className="text-2xl font-bold">{user?.displayName}</h2>
-          <p className="text-2xl font-bold">{user?.email}</p>
+    <div className="w-full md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-between my-12 shadow-2xl p-5">
+      
+      <div className="flex flex-col md:flex-row items-center gap-x-6 mb-6 md:mb-0">
+        <img
+          src={user?.photoURL}
+          className="w-32 h-32 md:w-40 md:h-40 rounded-full mb-4 md:mb-0"
+          alt="User Avatar"
+        />
+        <div className="text-center md:text-left">
+          <h2 className="text-xl lg:text-2xl font-bold">{user?.displayName}</h2>
+          <p className="text-lg lg:text-2xl font-bold">{user?.email}</p>
         </div>
       </div>
 
+      
       <div>
         {currUser?.subscribed ? (
           <div className="flex justify-center items-center gap-x-2">
-            <MdVerified size={30} color="green"></MdVerified>
-            <p className="text-2xl font-bold text-green-800"> Verified </p>
+            <MdVerified size={24} color="green" />
+            <p className="text-xl md:text-2xl font-bold text-green-800">Verified</p>
           </div>
         ) : (
           <div>
             <button
               onClick={() => document.getElementById(`my_modal_${user?.email}`)?.showModal()}
-              className="bg-[#6D1212] px-8 py-2 text-white text-xl font-bold"
+              className="bg-[#6D1212] px-6 py-2 text-white text-lg md:text-xl font-bold"
             >
               Buy Subscription <br /> $90
             </button>
 
-
             {/* Modal */}
             <dialog id={`my_modal_${currUser?.email}`} className="modal">
               <div className="modal-box">
-
-
-
-                <h3 className="font-bold text-2xl"> Enter card details to buy subscription </h3>
+                <h3 className="font-bold text-xl md:text-2xl">Enter card details to buy subscription</h3>
 
                 {/* CheckoutForm */}
                 <Elements stripe={stripePromise}>
-                  {/* Form Component */}
-                  <CheckoutForm></CheckoutForm>
+                  <CheckoutForm />
                 </Elements>
-
-                
 
                 <div className="modal-action mt-1">
                   <form method="dialog" className="space-x-2 w-full">

@@ -24,12 +24,12 @@ const CheckoutForm = () => {
 
   const currUser = allUsers.find(singleUser => singleUser?.email === user?.email);
 
-  // Fetch payment intent whenever the discounted price changes
+  
   useEffect(() => {
     getPaymentIntent(discountedPrice);
   }, [discountedPrice]);
 
-  // Function to create a payment intent
+  
   const getPaymentIntent = async (price) => {
     try {
       const { data } = await axiosSecure.post('/create-payment-intent', { price });
@@ -42,7 +42,7 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  // Apply coupon and update the discounted price
+
   const handleApplyCoupon = (coupon) => {
     let newPrice = subscriptionCost;
     if (coupon === 'less20') {
@@ -53,7 +53,7 @@ const CheckoutForm = () => {
     setDiscountedPrice(newPrice);
   };
 
-  // Handle form submission
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,7 +67,6 @@ const CheckoutForm = () => {
       return;
     }
 
-    // Confirm payment with the discounted price
     const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: card,
@@ -133,7 +132,7 @@ const CheckoutForm = () => {
             onChange={(e) => setCoupon(e.target.value)}
           />
           <button
-            type="button" // Prevent form submission
+            type="button" 
             onClick={() => handleApplyCoupon(coupon)}
             className='btn'
           >

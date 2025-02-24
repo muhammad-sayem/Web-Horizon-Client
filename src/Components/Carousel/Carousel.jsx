@@ -8,8 +8,6 @@ import 'swiper/css/navigation'
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
-
-
 import bgimg1 from '../../assets/images/slider image 1.jpg'
 import bgimg2 from '../../assets/images/slider image 2.jpg'
 import bgimg3 from '../../assets/images/slider image 3.jpg'
