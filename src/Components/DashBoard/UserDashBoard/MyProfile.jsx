@@ -14,7 +14,6 @@ const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
-  let subscriptionCost = parseInt(90);
 
   const { data: allUsers = [], isLoading, refetch } = useQuery({
     queryKey: ['allUsers'],
@@ -77,22 +76,25 @@ const MyProfile = () => {
               onClick={() => document.getElementById(`my_modal_${user?.email}`)?.showModal()}
               className="bg-[#6D1212] px-8 py-2 text-white text-xl font-bold"
             >
-              Buy Subscription <br /> ${subscriptionCost}
+              Buy Subscription <br /> $90
             </button>
 
 
             {/* Modal */}
             <dialog id={`my_modal_${currUser?.email}`} className="modal">
               <div className="modal-box">
-                <h3 className="font-bold text-lg"> Enter card details to buy subscription </h3>
+
+
+
+                <h3 className="font-bold text-2xl"> Enter card details to buy subscription </h3>
 
                 {/* CheckoutForm */}
                 <Elements stripe={stripePromise}>
                   {/* Form Component */}
-                  <CheckoutForm
-                    subscriptionCost={subscriptionCost}
-                  ></CheckoutForm>
+                  <CheckoutForm></CheckoutForm>
                 </Elements>
+
+                
 
                 <div className="modal-action mt-1">
                   <form method="dialog" className="space-x-2 w-full">

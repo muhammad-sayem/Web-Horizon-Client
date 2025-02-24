@@ -6,10 +6,13 @@ import useAuth from '../../Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 
-const CheckoutForm = ({ subscriptionCost}) => {
+const CheckoutForm = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState('');
+  const [coupon, setCoupon] = useState('');
+  const [subscriptionCost, setSubscriptionCost] = useState(90); // Original price
+  const [discountedPrice, setDiscountedPrice] = useState(subscriptionCost); // Discounted price
 
   const { data: allUsers = [], isLoading, refetch } = useQuery({
     queryKey: ['allUsers'],
@@ -21,56 +24,51 @@ const CheckoutForm = ({ subscriptionCost}) => {
 
   const currUser = allUsers.find(singleUser => singleUser?.email === user?.email);
 
+  // Fetch payment intent whenever the discounted price changes
   useEffect(() => {
-    getPaymentIntent()
-  }, []);
-  console.log(clientSecret);
+    getPaymentIntent(discountedPrice);
+  }, [discountedPrice]);
 
-  const getPaymentIntent = async () => {
+  // Function to create a payment intent
+  const getPaymentIntent = async (price) => {
     try {
-      const { data } = await axiosSecure.post('/create-payment-intent', { price: subscriptionCost });
-      setClientSecret(data.clientSecret)
-    }
-    catch (err) {
+      const { data } = await axiosSecure.post('/create-payment-intent', { price });
+      setClientSecret(data.clientSecret);
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const stripe = useStripe();
   const elements = useElements();
 
-  const handleSubmit = async (event) => {
-    // Block native form submission.
-    event.preventDefault();
+  // Apply coupon and update the discounted price
+  const handleApplyCoupon = (coupon) => {
+    let newPrice = subscriptionCost;
+    if (coupon === 'less20') {
+      newPrice = subscriptionCost - 20;
+    } else if (coupon === 'less10') {
+      newPrice = subscriptionCost - 10;
+    }
+    setDiscountedPrice(newPrice);
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
       return;
     }
 
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const card = elements.getElement(CardElement);
 
     if (card == null) {
       return;
     }
 
-    // Use your card Element with other Stripe.js APIs
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card,
-    });
-
-    if (error) {
-      console.log('[error]', error);
-    } else {
-      console.log('[PaymentMethod]', paymentMethod);
-    }
-    // Confirm payment //
-    const { paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+    // Confirm payment with the discounted price
+    const { paymentIntent, error } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: card,
         billing_details: {
@@ -78,10 +76,16 @@ const CheckoutForm = ({ subscriptionCost}) => {
           email: user?.email
         },
       },
-    })
-    // console.log(data);
+    });
 
-    if (paymentIntent.status === 'succeeded') {
+    if (error) {
+      console.log('[error]', error);
+      Swal.fire({
+        title: "Payment Failed",
+        text: error.message,
+        icon: "error"
+      });
+    } else if (paymentIntent.status === 'succeeded') {
       try {
         await axiosSecure.patch(`/user/status-subscribed/${currUser._id}`);
         document.getElementById(`my_modal_${currUser?.email}`).close();
@@ -90,9 +94,7 @@ const CheckoutForm = ({ subscriptionCost}) => {
           title: "Subscription Purchased",
           icon: "success"
         });
-        
-      }
-      catch (err) {
+      } catch (err) {
         console.log(err);
         Swal.fire({
           title: "Something Went Wrong",
@@ -103,27 +105,46 @@ const CheckoutForm = ({ subscriptionCost}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: '16px',
-              color: '#424770',
-              '::placeholder': {
-                color: '#aab7c4',
+    <div>
+      <form onSubmit={handleSubmit}>
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: '16px',
+                color: '#424770',
+                '::placeholder': {
+                  color: '#aab7c4',
+                },
+              },
+              invalid: {
+                color: '#9e2146',
               },
             },
-            invalid: {
-              color: '#9e2146',
-            },
-          },
-        }}
-      />
-      <button type="submit" className='btn w-full bg-[#6D1212] text-[#FFF5D1]' disabled={!stripe}>
-        Pay
-      </button>
-    </form>
+          }}
+        />
+        <p className='text-[#6D1212] text-lg font-bold'>Enter coupon (if available)</p>
+        <div className="mt-3 mb-6 flex gap-x-2">
+          <input
+            type="text"
+            name="coupon"
+            placeholder="Enter Coupon"
+            className="input input-bordered w-full"
+            onChange={(e) => setCoupon(e.target.value)}
+          />
+          <button
+            type="button" // Prevent form submission
+            onClick={() => handleApplyCoupon(coupon)}
+            className='btn'
+          >
+            Apply
+          </button>
+        </div>
+        <button type="submit" className='btn w-full bg-[#6D1212] text-[#FFF5D1]' disabled={!stripe || !clientSecret}>
+          Pay ${discountedPrice}
+        </button>
+      </form>
+    </div>
   );
 };
 
