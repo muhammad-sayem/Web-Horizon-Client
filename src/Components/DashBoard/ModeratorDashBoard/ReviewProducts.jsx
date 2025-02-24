@@ -72,61 +72,69 @@ const ReviewProducts = () => {
   });
 
   return (
-    <div>
-      <div className="overflow-x-auto">
-        <table className="table table-zebra">
-        
+    <div className="max-w-full w-full px-2 overflow-hidden">
+      <h2 className="text-3xl md:text-5xl text-center text-[#6D1212] font-bold my-4">
+        Review Products
+      </h2>
+      <div className="overflow-x-auto w-full">
+        <table className="table table-zebra w-full min-w-max table-fixed border border-gray-300">
+
+          {/* Table Header */}
           <thead>
-            <tr>
-              <th>Product Name</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+            <tr className="bg-gray-200 text-sm md:text-md">
+              <th className="px-2 py-2">Product Name</th>
+              <th className="px-2 py-2">Details</th>
+              <th className="px-2 py-2">Feature</th>
+              <th className="px-2 py-2">Accept</th>
+              <th className="px-2 py-2">Reject</th>
             </tr>
           </thead>
-          <tbody>
-            
-            {sortedProducts.map(product => (
-              <tr key={product._id}>
-                <th>{product.productName}</th>
 
-                <td>
+          <tbody>
+            {sortedProducts.map(product => (
+              <tr key={product._id} className="border border-gray-300">
+                <td className="px-2 py-2 text-sm md:text-md">{product.productName}</td>
+
+
+                <td className="px-2 py-2">
                   <Link
                     to={`/product/${product._id}`}
-                    className="bg-blue-500 text-md text-black font-bold px-6 py-2 rounded-xl"
+                    className="bg-blue-500 text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center"
                   >
                     View Details
                   </Link>
                 </td>
 
-                <td>
+
+                <td className="px-2 py-2">
                   <button
                     disabled={product.featured === true}
                     onClick={() => handleMakeFeatured(product)}
-                    className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.featured ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-300"
+                    className={`text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center ${product.featured ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"
                       }`}
                   >
                     Make Featured
                   </button>
                 </td>
 
-                <td>
+
+                <td className="px-2 py-2">
                   <button
                     disabled={product.status === "Accepted"}
                     onClick={() => handleAccept(product._id)}
-                    className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.status === "Accepted" ? "bg-green-900 cursor-not-allowed" : "bg-green-500"
+                    className={`text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center ${product.status === "Accepted" ? "bg-green-900 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
                       }`}
                   >
                     Accept
                   </button>
                 </td>
 
-                <td>
+
+                <td className="px-2 py-2">
                   <button
                     disabled={product.status === "Rejected"}
                     onClick={() => handleReject(product._id)}
-                    className={`text-md text-black font-bold px-6 py-2 rounded-xl ${product.status === "Rejected" ? "bg-red-900 cursor-not-allowed" : "bg-red-500"
+                    className={`text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center ${product.status === "Rejected" ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-600"
                       }`}
                   >
                     Reject
@@ -135,6 +143,7 @@ const ReviewProducts = () => {
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
     </div>

@@ -113,7 +113,7 @@ const ProductDetails = () => {
                             <LuTriangle size={25}></LuTriangle> Upvote ({upvotes})
                         </button>
 
-                        <button disabled={reported === true} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${reported === true ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer"}`}>
+                        <button disabled={user?.email === owner.email ||reported === true} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${reported === true || user?.email === owner.email ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer"}`}>
                             <MdReportGmailerrorred size={30}></MdReportGmailerrorred> Report
                         </button>
                     </div>
