@@ -14,9 +14,9 @@ const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
-  let subscriptionCost = 90;
+  let subscriptionCost = parseInt(90);
 
-  const { data: allUsers = [], isLoading } = useQuery({
+  const { data: allUsers = [], isLoading, refetch } = useQuery({
     queryKey: ['allUsers'],
     queryFn: async () => {
       const { data } = await axiosSecure.get('/users');
@@ -82,14 +82,16 @@ const MyProfile = () => {
 
 
             {/* Modal */}
-            <dialog id={`my_modal_${user?.email}`} className="modal">
+            <dialog id={`my_modal_${currUser?.email}`} className="modal">
               <div className="modal-box">
                 <h3 className="font-bold text-lg"> Enter card details to buy subscription </h3>
 
                 {/* CheckoutForm */}
                 <Elements stripe={stripePromise}>
                   {/* Form Component */}
-                  <CheckoutForm></CheckoutForm>
+                  <CheckoutForm
+                    subscriptionCost={subscriptionCost}
+                  ></CheckoutForm>
                 </Elements>
 
                 <div className="modal-action mt-1">
