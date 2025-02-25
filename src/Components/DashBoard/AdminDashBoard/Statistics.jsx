@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import LoadingSpinner from "../../../Shared/LoadingSpinner";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28"]; // Colors for Users, Reviews, Products
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28"]; 
 
 const Statistics = () => {
     const axiosSecure = useAxiosSecure();
@@ -15,7 +16,9 @@ const Statistics = () => {
         },
     });
 
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) {
+        return <LoadingSpinner></LoadingSpinner>
+    }
     if (error) return <p>Error fetching data.</p>;
 
     // Prepare data for PieChart
@@ -27,7 +30,7 @@ const Statistics = () => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl text-center text-[#6D1212] font-bold my-12"> Admin Statistics </h2>
+            <h2 className="text-5xl text-center text-[#6D1212] font-bold my-4 md:my-8 lg:my-12"> Admin Statistics </h2>
             <ResponsiveContainer width="50%" height={300}>
                 <PieChart>
                     <Pie

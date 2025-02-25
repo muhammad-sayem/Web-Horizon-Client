@@ -9,7 +9,7 @@ const ReportedContents = () => {
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['reported-products'],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('/products/reported'); // Correct endpoint
+            const { data } = await axiosSecure.get('/products/reported'); 
             return data;
         }
     });

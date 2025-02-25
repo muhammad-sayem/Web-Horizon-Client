@@ -8,121 +8,129 @@ const ManageUsers = () => {
   const { user } = useAuth();
 
   const { data: users = [], isLoading, refetch } = useQuery({
-    queryKey: ['users'],
+    queryKey: ["users"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get('/users');
+      const { data } = await axiosSecure.get("/users");
       return data;
-    }
+    },
   });
 
-  const allUsers = users.filter(oneUser => oneUser?.email !== user?.email);
+  const allUsers = users.filter((oneUser) => oneUser?.email !== user?.email);
 
   const handleMakeModerator = async (id) => {
     try {
       Swal.fire({
-        title: "Are you sure to make this user moderator?",
+        title: "Are you sure to make this user a moderator?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Make Moderator!"
+        confirmButtonText: "Make Moderator!",
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axiosSecure.patch(`/users/moderator/${id}`);
           refetch();
           Swal.fire({
             title: "Done!",
-            text: "This user is moderator now.",
-            icon: "success"
+            text: "This user is now a moderator.",
+            icon: "success",
           });
         }
       });
-
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
       Swal.fire({
-        title: "Something Went wrong",
-        icon: "error"
+        title: "Something Went Wrong",
+        icon: "error",
       });
     }
-  }
-
-
-
-
-
-
+  };
 
   const handleMakeAdmin = async (id) => {
     try {
       Swal.fire({
-        title: "Are you sure to make this user admin?",
+        title: "Are you sure to make this user an admin?",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Make Admin!"
+        confirmButtonText: "Make Admin!",
       }).then(async (result) => {
         if (result.isConfirmed) {
           await axiosSecure.patch(`/users/admin/${id}`);
           refetch();
           Swal.fire({
             title: "Done!",
-            text: "This user is admin now.",
-            icon: "success"
+            text: "This user is now an admin.",
+            icon: "success",
           });
         }
       });
-
-    }
-    catch (err) {
+    } catch (err) {
       console.log(err);
       Swal.fire({
-        title: "Something Went wrong",
-        icon: "error"
+        title: "Something Went Wrong",
+        icon: "error",
       });
     }
-  }
+  };
 
-  console.log(users);
   return (
-    <div>
-      <h2 className="text-5xl text-center text-[#6D1212] font-bold my-4"> Manage Users </h2>
+    <div className="px-4 sm:px-6 lg:px-12">
+      <h2 className="text-3xl sm:text-4xl text-center text-[#6D1212] font-bold my-4">
+        Manage Users
+      </h2>
 
       <div className="overflow-x-auto">
-        <table className="table table-zebra">
-          {/* head */}
-          <thead>
+        <table className="table-auto min-w-full border-collapse border border-gray-300 text-xs sm:text-base">
+          {/* Table Head */}
+          <thead className="bg-gray-200 text-gray-700 uppercase">
             <tr>
-              <th>User Name</th>
-              <th> User Email</th>
-              <th></th>
-              <th></th>
+              <th className="p-3 text-center">User Name</th>
+              <th className="p-3 text-center">User Email</th>
+              <th className="p-3 text-center">Actions</th>
             </tr>
           </thead>
+
+          
           <tbody>
-            {/* row */}
-            {
-              allUsers.map(singleUser => (
-                <tr key={singleUser._id}>
-                  <th> {singleUser?.name} </th>
-                  <td> {singleUser?.email} </td>
-                  <td> <button
+            {allUsers.map((singleUser) => (
+              <tr key={singleUser._id} className="border-b border-gray-300">
+                <td className="p-3 text-center">
+                  {singleUser?.name}
+                </td>
+                <td className="p-3 text-center">
+                  {singleUser?.email}
+                </td>
+
+                {/* Action Buttons */}
+                <td className="p-3 flex flex-col sm:flex-row justify-center items-center gap-2">
+                  
+                  <button
                     disabled={singleUser?.role === "Moderator"}
-                    className={`text-md font-bold px-4 py-2 ${singleUser?.role === "Moderator" ? "bg-teal-900 cursor-not-allowed" : "bg-teal-500"}`}
+                    className={`text-xs sm:text-sm font-bold px-3 py-1 rounded ${singleUser?.role === "Moderator"
+                        ? "bg-teal-900 cursor-not-allowed text-white"
+                        : "bg-teal-500 hover:bg-teal-600 text-white"
+                      }`}
                     onClick={() => handleMakeModerator(singleUser?._id)}
-                  > Make Moderator </button> </td>
+                  >
+                    Make Moderator
+                  </button>
 
-                  <td> <button
+                  
+                  <button
                     disabled={singleUser?.role === "Admin"}
-                    className={`text-md font-bold px-4 py-2 ${singleUser?.role === "Admin" ? "bg-blue-900 cursor-not-allowed" : "bg-blue-500"}`}
+                    className={`text-xs sm:text-sm font-bold px-3 py-1 rounded ${singleUser?.role === "Admin"
+                        ? "bg-blue-900 cursor-not-allowed text-white"
+                        : "bg-blue-500 hover:bg-blue-600 text-white"
+                      }`}
                     onClick={() => handleMakeAdmin(singleUser?._id)}
-                  > Make Admin </button> </td>
-
-                </tr>
-              ))
-            }
+                  >
+                    Make Admin
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
