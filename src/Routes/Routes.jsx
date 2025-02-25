@@ -18,6 +18,9 @@ import Products from "../Pages/Products/Products";
 import UpdateProduct from "../Components/DashBoard/UserDashBoard/UpdateProduct";
 import Statistics from "../Components/DashBoard/AdminDashBoard/Statistics";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+import ModeratorRoute from "./ModeratorRoute";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -54,52 +57,78 @@ export const router = createBrowserRouter([
         path: "dashboard",
         element: <DashboardLayout></DashboardLayout>,
         children: [
-            
+
             // user related routes 
             {
                 path: 'my-profile',
-                element: <MyProfile></MyProfile>
+                element: <PrivateRoute>
+
+                </PrivateRoute>
             },
             {
                 path: 'add-product',
-                element: <AddProduct></AddProduct>
+                element: <PrivateRoute>
+                    <AddProduct></AddProduct>
+                </PrivateRoute>
             },
             {
                 path: 'my-products',
-                element: <MyProducts></MyProducts>
+                element: <PrivateRoute>
+                    <MyProducts></MyProducts>
+                </PrivateRoute>
             },
             {
-                path: 'product/update/:id', 
-                element: <UpdateProduct></UpdateProduct>
+                path: 'product/update/:id',
+                element: <PrivateRoute>
+                    <UpdateProduct></UpdateProduct>
+                </PrivateRoute>
             },
-            
+
             // Moderator Related Routes //
             {
                 path: 'review-products',
-                element: <ReviewProducts></ReviewProducts>
+                element: <PrivateRoute>
+                    <ModeratorRoute>
+                        <ReviewProducts></ReviewProducts>
+                    </ModeratorRoute>
+                </PrivateRoute>
             },
             {
                 path: 'reported-contents',
-                element: <ReportedContents></ReportedContents>
+                element: <PrivateRoute>
+                    <ModeratorRoute>
+                        <ReportedContents></ReportedContents>
+                    </ModeratorRoute>
+                </PrivateRoute>
             },
-            
+
             // Admin Related Routes //
             {
                 path: 'statistics',
-                element: <Statistics></Statistics>
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <Statistics></Statistics>
+                    </AdminRoute>
+                </PrivateRoute>
             },
             {
                 path: 'manage-users',
-                element: <ManageUsers></ManageUsers>
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <ManageUsers></ManageUsers>
+                    </AdminRoute>
+                </PrivateRoute>
             },
             {
                 path: 'manage-coupons',
-                element: <ManageCoupons></ManageCoupons>
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <ManageCoupons></ManageCoupons>
+                    </AdminRoute>
+                </PrivateRoute>
             },
-            
-
         ]
     }
 
-   
+
 ]);

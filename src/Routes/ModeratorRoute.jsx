@@ -3,7 +3,7 @@ import UseRole from "../hooks/useRole";
 import LoadingSpinner from "../Shared/LoadingSpinner";
 
 
-const AdminRoute = ({children}) => {
+const ModeratorRoute = ({children}) => {
     const [role, isLoading] = UseRole();
     
     if(isLoading){
@@ -17,4 +17,4 @@ const AdminRoute = ({children}) => {
     return <Navigate to='/dashboard' replace={true}></Navigate>
 };
 
-export default AdminRoute;
+export default ModeratorRoute;
