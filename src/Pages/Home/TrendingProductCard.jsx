@@ -1,10 +1,10 @@
 import { FiTriangle } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import UseRole from "../../Hooks/UseRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import UseRole from "../../hooks/useRole";
 
 const TrendingProductCard = ({ treProduct, refetch }) => {
     const axiosSecure = useAxiosSecure();
@@ -15,6 +15,7 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
 
     console.log(owner?.email);
     console.log(user?.email);
+    console.log("tags", tags);
 
     useEffect(() => {
         if (user?.email && Array.isArray(upVotedUsers) && upVotedUsers.includes(user.email)) {

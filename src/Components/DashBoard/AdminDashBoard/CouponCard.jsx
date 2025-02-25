@@ -8,7 +8,7 @@ const CouponCard = ({ coupon, refetch }) => {
 
     const handleDeleteCoupon = async (id) => {
         try {
-            await axiosSecure.delete(`/coupon/${_id}`);
+            await axiosSecure.delete(`/coupon/${id}`);
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -47,7 +47,7 @@ const CouponCard = ({ coupon, refetch }) => {
             <div className="space-x-1">
                 <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="bg-blue-500 font-bold text-md px-3 py-1 rounded-md"> Edit Coupon </button>
 
-                <tton onClick={() => handleDeleteCoupon(_id)} className="bg-red-500 font-bold text-md px-3 py-1 rounded-md"> Delete Coupon </tton>
+                <button onClick={() => handleDeleteCoupon(_id)} className="bg-red-500 font-bold text-md px-3 py-1 rounded-md"> Delete Coupon </button>
             </div>
 
             {/* Modal Part */}

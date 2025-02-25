@@ -29,10 +29,9 @@ const Login = () => {
       await signIn(email, password)
 
       navigate(from, { replace: true })
-      toast.success('Login Successful')
+
     } catch (err) {
       console.log(err)
-      toast.error(err?.message)
     }
   }
 

@@ -36,6 +36,7 @@ const ManageCoupons = () => {
 
     try {
       await axiosSecure.post("/add-coupon", formData);
+      refetch();
       form.reset();
       Swal.fire({
         title: "Coupon added successfully!!",
