@@ -1,10 +1,10 @@
 import { FiTriangle } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
-import UseRole from "../../Hooks/UseRole";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import UseRole from "../../hooks/useRole";
 
 const FeatureProductCard = ({ feaProduct, refetch }) => {
     const axiosSecure = useAxiosSecure();
@@ -60,8 +60,8 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                     <div className="flex gap-2">
                         <h3 className="text-lg font-bold"> Tags: </h3>
                         {
-                            tags.map(tag => (
-                                <p className="text-lg"> {tag} </p>
+                            tags.map((tag, index) => (
+                                <p key={index} className="text-lg"> {tag} </p>
                             ))
                         }
                     </div>

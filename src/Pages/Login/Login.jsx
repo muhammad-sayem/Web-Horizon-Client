@@ -1,101 +1,149 @@
-import { useContext, useState } from "react";
-import { useEffect } from "react";
-import { Helmet } from "react-helmet";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
-import { AuthContext } from "../../Providers/AuthProvider";
-import Swal from "sweetalert2";
-import SocialLogin from "../../Components/SocialLogin";
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { FcGoogle } from 'react-icons/fc'
+import { TbFidgetSpinner } from 'react-icons/tb'
+import LoadingSpinner from '../../Shared/LoadingSpinner'
+import useAuth from '../../Hooks/useAuth'
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
-  const [disabled, setDisabled] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, [])
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-
-    signIn(email, password)
-      .then(result => {
-        Swal.fire({
-          title: "Login Successfull",
-          icon: "success"
-        });
-        navigate(from, { replace: true });
-
-        const user = result.user;
-        console.log(user);
-      })
+  const { signIn, googleSignIn, loading, user } = useAuth()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location?.state?.from?.pathname || '/'
+  if (loading){
+    return <LoadingSpinner />
+  } 
+  
+  if (user) {
+    return <Navigate to={from} replace={true} />
   }
+  
+  // form submit handler
+  const handleSubmit = async event => {
+    event.preventDefault()
+    const form = event.target
+    const email = form.email.value
+    const password = form.password.value
 
-  const handleValidateCaptcha = (e) => {
-    const user_captcha_value = e.target.value;
-    // console.log(value);
-    if (validateCaptcha(user_captcha_value)) {
-      setDisabled(false);
-    }
-    else {
-      setDisabled(true)
+    try {
+      //User Login
+      await signIn(email, password)
+
+      navigate(from, { replace: true })
+      toast.success('Login Successful')
+    } catch (err) {
+      console.log(err)
+      toast.error(err?.message)
     }
   }
 
+  // Handle Google Signin
+  const handleGoogleSignIn = async () => {
+    try {
+      //User Registration using google
+      const data = await googleSignIn();
+      // Save user info in db if the user is new //
+      await saveUser(data?.user);
+      navigate(from, { replace: true })
+      toast.success('Login Successful')
+    } catch (err) {
+      console.log(err)
+      toast.error(err?.message)
+    }
+  }
   return (
-    <>
-      <Helmet>
-        <title> Tech Horizon | Login </title>
-      </Helmet>
-
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col md:flex-row-reverse">
-          <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-          </div>
-          <div className="card md:w-1/2 shadow-2xl max-w-sm bg-base-100">
-
-            <form onSubmit={handleSubmit} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="email" name="email" placeholder="email" className="input input-bordered" />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input type="password" name="password" placeholder="password" className="input input-bordered" />
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                </label>
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <LoadCanvasTemplate />
-                </label>
-                <input onBlur={handleValidateCaptcha} type="text" name="captcha" placeholder="type the captcha above" className="input input-bordered" />
-
-              </div>
-              <div className="form-control mt-6">
-                <input disabled={disabled} className="btn btn-primary" type="submit" value="Login" />
-              </div>
-              <SocialLogin></SocialLogin>
-            </form>
-            <p className="p-8"><small>New Here? <Link to="/signup">Create an account</Link> </small></p>
-          </div>
+    <div className='flex justify-center items-center min-h-screen bg-white'>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+        <div className='mb-8 text-center'>
+          <h1 className='my-3 text-4xl font-bold text-[#6D1212]'>Log In</h1>
+          <p className='text-sm text-gray-400'>
+            Sign in to access your account
+          </p>
         </div>
-      </div>
-    </>
-  );
-};
+        <form
+          onSubmit={handleSubmit}
+          noValidate=''
+          action=''
+          className='space-y-6 ng-untouched ng-pristine ng-valid'
+        >
+          <div className='space-y-4'>
+            <div>
+              <label htmlFor='email' className='block mb-2 text-sm text-[#6D1212] font-bold'>
+                Email address
+              </label>
+              <input
+                type='email'
+                name='email'
+                id='email'
+                required
+                placeholder='Enter Your Email Here'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
+                data-temp-mail-org='0'
+              />
+            </div>
+            <div>
+              <div className='flex justify-between'>
+                <label htmlFor='password' className='text-sm mb-2 text-[#6D1212] font-bold'>
+                  Password
+                </label>
+              </div>
+              <input
+                type='password'
+                name='password'
+                autoComplete='current-password'
+                id='password'
+                required
+                placeholder='*******'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900'
+              />
+            </div>
+          </div>
 
-export default Login;
+          <div>
+            <button
+              type='submit'
+              className='bg-[#6D1212] w-full rounded-md py-3 text-white'
+            >
+              {loading ? (
+                <TbFidgetSpinner className='animate-spin m-auto' />
+              ) : (
+                'Continue'
+              )}
+            </button>
+          </div>
+        </form>
+        <div className='space-y-1'>
+          <button className='text-xs hover:underline hover:text-lime-500 text-gray-400'>
+            Forgot password?
+          </button>
+        </div>
+        <div className='flex items-center pt-4 space-x-1'>
+          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
+          <p className='px-3 text-sm dark:text-gray-400'>
+            Login with social accounts
+          </p>
+          <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
+        </div>
+        <div
+          onClick={handleGoogleSignIn}
+          className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'
+        >
+          <FcGoogle size={32} />
+
+          <p className='text-[#6D1212] font-bold'>Continue with Google</p>
+        </div>
+        <p className='px-6 text-sm text-center text-gray-400'>
+          Don&apos;t have an account yet?{' '}
+          <Link
+            to='/signup'
+            className='hover:underline hover:text-[#6D1212] font-bold text-gray-600'
+          >
+            Sign up
+          </Link>
+          .
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export default Login

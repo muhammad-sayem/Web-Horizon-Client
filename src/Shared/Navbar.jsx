@@ -2,17 +2,13 @@ import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import logo from "../assets/images/logo.png"
 import { AuthContext } from '../Providers/AuthProvider';
-import UseRole from '../Hooks/UseRole';
 import LoadingSpinner from './LoadingSpinner';
+import UseRole from '../hooks/useRole';
+
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [role] = UseRole();
-    console.log(role);
-
-    if(role === undefined){
-        return <LoadingSpinner></LoadingSpinner>
-    }
+    const [role, roleLoading] = UseRole(); 
 
     const handeSignOut = () => {
         logOut();
@@ -58,30 +54,34 @@ const Navbar = () => {
                                 />
                             </div>
                         </div>
-                        <ul
-                            tabIndex={0}
-                            className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
-                        >
-                            <p className='p-3'> {user?.displayName} </p>
+                        {roleLoading ? (  // Show loading if role is still fetching
+                            <LoadingSpinner />
+                        ) : (
+                            <ul
+                                tabIndex={0}
+                                className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
+                            >
+                                <p className='p-3'> {user?.displayName} </p>
 
-                            <li>
-                                <Link to={
-                                    role === "User" ? "/dashboard/my-profile" :
-                                        role === "Moderator" ? "/dashboard/review-products" :
-                                            role === "Admin" ? "/dashboard/manage-users" : ""
-                                }>
-                                    Dashboard
-                                </Link>
-                            </li>
-                            <li className='mt-2'>
-                                <button
-                                    onClick={handeSignOut}
-                                    className='bg-gray-200 block text-center'
-                                >
-                                    Logout
-                                </button>
-                            </li>
-                        </ul>
+                                <li>
+                                    <Link to={
+                                        role === "User" ? "/dashboard/my-profile" :
+                                            role === "Moderator" ? "/dashboard/review-products" :
+                                                role === "Admin" ? "/dashboard/manage-users" : "/"
+                                    }>
+                                        Dashboard
+                                    </Link>
+                                </li>
+                                <li className='mt-2'>
+                                    <button
+                                        onClick={handeSignOut}
+                                        className='bg-gray-200 block text-center'
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        )}
                     </div>
                 )}
             </div>
