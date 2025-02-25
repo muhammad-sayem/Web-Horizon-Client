@@ -10,7 +10,7 @@ const AdminRoute = ({children}) => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
-    if(role === 'Admin'){
+    if(role === 'Moderator'){
         return children;
     }
 
