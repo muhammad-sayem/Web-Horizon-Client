@@ -77,7 +77,7 @@ const ManageUsers = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-12">
-      <h2 className="text-3xl sm:text-4xl text-center text-[#6D1212] font-bold my-4">
+      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold my-4">
         Manage Users
       </h2>
 

@@ -62,7 +62,7 @@ const ProductCard = ({ product, refetch, isLoading }) => {
             <p className="text-xl font-black mb-2 inline"> Tags: </p>
             <div className="space-x-3 inline">
                 {tags.map((tag, index) => (
-                    <p key={index} className="inline px-3 rounded-xl border-2 border-[#6D1212] text-[#6D1212]">
+                    <p key={index} className="inline px-3 rounded-xl border-2 border-[#1A2634] text-[#1A2634]">
                         {tag}
                     </p>
                 ))}
@@ -74,7 +74,7 @@ const ProductCard = ({ product, refetch, isLoading }) => {
                 className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/2 py-2 rounded-full mt-6
                     ${owner?.email === user?.email || hasUpvoted || role === "Admin" || role === "Moderator"
                         ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                        : "bg-green-500 hover:bg-green-700 hover:text-[#FFF5D1] hover:cursor-pointer"}`}
+                        : "bg-green-500 hover:bg-green-700 hover:text-[#87CEEB] hover:cursor-pointer"}`}
             >
                 <LuTriangle size={25} /> Upvote ({upvotes})
             </button>

@@ -53,7 +53,7 @@ const Login = () => {
     <div className='flex justify-center items-center min-h-screen bg-white'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold text-[#6D1212]'>Log In</h1>
+          <h1 className='my-3 text-4xl font-bold text-[#1A2634]'>Log In</h1>
           <p className='text-sm text-gray-400'>
             Sign in to access your account
           </p>
@@ -66,7 +66,7 @@ const Login = () => {
         >
           <div className='space-y-4'>
             <div>
-              <label htmlFor='email' className='block mb-2 text-sm text-[#6D1212] font-bold'>
+              <label htmlFor='email' className='block mb-2 text-sm text-[#1A2634] font-bold'>
                 Email address
               </label>
               <input
@@ -81,7 +81,7 @@ const Login = () => {
             </div>
             <div>
               <div className='flex justify-between'>
-                <label htmlFor='password' className='text-sm mb-2 text-[#6D1212] font-bold'>
+                <label htmlFor='password' className='text-sm mb-2 text-[#1A2634] font-bold'>
                   Password
                 </label>
               </div>
@@ -100,7 +100,7 @@ const Login = () => {
           <div>
             <button
               type='submit'
-              className='bg-[#6D1212] w-full rounded-md py-3 text-white'
+              className='bg-[#1A2634] w-full rounded-md py-3 text-white'
             >
               {loading ? (
                 <TbFidgetSpinner className='animate-spin m-auto' />
@@ -128,13 +128,13 @@ const Login = () => {
         >
           <FcGoogle size={32} />
 
-          <p className='text-[#6D1212] font-bold'>Continue with Google</p>
+          <p className='text-[#1A2634] font-bold'>Continue with Google</p>
         </div>
         <p className='px-6 text-sm text-center text-gray-400'>
           Don&apos;t have an account yet?{' '}
           <Link
             to='/signup'
-            className='hover:underline hover:text-[#6D1212] font-bold text-gray-600'
+            className='hover:underline hover:text-[#1A2634] font-bold text-gray-600'
           >
             Sign up
           </Link>

@@ -25,7 +25,7 @@ export default function CouponCarousel() {
 
   return (
     <div className='mx-auto my-12'>
-      <h2 className="text-3xl text-[#6D1212] font-bold mb-8"> Available Offers </h2>
+      <h2 className="text-3xl text-[#1A2634] font-bold mb-8"> Available Offers </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -41,7 +41,7 @@ export default function CouponCarousel() {
       >
         {allCoupons.map((coupon, index) => (
           <SwiperSlide key={index}>
-            <div className='flex justify-center w-full h-[350px] md:h-[300px] lg:h-72 bg-[#FFF5D1]'>
+            <div className='flex justify-center w-full h-[350px] md:h-[300px] lg:h-72 bg-[#87CEEB]'>
               <div className='text-center py-5'>
                 <div className='flex justify-center items-center gap-x-2 mb-6'>
                   <FaStar size={30} /> 

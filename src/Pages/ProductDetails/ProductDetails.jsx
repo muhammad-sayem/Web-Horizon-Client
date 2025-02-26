@@ -94,12 +94,12 @@ const ProductDetails = () => {
                     <p className="text-2xl font-black mb-3"> Tags: </p>
                     <div className="flex gap-x-4">
                         {tags.map((tag, index) => (
-                            <p key={index} className="px-7 py-1 rounded-xl border-2 border-[#6D1212] text-[#6D1212] font-bold"> {tag} </p>
+                            <p key={index} className="px-7 py-1 rounded-xl border-2 border-[#1A2634] text-[#1A2634] font-bold"> {tag} </p>
                         ))}
                     </div>
 
                     <div className="flex gap-x-3 my-8">
-                        <Link to={externalLink} className="flex justify-center items-center gap-x-2 text-xl font-bold border-2 border-black w-1/3 py-2 rounded-full hover:bg-[#6D1212] hover:text-[#FFF5D1]" target="_blank">
+                        <Link to={externalLink} className="flex justify-center items-center gap-x-2 text-xl font-bold border-2 border-black w-1/3 py-2 rounded-full hover:bg-[#1A2634] hover:text-[#87CEEB]" target="_blank">
                             <FaExternalLinkAlt size={25}></FaExternalLinkAlt>  Visit
                         </Link>
 
@@ -109,19 +109,19 @@ const ProductDetails = () => {
                             className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/3 py-2 rounded-full 
                                 ${!user || owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                                     ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-                                    : 'bg-green-500 hover:bg-green-700 hover:text-[#FFF5D1] hover:cursor-pointer'}`}
+                                    : 'bg-green-500 hover:bg-green-700 hover:text-[#87CEEB] hover:cursor-pointer'}`}
                         >
                             <LuTriangle size={25}></LuTriangle> Upvote ({upvotes})
                         </button>
 
-                        <button disabled={user?.email === owner.email ||reported === true} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${reported === true || user?.email === owner.email ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-700 hover:text-[#FFF5D1] hover:cursor-pointer"}`}>
+                        <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-red-900 cursor-not-allowed" : "bg-[#1A2634] text-white"}`}>
                             <MdReportGmailerrorred size={30}></MdReportGmailerrorred> Report
                         </button>
                     </div>
                 </div>
 
                 <div>
-                    <h2 className="text-3xl text-[#6D1212] font-bold my-4"> Reviews </h2>
+                    <h2 className="text-3xl text-[#1A2634] font-bold my-4"> Reviews </h2>
                     <Reviews
                         key={product._id}
                         product={product}
@@ -129,7 +129,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div>
-                    <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} className="px-10 py-3 text-lg font-bold bg-[#6D1212] text-[#FFF5D1]"> Add a Review </button>
+                    <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`px-10 py-3 text-lg font-bold bg-[#1A2634] text-[#87CEEB] ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#1A2634] text-white"}`}> Add a Review </button>
                 </div>
 
                 {/* Modal Part */}

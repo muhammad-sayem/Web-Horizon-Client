@@ -38,7 +38,7 @@ const CouponCard = ({ coupon, refetch }) => {
     }
 
     return (
-        <div className="border border-gray-300 shadow-2xl px-6 py-2 rounded-tr-3xl rounded-bl-3xl">
+        <div className="border border-gray-300 shadow-2xl px-6 py-10 rounded-tr-3xl rounded-bl-3xl">
             <h2 className="text-xl font-black mb-1"> Code: {couponCode} </h2>
             <p className="text-md font-bold mb-1"> Discount Amount: {discountAmount} </p>
             <p className="m2-4 text-xs"> {couponDescription} </p>

@@ -44,7 +44,7 @@ const Products = () => {
             </Helmet>
 
             <div className="w-11/12 mx-auto mb-12">
-                <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#6D1212] border-4 border-[#6D1212] w-full lg:w-3/4 mx-auto mb-6'>
+                <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#1A2634] border-4 border-[#1A2634] w-full lg:w-3/4 mx-auto mb-6'>
                     <input
                         className='flex-grow px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                         type='text'
@@ -55,7 +55,7 @@ const Products = () => {
                         value={search}
                     />
 
-                    <button onClick={handleSearch} className='px-1 md:px-4 py-3 text-sm tracking-wider font-black uppercase transition-colors duration-300 transform bg-[#6D1212] text-white rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                    <button onClick={handleSearch} className='px-1 md:px-4 py-3 text-sm tracking-wider font-black uppercase transition-colors duration-300 transform bg-[#1A2634] text-white rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
                         Search
                     </button>
                 </div>
@@ -76,7 +76,7 @@ const Products = () => {
                         <button
                             key={number}
                             onClick={() => setCurrentPage(number + 1)}
-                            className={`px-4 py-2 border rounded-md ${currentPage === number + 1 ? 'bg-[#6D1212] text-white' : 'bg-gray-200 text-black'}`}
+                            className={`px-4 py-2 border rounded-md ${currentPage === number + 1 ? 'bg-[#1A2634] text-white' : 'bg-gray-200 text-black'}`}
                         >
                             {number + 1}
                         </button>

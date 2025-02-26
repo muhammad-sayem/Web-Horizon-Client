@@ -126,7 +126,7 @@ const CheckoutForm = () => {
             },
           }}
         />
-        <p className='text-[#6D1212] text-lg font-bold'>Enter coupon (if available)</p>
+        <p className='text-[#1A2634] text-lg font-bold'>Enter coupon (if available)</p>
         <div className="mt-3 mb-6 flex gap-x-2">
           <input
             type="text"
@@ -143,7 +143,7 @@ const CheckoutForm = () => {
             Apply
           </button>
         </div>
-        <button type="submit" className='btn w-full bg-[#6D1212] text-[#FFF5D1]' disabled={!stripe || !clientSecret}>
+        <button type="submit" className='btn w-full bg-[#1A2634] text-[#87CEEB]' disabled={!stripe || !clientSecret}>
           Pay ${discountedPrice}
         </button>
       </form>

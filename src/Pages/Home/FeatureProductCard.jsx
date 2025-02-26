@@ -50,7 +50,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     }
 
     return (
-        <div className="border-2 rounded-xl flex justify-between items-center px-5 py-3">
+        <div className="border-2 border-[#1A2634] rounded-xl flex justify-between items-center px-5 py-3">
             <div className="flex gap-x-3 items-center">
                 <div>
                     <img src={productImage} className="w-16 h-16" alt="" />
@@ -61,7 +61,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                         <h3 className="text-lg font-bold"> Tags: </h3>
                         {
                             tags.map((tag, index) => (
-                                <p key={index} className="text-lg border-2 px-2 rounded-2xl"> {tag} </p>
+                                <p key={index} className="text-lg border-2 border-[#1A2634] px-2 rounded-2xl"> {tag} </p>
                             ))
                         }
                     </div>
@@ -69,9 +69,9 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
             </div>
 
             <div>
-                <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-[#1A2634] text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                     ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
-                    : 'hover:bg-[#6D1212] hover:text-[#FFF5D1] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
+                    : 'hover:bg-[#1A2634] hover:text-[#87CEEB] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
             </div>
         </div>
     );

@@ -9,7 +9,7 @@ const DashboardLayout = () => {
     return (
         <div className='flex flex-col lg:flex-row'>
             
-            <div className='w-full lg:w-1/6 bg-[#4F0202] min-h-screen'>
+            <div className='w-full lg:w-1/6 bg-[#2A3439] min-h-screen'>
                 <Sidebar />
             </div>
 

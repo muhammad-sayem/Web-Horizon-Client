@@ -47,7 +47,7 @@ const ReportedContents = () => {
 
     return (
         <div className="max-w-full px-2">
-            <h2 className="text-3xl md:text-5xl text-center text-[#6D1212] font-bold my-4">
+            <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold my-4">
                 Reported Contents
             </h2>
 

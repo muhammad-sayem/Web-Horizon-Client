@@ -26,7 +26,7 @@ const TrendingProducts = () => {
 
     return (
         <div className="my-8">
-            <h2 className="text-[#6D1212] text-3xl font-bold mb-6"> Trending Products </h2>
+            <h2 className="text-[#1A2634] text-3xl font-bold mb-6"> Trending Products </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                 {
@@ -39,7 +39,7 @@ const TrendingProducts = () => {
             </div>
 
             <Link to='/products'>
-                <button className="mt-3 bg-[#6D1212] text-[#FFF5D1] px-6 py-3 rounded-xl text-xl"> View All  </button>
+                <button className="mt-3 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl"> View All  </button>
             </Link>
         </div>
     );

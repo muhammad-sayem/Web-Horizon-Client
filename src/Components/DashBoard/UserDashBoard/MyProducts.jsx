@@ -58,7 +58,7 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h2 className="text-5xl text-center text-[#6D1212] font-bold my-4"> My Products </h2>
+      <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4"> My Products </h2>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">

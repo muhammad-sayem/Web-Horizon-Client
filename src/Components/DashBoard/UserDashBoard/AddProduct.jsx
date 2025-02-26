@@ -81,15 +81,15 @@ const AddProducts = () => {
     }
 
     return (
-        <div className="bg-[#FFF5D1] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
-            <h2 className="text-4xl text-center text-[#6D1212] font-bold mb-8"> Add a Product </h2>
+        <div className="bg-[#87CEEB] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
+            <h2 className="text-4xl text-center text-[#1A2634] font-bold mb-8"> Add a Product </h2>
 
             <form onSubmit={handleSubmit}>
                 <div className="w-full px-6 lg-px-0 lg:w-4/5 mx-auto">
                     <div className="grid md:grid-cols-2 gap-x-4">
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'>Product Name</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Product Name</p>
                             <input
                                 type="text"
                                 name="productName"
@@ -100,7 +100,7 @@ const AddProducts = () => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'>Product Description</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Product Description</p>
                             <textarea
                                 className="textarea textarea-bordered w-full"
                                 name="productDescription"
@@ -110,7 +110,7 @@ const AddProducts = () => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'>Owner Name</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Owner Name</p>
                             <input
                                 type="text"
                                 name="ownerName"
@@ -122,7 +122,7 @@ const AddProducts = () => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'>Owner Email</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Owner Email</p>
                             <input
                                 type="email"
                                 name="ownerEmail"
@@ -134,7 +134,7 @@ const AddProducts = () => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'>Owner Image</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Owner Image</p>
                             <input
                                 type="email"
                                 name="ownerImage"
@@ -146,7 +146,7 @@ const AddProducts = () => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'>External Link</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>External Link</p>
                             <input
                                 type="text"
                                 name="externalLink"
@@ -157,7 +157,7 @@ const AddProducts = () => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#6D1212] text-lg font-bold'> Tags </p>
+                            <p className='text-[#1A2634] text-lg font-bold'> Tags </p>
                             <div className="w-full">
                                 <ReactTags
                                     tags={tags}
@@ -166,17 +166,17 @@ const AddProducts = () => {
                                     inputFieldPosition="inline"
                                     placeholder="Add new tag"
                                     classNames={{
-                                        tag: "bg-[#6D1212] text-[#FFF5D1] px-3 py-1 rounded mr-2 mb-2",
-                                        remove: "text-[#FFF5D1] ml-2 cursor-pointer font-bold"
+                                        tag: "bg-[#1A2634] text-[#87CEEB] px-3 py-1 rounded mr-2 mb-2",
+                                        remove: "text-[#87CEEB] ml-2 cursor-pointer font-bold"
                                     }}
                                 />
                             </div>
                         </div>
 
                         <div className='flex flex-col w-max'>
-                            <p className='text-[#6D1212] text-lg font-bold mb-2'> Upload Product Image </p>
+                            <p className='text-[#1A2634] text-lg font-bold mb-2'> Upload Product Image </p>
                             <label>
-                                <div className='bg-[#6D1212] text-[#FFF5D1]  rounded font-semibold cursor-pointer py-1 px-12 hover:bg-[#6D1212] text-lg'>
+                                <div className='bg-[#1A2634] text-[#87CEEB]  rounded font-semibold cursor-pointer py-1 px-12 hover:bg-[#1A2634] text-lg'>
                                     {uploadImageButtonText}
                                 </div>
                                 <input
@@ -196,7 +196,7 @@ const AddProducts = () => {
                 </div>
 
                 <div className="w-full px-6 lg:px-0 lg:w-4/5 mx-auto mt-4">
-                    <button className="btn w-full bg-[#6D1212] text-white text-xl font-bold"> Add Product </button>
+                    <button className="btn w-full bg-[#1A2634] text-white text-xl font-bold"> Add Product </button>
                 </div>
             </form>
         </div>

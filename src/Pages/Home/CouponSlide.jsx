@@ -9,9 +9,9 @@ const CouponSlide = ({ text }) => {
             //     backgroundImage: `url(${image})`,
             // }}
         >
-            {/* <div className='flex items-center justify-center w-full h-full bg-[#FFF5D1]'>
+            {/* <div className='flex items-center justify-center w-full h-full bg-[#87CEEB]'>
                 <div className='text-center'>
-                    <h1 className='text-3xl font-bold text-[#6D1212] lg:text-5xl px-16 mb-4'>
+                    <h1 className='text-3xl font-bold text-[#1A2634] lg:text-5xl px-16 mb-4'>
                         {text}
                     </h1>
                     <br />

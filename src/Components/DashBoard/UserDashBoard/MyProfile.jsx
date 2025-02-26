@@ -78,7 +78,7 @@ const MyProfile = () => {
           <div>
             <button
               onClick={() => document.getElementById(`my_modal_${user?.email}`)?.showModal()}
-              className="bg-[#6D1212] px-6 py-2 text-white text-lg md:text-xl font-bold"
+              className="bg-[#1A2634] px-6 py-2 text-white text-lg md:text-xl font-bold"
             >
               Buy Subscription <br /> $90
             </button>

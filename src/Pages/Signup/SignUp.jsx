@@ -51,7 +51,7 @@ const SignUp = () => {
       <div className='flex justify-center items-center min-h-screen bg-white'>
         <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
           <div className='mb-8 text-center'>
-            <h1 className='my-3 text-4xl font-bold text-[#6D1212]'>Sign Up</h1>
+            <h1 className='my-3 text-4xl font-bold text-[#1A2634]'>Sign Up</h1>
             <p className='text-sm text-gray-400'>
               Create an account to explore all the amazing features!
             </p>
@@ -59,7 +59,7 @@ const SignUp = () => {
           <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
             <div className='space-y-4'>
               <div>
-                <label htmlFor='name' className='block mb-2 text-sm text-[#6D1212] font-bold'>
+                <label htmlFor='name' className='block mb-2 text-sm text-[#1A2634] font-bold'>
                   Name
                 </label>
                 <input
@@ -73,7 +73,7 @@ const SignUp = () => {
                 {errors.name && <span className="text-red-500">{errors.name.message}</span>}
               </div>
               <div>
-                <label htmlFor='photoURL' className='block mb-2 text-sm text-[#6D1212] font-bold'>
+                <label htmlFor='photoURL' className='block mb-2 text-sm text-[#1A2634] font-bold'>
                   Photo URL
                 </label>
                 <input
@@ -87,7 +87,7 @@ const SignUp = () => {
                 {errors.photoURL && <span className="text-red-500">{errors.photoURL.message}</span>}
               </div>
               <div>
-                <label htmlFor='email' className='block mb-2 text-sm text-[#6D1212] font-bold'>
+                <label htmlFor='email' className='block mb-2 text-sm text-[#1A2634] font-bold'>
                   Email address
                 </label>
                 <input
@@ -102,7 +102,7 @@ const SignUp = () => {
                 {errors.email && <span className="text-red-500">{errors.email.message}</span>}
               </div>
               <div>
-                <label htmlFor='password' className='block mb-2 text-sm text-[#6D1212] font-bold'>
+                <label htmlFor='password' className='block mb-2 text-sm text-[#1A2634] font-bold'>
                   Password
                 </label>
                 <input
@@ -130,7 +130,7 @@ const SignUp = () => {
             <div>
               <button
                 type='submit'
-                className='bg-[#6D1212] w-full rounded-md py-3 text-white'
+                className='bg-[#1A2634] w-full rounded-md py-3 text-white'
               >
                 Sign Up
               </button>
@@ -151,7 +151,7 @@ const SignUp = () => {
             Already have an account?{' '}
             <Link
               to='/login'
-              className='hover:underline hover:text-[#6D1212] font-bold text-gray-600'
+              className='hover:underline hover:text-[#1A2634] font-bold text-gray-600'
             >
               Login
             </Link>
