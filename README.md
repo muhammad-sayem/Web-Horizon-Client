@@ -1,8 +1,13 @@
-# React + Vite
+Website Name: Tech Horizon
+Live Link: https://tech-horizon-final.netlify.app/
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Features: 
+    1) Separate Roles used (Admin, Moderator, User)
+    2) User Can post, update, delete product
+    3) Moderator can review product, manage reported products
+    4) Admin can see statistics, make users moderator and admin, manage coupons
+    5) Stripe payment gateway
+    6) Using Coupon Code
+    7) Featured Products
+    8) Trending Products
+    9) Search Products by tags
