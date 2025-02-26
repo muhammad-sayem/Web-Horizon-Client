@@ -1,9 +1,8 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
-import UseRole from "../../Hooks/UseRole";
 import { useState } from "react";
-import Rating from "react-rating";
+import UseRole from "../../hooks/useRole";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ProductReviewModal = ({ product, refetch }) => {
   const { user } = useAuth();
@@ -33,13 +32,13 @@ const ProductReviewModal = ({ product, refetch }) => {
 
     try {
       await axiosSecure.post('/reviews', reviewData);
-      refetch();
+      await refetch();
+      form.reset()
       Swal.fire({
         title: "Review added successfully",
         icon: "success"
       });
       document.getElementById(`my_modal_${product._id}`).close();
-      form.reset()
     }
     catch (err) {
       console.log(err);
@@ -98,16 +97,14 @@ const ProductReviewModal = ({ product, refetch }) => {
 
             <div className="mb-6">
               <p className='text-[#6D1212] text-lg font-bold'>Rating</p>
-
-              <p className='text-[#6D1212] text-lg font-bold'>Rating</p>
               <input
-                readOnly
                 type="text"
                 name="rating"
                 className="input input-bordered w-full"
                 required
                 placeholder="Add Rating"
-                onChange={(value) => setRating(value)}
+                onChange={(e) => setRating(parseFloat(e.target.value))}
+
               />
             </div>
 

@@ -45,9 +45,13 @@ const CheckoutForm = () => {
 
   const handleApplyCoupon = (coupon) => {
     let newPrice = subscriptionCost;
-    if (coupon === 'less20') {
+    if (coupon === 'HAPPINESS20') {
       newPrice = subscriptionCost - 20;
-    } else if (coupon === 'less10') {
+    } 
+    else if (coupon === 'HAPPINESS15') {
+      newPrice = subscriptionCost - 15;
+    }
+    else if (coupon === 'HAPPINESS10') {
       newPrice = subscriptionCost - 10;
     }
     setDiscountedPrice(newPrice);

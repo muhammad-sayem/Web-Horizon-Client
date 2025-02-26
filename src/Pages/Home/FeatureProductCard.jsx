@@ -61,7 +61,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                         <h3 className="text-lg font-bold"> Tags: </h3>
                         {
                             tags.map((tag, index) => (
-                                <p key={index} className="text-lg"> {tag} </p>
+                                <p key={index} className="text-lg border-2 px-2 rounded-2xl"> {tag} </p>
                             ))
                         }
                     </div>

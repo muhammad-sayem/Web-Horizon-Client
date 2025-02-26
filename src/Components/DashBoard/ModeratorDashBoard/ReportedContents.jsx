@@ -9,18 +9,31 @@ const ReportedContents = () => {
     const { data: products = [], refetch, isLoading } = useQuery({
         queryKey: ['reported-products'],
         queryFn: async () => {
-            const { data } = await axiosSecure.get('/products/reported'); 
+            const { data } = await axiosSecure.get('/products/reported');
             return data;
         }
     });
 
     const handleDeleteProduct = async (id) => {
         try {
-            await axiosSecure.delete(`/product/${id}`);
-            refetch();
             Swal.fire({
-                title: "Product Deleted Successfully",
-                icon: "success"
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(async(result) => {
+                if (result.isConfirmed) {
+                    await axiosSecure.delete(`/product/${id}`);
+                    refetch();
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                }
             });
         }
         catch (err) {

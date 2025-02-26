@@ -6,11 +6,11 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { LuTriangle } from "react-icons/lu";
 import { MdReportGmailerrorred } from "react-icons/md";
 import Swal from "sweetalert2";
-import UseRole from "../../Hooks/UseRole";
 import useAuth from "../../Hooks/useAuth";
 import { useState, useEffect } from "react";
 import ProductReviewModal from "./ProductReviewModal";
 import Reviews from "./Reviews";
+import UseRole from "../../hooks/useRole";
 
 const ProductDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -37,7 +37,7 @@ const ProductDetails = () => {
         return <LoadingSpinner></LoadingSpinner>
     }
 
-    const { productName, productImage, productDescription, upvotes, tags, owner, reported } = product;
+    const { productName, productImage, productDescription, upvotes, tags, owner, reported, externalLink } = product;
     console.log(product);
 
     const updateUpvote = async () => {
@@ -45,6 +45,7 @@ const ProductDetails = () => {
 
         try {
             await axiosSecure.patch(`/product/upvote/${id}`);
+            await axiosSecure.patch(`/product/feature-upvote/${_id}`);
             setHasUpvoted(true);
             refetch();
 
@@ -98,7 +99,7 @@ const ProductDetails = () => {
                     </div>
 
                     <div className="flex gap-x-3 my-8">
-                        <Link className="flex justify-center items-center gap-x-2 text-xl font-bold border-2 border-black w-1/3 py-2 rounded-full hover:bg-[#6D1212] hover:text-[#FFF5D1]">
+                        <Link to={externalLink} className="flex justify-center items-center gap-x-2 text-xl font-bold border-2 border-black w-1/3 py-2 rounded-full hover:bg-[#6D1212] hover:text-[#FFF5D1]" target="_blank">
                             <FaExternalLinkAlt size={25}></FaExternalLinkAlt>  Visit
                         </Link>
 

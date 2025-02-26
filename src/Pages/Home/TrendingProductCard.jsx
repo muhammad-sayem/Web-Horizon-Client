@@ -13,16 +13,15 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
     const [hasUpvoted, setHasUpvoted] = useState(false);
     const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers } = treProduct;
 
-    console.log(owner?.email);
-    console.log(user?.email);
-    console.log("tags", tags);
+    console.log("Owner Email:", owner?.email);
+    console.log("User Email:", user?.email);
+    console.log("Tags:", tags);
 
     useEffect(() => {
         if (user?.email && Array.isArray(upVotedUsers) && upVotedUsers.includes(user.email)) {
             setHasUpvoted(true);
         }
     }, [user, upVotedUsers]);
-
 
     const updateUpvote = async () => {
         if (hasUpvoted) {
@@ -31,48 +30,63 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
 
         console.log("Upvote button clicked");
 
-        try {
+        try {        
             await axiosSecure.patch(`/product/upvote/${_id}`);
-            await axiosSecure.patch(`/product/feature-upvote/${_id}`);
+
+            try {
+                await axiosSecure.patch(`/product/feature-upvote/${_id}`);
+            } catch (featureError) {
+                console.warn("Product not found in featuredCollection, skipping feature update.");
+            }
+
             setHasUpvoted(true);
             refetch();
+
             Swal.fire({
                 title: "Upvote done",
                 icon: "success"
             });
-        }
-        catch (err) {
+        } catch (err) {
             console.log(err);
             Swal.fire({
-                title: "Something Wrong",
+                title: "Something Went Wrong",
                 icon: "error"
             });
         }
-    }
+    };
 
     return (
         <div className="border-2 rounded-xl flex justify-between items-center px-5 py-3">
             <div className="flex gap-x-3 items-center">
                 <div>
-                    <img src={productImage} className="w-16 h-16" alt="" />
+                    <img src={productImage} className="w-16 h-16" alt="Product" />
                 </div>
                 <div>
                     <Link to={`/product/${_id}`} className="text-xl font-bold"> {productName} </Link>
                     <div className="flex gap-2">
                         <h3 className="text-lg font-bold"> Tags: </h3>
-                        {
+                        {Array.isArray(tags) && tags.length > 0 ? (
                             tags.map((tag, index) => (
-                                <p key={index} className="text-lg"> {tag} </p>
+                                <p key={index} className="text-lg border-2 px-2 rounded-2xl py-0"> {tag} </p>
                             ))
-                        }
+                        ) : (
+                            <p className="text-lg text-gray-500">No tags available</p>
+                        )}
                     </div>
                 </div>
             </div>
 
             <div>
-                <button onClick={updateUpvote} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
-                    ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
-                    : 'hover:bg-[#6D1212] hover:text-[#FFF5D1] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
+                <button
+                    onClick={updateUpvote}
+                    disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}
+                    className={`border-2 text-gray-600 px-5 py-2 rounded-xl 
+                        ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                            ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
+                            : 'hover:bg-[#6D1212] hover:text-[#FFF5D1] hover:cursor-pointer'}`}
+                >
+                    <FiTriangle size={20} /> {upvotes}
+                </button>
             </div>
         </div>
     );

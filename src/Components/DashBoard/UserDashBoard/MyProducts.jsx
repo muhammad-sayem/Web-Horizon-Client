@@ -25,36 +25,36 @@ const MyProducts = () => {
   }
 
   const handleDeleteProduct = async (id) => {
-    try {
-      await axiosSecure.delete(`/product/${id}`);
-      await axiosSecure.delete(`/featured/${id}`);
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
-      }).then((result) => {
-        if (result.isConfirmed) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          await axiosSecure.delete(`/product/${id}`);
+          await axiosSecure.delete(`/featured/${id}`);
           refetch();
           Swal.fire({
             title: "Deleted!",
-            text: "Coupon has been deleted.",
+            text: "Product has been deleted.",
             icon: "success"
           });
+        } catch (err) {
+          console.log(err);
+          Swal.fire({
+            title: "Something went wrong",
+            icon: "error"
+          });
         }
-      });
-    }
-    catch (err) {
-      console.log(err);
-      Swal.fire({
-        title: "Something Wrong",
-        icon: "error"
-      });
-    }
-  }
+      }
+    });
+  };
+
 
   return (
     <div>
@@ -89,7 +89,7 @@ const MyProducts = () => {
                   </td>
 
                   <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-2 md:px-5 py-2 rounded-xl font-bold"> Update </Link> </td>
-                  
+
 
                   <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-2 md:px-5 py-2 rounded-xl font-bold"> Delete </button> </td>
 
