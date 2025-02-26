@@ -26,10 +26,10 @@ const Navbar = () => {
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-1 text-md'>
           <li>
-            <Link to='/' className='font-bold text-md text-[#1A2634] '>Home</Link>
+            <Link to='/' className='font-bold text-[16px] text-[#1A2634] '>Home</Link>
           </li>
           <li>
-            <Link to='/products' className='font-bold text-md text-[#1A2634] '>Products</Link>
+            <Link to='/products' className='font-bold text-[16px] text-[#1A2634] '>Products</Link>
           </li>
 
           {!user && (

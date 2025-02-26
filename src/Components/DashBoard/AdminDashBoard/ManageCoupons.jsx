@@ -117,7 +117,7 @@ const ManageCoupons = () => {
           />
         </div>
 
-        <div className="mt-8">
+        <div className="my-8">
           <button className="btn w-full bg-[#1A2634] text-white text-xl font-bold">
             Add Coupon
           </button>

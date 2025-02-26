@@ -38,7 +38,7 @@ const FeaturedProducts = () => {
                 }
             </div>
 
-            <button onClick={()=> setShowAll(!showAll)} className="mt-3 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl"> {showAll ?  "View Less": "View All"} </button>
+            <button onClick={()=> setShowAll(!showAll)} className="mt-3 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl font-bold"> {showAll ?  "View Less": "View All"} </button>
         </div> 
     );
 };

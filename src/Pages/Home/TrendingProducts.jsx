@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { useState } from "react";
-import TrendingProductCard from "./TrendingProductCArd";
+import TrendingProductCard from "./TrendingProductCard";
 import { Link } from "react-router-dom";
 
 const TrendingProducts = () => {
@@ -39,7 +39,7 @@ const TrendingProducts = () => {
             </div>
 
             <Link to='/products'>
-                <button className="mt-3 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl"> View All  </button>
+                <button className="mt-3 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl font-bold"> View All  </button>
             </Link>
         </div>
     );
