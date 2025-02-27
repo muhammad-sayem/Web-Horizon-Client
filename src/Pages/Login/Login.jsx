@@ -2,21 +2,24 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import LoadingSpinner from '../../Shared/LoadingSpinner'
-import useAuth from '../../Hooks/useAuth'
+import useAuth from '../../Hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Login = () => {
+  const axiosPublic = useAxiosPublic();
   const { signIn, googleSignIn, loading, user } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
-  const from = location?.state?.from?.pathname || '/'
-  if (loading){
+  const from = location?.state?.from?.pathname || '/';
+  if (loading) {
     return <LoadingSpinner />
-  } 
-  
+  }
+
   if (user) {
     return <Navigate to={from} replace={true} />
   }
-  
+
   // form submit handler
   const handleSubmit = async event => {
     event.preventDefault()
@@ -36,19 +39,23 @@ const Login = () => {
   }
 
   // Handle Google Signin
-  const handleGoogleSignIn = async () => {
-    try {
-      //User Registration using google
-      const data = await googleSignIn();
-      // Save user info in db if the user is new //
-      await saveUser(data?.user);
-      navigate(from, { replace: true })
-      toast.success('Login Successful')
-    } catch (err) {
-      console.log(err)
-      toast.error(err?.message)
-    }
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then(res => {
+        console.log(res.user);
+        const userInfo = {
+          name: res?.user?.displayName,
+          email: res?.user?.email,
+        }
+
+        axiosPublic.post('/users', userInfo)
+          .then(res => {
+            console.log(res.data);
+            navigate('/');
+          })
+      })
   }
+
   return (
     <div className='flex justify-center items-center min-h-screen bg-white'>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
