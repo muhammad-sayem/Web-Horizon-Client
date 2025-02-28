@@ -3,7 +3,6 @@ import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import LoadingSpinner from '../../Shared/LoadingSpinner'
 import useAuth from '../../Hooks/useAuth';
-import toast, { Toaster } from 'react-hot-toast';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const Login = () => {
@@ -42,7 +41,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(res => {
-        console.log(res.user);
+        console.log("From Login page", res.user);
         const userInfo = {
           name: res?.user?.displayName,
           email: res?.user?.email,

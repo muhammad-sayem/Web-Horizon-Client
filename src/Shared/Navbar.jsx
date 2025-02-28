@@ -8,7 +8,9 @@ import UseRole from '../hooks/useRole';
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [role, roleLoading] = UseRole();
+  const [role, isLoading] = UseRole();
+  console.log("Navbar page theke role bolchi", role);
+  console.log("Navbar page theke isLoading bolchi", isLoading);
 
   const handeSignOut = () => {
     logOut();
@@ -54,7 +56,7 @@ const Navbar = () => {
                 />
               </div>
             </div>
-            {roleLoading ? (
+            {isLoading ? (
               <LoadingSpinner />
             ) : (
               <ul
