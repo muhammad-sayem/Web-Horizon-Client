@@ -10,9 +10,15 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../Hooks/useAxiosSecure';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import { Cursor, useTypewriter } from 'react-simple-typewriter';
 
 export default function CouponCarousel() {
+  const [text] = useTypewriter({
+    words: ["Available Offers"],
+    loop: 0
+  })
+
   const axiosSecure = useAxiosSecure();
 
   const { data: allCoupons = [] } = useQuery({
@@ -25,7 +31,7 @@ export default function CouponCarousel() {
 
   return (
     <div className='mx-auto my-12'>
-      <h2 className="text-3xl text-[#1A2634] font-bold mb-8"> Available Offers </h2>
+      <h2 className="text-3xl text-[#1A2634] font-bold mb-8"> {text} <Cursor></Cursor> </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -44,8 +50,8 @@ export default function CouponCarousel() {
             <div className='flex justify-center w-full h-[350px] md:h-[300px] lg:h-72 bg-[#1A2634] text-[#87CEEB]'>
               <div className='text-center py-5'>
                 <div className='flex justify-center items-center gap-x-2 mb-6'>
-                  <FaStar size={30} /> 
-                  <h2 className='text-3xl font-bold'> Coupon </h2> 
+                  <FaStar size={30} />
+                  <h2 className='text-3xl font-bold'> Coupon </h2>
                   <FaStar size={30} />
                 </div>
 
