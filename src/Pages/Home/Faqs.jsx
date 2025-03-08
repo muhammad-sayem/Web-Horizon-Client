@@ -8,7 +8,7 @@ const Faqs = () => {
     });
 
     return (
-        <div className="text-[#87CEEB]">
+        <div className="text-[#1A2634] mb-12">
             <h2 className="text-[#1A2634] text-3xl font-bold mb-6"> {text} <Cursor></Cursor> </h2>
 
             <div className="flex gap-x-4 justify-between items-center">
@@ -18,55 +18,55 @@ const Faqs = () => {
                 </div>
 
                 <div className="w-3/5">
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" defaultChecked />
-                        <div className="collapse-title text-3xl font-bold"> What is the purpose of this website?</div>
+                        <div className="collapse-title text-3xl font-bold"> 1. What is Tech Horizon?</div>
                         <div className="collapse-content">
-                            <p>This website is dedicated to showcasing historical artifacts from various cultures and time periods. Our goal is to educate visitors about the significance of these artifacts, their origins, and the stories they tell about human history.</p>
+                            <p>Tech Horizon is a platform where users can discover, share, and review tech products such as web apps, AI tools, software, games, and mobile apps. It allows users to upvote/downvote products, submit new ones, and engage with a tech-focused community.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-3xl font-bold">Can I contribute information or artifacts to the collection?</div>
+                        <div className="collapse-title text-3xl font-bold">2. How do I submit a product on Tech Horizon? </div>
                         <div className="collapse-content">
-                            <p>Yes, we welcome contributions! If you have historical artifacts or detailed information to share, please contact us. Our team will review your submission to ensure its authenticity and relevance to the collection.</p>
+                            <p>To submit a product, create an account, navigate to the "Submit Product" page, and provide details such as the name, description, category, and a valid link. Your submission will go through a moderation process before being published.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-3xl font-bold">Are the artifacts on display authentic?
+                        <div className="collapse-title text-3xl font-bold">3. How can I report a product or review?
                         </div>
                         <div className="collapse-content">
-                            <p>We prioritize authenticity and collaborate with historians, archaeologists, and experts to verify the origin and authenticity of the artifacts in our collection. For items on loan, we ensure proper documentation and provenance.</p>
+                            <p>If you find a product or review that violates our guidelines, you can report it using the "Report" button. Our moderation team will review the issue and take necessary action.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-3xl font-bold"> How can I visit the physical location of these artifacts
+                        <div className="collapse-title text-3xl font-bold"> 4. How does the product moderation process work?
                         </div>
                         <div className="collapse-content">
-                            <p>If the artifacts are part of a physical museum or exhibition, details about visiting hours, location, and ticketing can be found on our "Visit Us" page. Some items may also be part of traveling exhibitions, and updates are regularly posted.</p>
+                            <p>All submitted products go through a review process by our moderation team. We ensure that each product meets our quality and authenticity standards before being published. If a submission is rejected, users will receive feedback on necessary changes.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-3xl font-bold">  Are there educational resources available for students or researchers?
+                        <div className="collapse-title text-3xl font-bold">  5. How does the upvote system work?
                         </div>
                         <div className="collapse-content">
-                            <p>Yes, we provide detailed articles, videos, and downloadable resources tailored for students, researchers, and educators. Visit the "Education" section to explore study guides, research papers, and lesson plans.</p>
+                            <p>Users can upvote products they find useful or innovative. The more upvotes a product receives, the higher its visibility on the platform, helping the best tech products gain traction.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-3xl font-bold"> How do I know if an artifact has been ethically sourced?
+                        <div className="collapse-title text-3xl font-bold"> 6. Is Tech Horizon free to use?
                         </div>
                         <div className="collapse-content">
-                            <p>We adhere to strict ethical guidelines for sourcing artifacts. Each item in our collection is thoroughly vetted to ensure it was acquired legally and ethically, with respect to cultural heritage and international laws.</p>
+                            <p>Yes, Tech Horizon is free to use for discovering and reviewing products. However, certain premium features, such as product promotions and advanced insights, require a subscription.</p>
                         </div>
                     </div>
                 </div>
