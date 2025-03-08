@@ -50,31 +50,33 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     }
 
     return (
-        <div className="flex justify-between items-center p-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)]">
-            <div className="gap-x-3 items-center">
-                
-                <div className="flex items-center gap-x-3">
-                    <img src={productImage} className="w-16 h-16" alt="" />
-                    <Link to={`/product/${_id}`} className="text-2xl font-bold"> {productName} </Link>
+        <Link to={`/product/${_id}`}>
+            <div className="flex justify-between items-center p-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)]">
+                <div className="gap-x-3 items-center">
+
+                    <div className="flex items-center gap-x-3">
+                        <img src={productImage} className="w-16 h-16" alt="" />
+                        <h2 className="text-2xl font-bold"> {productName} </h2>
+                    </div>
+
+                    <div className="flex gap-2 mt-4">
+                        <h3 className="text-xl font-bold"> Tags: </h3>
+                        {
+                            tags.map((tag, index) => (
+                                <p key={index} className="text-lg border-2 border-[#1A2634] px-2 rounded-2xl"> {tag} </p>
+                            ))
+                        }
+                    </div>
+
                 </div>
 
-                <div className="flex gap-2 mt-4">
-                    <h3 className="text-xl font-bold"> Tags: </h3>
-                    {
-                        tags.map((tag, index) => (
-                            <p key={index} className="text-lg border-2 border-[#1A2634] px-2 rounded-2xl"> {tag} </p>
-                        ))
-                    }
+                <div>
+                    <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-gray-300 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                        ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
+                        : 'hover:bg-[#1A2634] hover:text-[#87CEEB] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
                 </div>
-
             </div>
-
-            <div>
-                <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-gray-300 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
-                    ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
-                    : 'hover:bg-[#1A2634] hover:text-[#87CEEB] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
-            </div>
-        </div>
+        </Link>
     );
 };
 

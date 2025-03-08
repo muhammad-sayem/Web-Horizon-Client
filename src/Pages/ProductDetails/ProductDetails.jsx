@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { Link, useParams } from "react-router-dom";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { LuTriangle } from "react-icons/lu";
 import { MdReportGmailerrorred } from "react-icons/md";
 import Swal from "sweetalert2";
-import useAuth from "../../Hooks/useAuth";
 import { useState, useEffect } from "react";
 import ProductReviewModal from "./ProductReviewModal";
 import Reviews from "./Reviews";
 import UseRole from "../../hooks/useRole";
+import useAuth from "../../hooks/useAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ProductDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -114,7 +114,7 @@ const ProductDetails = () => {
                             <LuTriangle size={25}></LuTriangle> Upvote ({upvotes})
                         </button>
 
-                        <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-red-900 cursor-not-allowed" : "bg-[#1A2634] text-white"}`}>
+                        <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-red-900 cursor-not-allowed" : "bg-red-600 text-white"}`}>
                             <MdReportGmailerrorred size={30}></MdReportGmailerrorred> Report
                         </button>
                     </div>
