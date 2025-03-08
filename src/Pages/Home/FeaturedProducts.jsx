@@ -10,7 +10,7 @@ const FeaturedProducts = () => {
         words: ["Featured Products"],
         loop: 0
     });
-    
+
     const axiosSecure = useAxiosSecure();
     const [showAll, setShowAll] = useState(false);
 

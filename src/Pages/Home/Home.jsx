@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet";
 import Carousel from "../../Components/Carousel/Carousel";
 import CouponCarousel from "./CouponCarousel";
+import Faqs from "./Faqs";
 import FeaturedProducts from "./FeaturedProducts";
 import TrendingProducts from "./TrendingProducts";
 
@@ -12,6 +12,7 @@ const Home = () => {
             <FeaturedProducts></FeaturedProducts>
             <TrendingProducts></TrendingProducts>
             <CouponCarousel></CouponCarousel>
+            <Faqs></Faqs>
         </div>
     );
 };

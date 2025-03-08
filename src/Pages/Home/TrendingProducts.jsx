@@ -7,7 +7,7 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 const TrendingProducts = () => {
     const [text] = useTypewriter({
-        words:["Trending Products"],
+        words: ["Trending Products"],
         loop: 0
     })
     const axiosSecure = useAxiosSecure();
