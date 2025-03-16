@@ -9,8 +9,8 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const [role, isLoading] = UseRole();
-  console.log("Navbar page theke role bolchi", role);
-  console.log("Navbar page theke isLoading bolchi", isLoading);
+  // console.log("Navbar page theke role bolchi", role);
+  // console.log("Navbar page theke isLoading bolchi", isLoading);
 
   const handeSignOut = () => {
     logOut();
@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='navbar bg-base-100 shadow-sm mx-auto p-0 mb-12'>
+    <div className='navbar fixed top-0 left-0 z-20 bg-base-100 mx-auto px-16 mb-12 w-full'>
       <div className='flex-1'>
         <Link to='/' className='gap-2 items-center'>
           <img className='w-12 h-12 mx-auto' src={logo} alt='' />

@@ -2,14 +2,18 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import { TbFidgetSpinner } from 'react-icons/tb'
 import LoadingSpinner from '../../Shared/LoadingSpinner'
-import useAuth from '../../Hooks/useAuth';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import useAuth from '../../hooks/useAuth';
+import { useState } from 'react';
 
 const Login = () => {
   const axiosPublic = useAxiosPublic();
   const { signIn, googleSignIn, loading, user } = useAuth()
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [emailInput, setEmailInput] = useState("");
+  const [passwordInput, setPasswordInput] = useState("");
+
   const from = location?.state?.from?.pathname || '/';
   if (loading) {
     return <LoadingSpinner />
@@ -76,6 +80,7 @@ const Login = () => {
                 Email address
               </label>
               <input
+                value={emailInput}
                 type='email'
                 name='email'
                 id='email'
@@ -92,6 +97,7 @@ const Login = () => {
                 </label>
               </div>
               <input
+                value={passwordInput}
                 type='password'
                 name='password'
                 autoComplete='current-password'
@@ -146,6 +152,25 @@ const Login = () => {
           </Link>
           .
         </p>
+
+        <div className='flex justify-center gap-x-2 mt-4'>
+          <button onClick={() => {
+            setEmailInput('admin1@gmail.com');
+            setPasswordInput('123456Aa')
+          }} className='btn bg-[#1A2634] text-white'> Login as Admin
+          </button>
+
+
+          <button onClick={() => {
+            setEmailInput('moderator1@gmail.com');
+            setPasswordInput('123456Aa')
+          }} className='btn bg-[#1A2634] text-white'> Login as Moderator </button>
+
+          <button onClick={() => {
+            setEmailInput('tester1@gmail.com');
+            setPasswordInput('123456Aa')
+          }} className='btn bg-[#1A2634] text-white'> Login as User </button>
+        </div>
       </div>
     </div>
   )

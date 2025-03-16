@@ -2,25 +2,29 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ProductCard from "./ProductCard";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 
 const Products = () => {
-
     const axiosSecure = useAxiosSecure();
     const [search, setSearch] = useState("");
     const [query, setQuery] = useState("");
+    const [sort, setSort] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 6;
 
     const { data, isLoading, refetch } = useQuery({
         queryKey: ['all-products', query, currentPage],
         queryFn: async () => {
-            const url = `/products?${query ? `search=${query}&` : ""}page=${currentPage}&limit=${productsPerPage}`;
+            const url = `/products?${query ? `search=${query}&` : ""}page=${currentPage}&limit=${productsPerPage}${sort ? `&sort=${sort}` : ""}`;
             const { data } = await axiosSecure.get(url);
             return data;
         }
     });
+
+    useEffect(() => {
+        refetch();
+    }, [sort, refetch]);
 
     const products = data?.products || [];
     const totalProducts = data?.totalProducts || 0;
@@ -33,31 +37,43 @@ const Products = () => {
     };
 
     if (isLoading) {
-        return <LoadingSpinner></LoadingSpinner>;
+        return <LoadingSpinner />;
     }
 
     return (
-
         <div>
             <Helmet>
                 <title>Products</title>
             </Helmet>
 
-            <div className="w-11/12 mx-auto mb-12">
-                <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#1A2634] border-4 border-[#1A2634] w-full lg:w-3/4 mx-auto mb-6'>
-                    <input
-                        className='flex-grow px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
-                        type='text'
-                        name='search'
-                        placeholder='Enter Product Tags and click to search'
-                        aria-label='Enter Product Tags to search'
-                        onChange={(e) => setSearch(e.target.value)}
-                        value={search}
-                    />
+            <div className="w-11/12 mx-auto mt-32 mb-12">
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+                    <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#1A2634] border-4 border-[#1A2634] w-full md:w-1/3'>
+                        <input
+                            className='flex-grow px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
+                            type='text'
+                            name='search'
+                            placeholder='Enter Product Tag and click to search'
+                            aria-label='Enter Product Tags to search'
+                            onChange={(e) => setSearch(e.target.value)}
+                            value={search}
+                        />
+                        <button
+                            onClick={handleSearch}
+                            className='px-1 md:px-4 py-3 text-sm tracking-wider font-black uppercase transition-colors duration-300 transform bg-[#1A2634] text-white rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                            Search
+                        </button>
+                    </div>
 
-                    <button onClick={handleSearch} className='px-1 md:px-4 py-3 text-sm tracking-wider font-black uppercase transition-colors duration-300 transform bg-[#1A2634] text-white rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
-                        Search
-                    </button>
+                    <select
+                        className='p-4 border-2 border-[#1A2634] rounded-lg text-gray-700 outline-none focus:ring focus:ring-[#1A2634] focus:ring-opacity-50 w-full md:w-1/6 text-lg font-bold dark:text-[#F19100]'
+                        onChange={(e) => setSort(e.target.value)}
+                        value={sort}
+                    >
+                        <option value="" disabled>Sort By Upvotes</option>
+                        <option value="asc">Least Upvoted</option>
+                        <option value="desc">Most Upvoted</option>
+                    </select>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -84,7 +100,6 @@ const Products = () => {
                 </div>
             </div>
         </div>
-
     );
 };
 

@@ -11,7 +11,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     const { user } = useAuth();
     const [role] = UseRole();
     const [hasUpvoted, setHasUpvoted] = useState(false);
-    const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers } = feaProduct;
+    const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers, productDescription } = feaProduct;
 
     console.log(owner?.email);
     console.log(user?.email);
@@ -50,33 +50,36 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     }
 
     return (
-        <Link to={`/product/${_id}`}>
-            <div className="flex justify-between items-center p-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)]">
-                <div className="gap-x-3 items-center">
+        <div>
+            <div className=" p-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] h-full">
 
-                    <div className="flex items-center gap-x-3">
-                        <img src={productImage} className="w-16 h-16" alt="" />
-                        <h2 className="text-2xl font-bold"> {productName} </h2>
-                    </div>
+                <div className="flex flex-col items-center">
+                    <img src={productImage} className="w-16 h-16" alt="" />
+                    <h2 className="text-2xl font-bold"> {productName} </h2>
+                </div>
 
-                    <div className="flex gap-2 mt-4">
-                        <h3 className="text-xl font-bold"> Tags: </h3>
+                <div className="mt-4 text-center">
+                    <p> {productDescription.length > 200 ? productDescription.slice(0, 200) + "..." : productDescription} </p>
+
+                    <div className="my-2">
+                        <h3 className="text-xl font-bold inline"> Tags: </h3>
                         {
                             tags.map((tag, index) => (
-                                <p key={index} className="text-lg border-2 border-[#1A2634] px-2 rounded-2xl"> {tag} </p>
+                                <p key={index} className="text-lg border-2 border-[#1A2634] px-2 rounded-2xl inline ml-1"> {tag} </p>
                             ))
                         }
                     </div>
-
                 </div>
 
-                <div>
-                    <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-gray-300 text-gray-600 px-5 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                <div className="flex justify-center gap-x-4 items-center">
+                    <Link to={`/product/${_id}`} className="btn bg-[#1A2634] text-[#87CEEB] font-bold text-lg"> View Details </Link>
+
+                    <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-gray-300 text-gray-600 px-5 py-1 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                         ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
                         : 'hover:bg-[#1A2634] hover:text-[#87CEEB] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 };
 

@@ -30,9 +30,9 @@ const TrendingProducts = () => {
 
     return (
         <div className="my-8">
-            <h2 className="text-[#1A2634] text-3xl font-bold mb-6"> {text} <Cursor></Cursor> </h2>
+            <h2 className="text-[#1A2634] text-4xl font-bold mb-6 text-center"> {text} <Cursor></Cursor> </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 {
                     displayProducts.map(treProduct => <TrendingProductCard
                         key={treProduct._id}

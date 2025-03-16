@@ -31,7 +31,7 @@ export default function CouponCarousel() {
 
   return (
     <div className='mx-auto my-12'>
-      <h2 className="text-3xl text-[#1A2634] font-bold mb-8"> {text} <Cursor></Cursor> </h2>
+      <h2 className="text-4xl text-[#1A2634] font-bold mb-8 text-center"> {text} <Cursor></Cursor> </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
