@@ -1,6 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../../Shared/LoadingSpinner";
 import { MdVerified } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -8,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from "../../CheckoutForm/CheckoutForm";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAuth from "../../../hooks/useAuth";
+import UseRole from "../../../hooks/useRole";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
@@ -15,6 +16,7 @@ const MyProfile = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const [role] = UseRole();
 
   const { data: allUsers = [], isLoading, refetch } = useQuery({
     queryKey: ['allUsers'],
@@ -53,26 +55,30 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="w-full md:w-4/5 mx-auto flex flex-col md:flex-row items-center justify-between my-12 shadow-2xl p-5">
-      
-      <div className="flex flex-col md:flex-row items-center gap-x-6 mb-6 md:mb-0">
-        <img
-          src={user?.photoURL}
-          className="w-32 h-32 md:w-40 md:h-40 rounded-full mb-4 md:mb-0"
-          alt="User Avatar"
-        />
-        <div className="text-center md:text-left">
-          <h2 className="text-xl lg:text-2xl font-bold">{user?.displayName}</h2>
-          <p className="text-lg lg:text-2xl font-bold">{user?.email}</p>
+    <div className="w-full md:w-2/5 mx-auto my-12 shadow-2xl rounded-2xl p-5">
+
+      <div className=" mb-6 md:mb-0 text-center">
+        <h2 className="text-3xl font-bold mb-2"> My Profile </h2>
+        <div className="flex justify-center my-4">
+          <img
+            src={user?.photoURL}
+            className="w-32 h-32 md:w-40 md:h-40 rounded-full mb-4 md:mb-0"
+            alt="User Avatar"
+          />
+        </div>
+        <div className="text-center">
+          <h2 className="text-xl lg:text-2xl font-bold">Name: {user?.displayName}</h2>
+          <p className="text-lg lg:text-2xl font-bold">Email: {user?.email}</p>
+          <p className="text-lg lg:text-2xl font-bold">Role: {role}</p>
         </div>
       </div>
 
-      
-      <div>
+
+      <div className="mt-4 flex justify-center">
         {currUser?.subscribed ? (
           <div className="flex justify-center items-center gap-x-2">
             <MdVerified size={24} color="green" />
-            <p className="text-xl md:text-2xl font-bold text-green-800">Verified</p>
+            <p className="text-xl md:text-2xl font-bold text-green-700">Verified</p>
           </div>
         ) : (
           <div>

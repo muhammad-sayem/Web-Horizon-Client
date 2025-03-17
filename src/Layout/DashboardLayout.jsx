@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import Sidebar from '../Components/Dashboard/Sidebar';
-import UseRole from '../Hooks/UseRole';
+import UseRole from '../hooks/useRole';
 
 const DashboardLayout = () => {
     const [role] = UseRole();

@@ -5,13 +5,13 @@ import LoadingSpinner from "../../../Shared/LoadingSpinner";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
-const Statistics = () => {
+const UserStatistics = () => {
     const axiosSecure = useAxiosSecure();
 
     const { data, isLoading, error } = useQuery({
-        queryKey: ["admin-stats"],
+        queryKey: ["user-stats"],
         queryFn: async () => {
-            const { data } = await axiosSecure.get("admin-stats");
+            const { data } = await axiosSecure.get("user-stats");
             return data;
         },
     });
@@ -21,7 +21,6 @@ const Statistics = () => {
     }
     if (error) return <p>Error fetching data.</p>;
 
-    
     const chartData = [
         { name: "Users", value: data.usersCount },
         { name: "Reviews", value: data.reviewsCount },
@@ -30,7 +29,7 @@ const Statistics = () => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4 md:my-8 lg:my-12"> Admin Statistics </h2>
+            <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4 md:my-8 lg:my-12"> User Statistics </h2>
             <ResponsiveContainer width="50%" height={300}>
                 <PieChart>
                     <Pie
@@ -52,4 +51,4 @@ const Statistics = () => {
     );
 };
 
-export default Statistics;
+export default UserStatistics;

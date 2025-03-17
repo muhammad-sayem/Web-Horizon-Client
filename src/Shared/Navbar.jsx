@@ -68,8 +68,8 @@ const Navbar = () => {
                 <li>
                   <Link to={
                     role === "User" ? "/dashboard/my-profile" :
-                      role === "Moderator" ? "/dashboard/review-products" :
-                        role === "Admin" ? "/dashboard/manage-users" : "/"
+                      role === "Moderator" ? "/dashboard/moderator/my-profile" :
+                        role === "Admin" ? "/dashboard/admin/my-profile" : "/"
                   }>
                     Dashboard
                   </Link>

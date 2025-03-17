@@ -21,7 +21,10 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import ModeratorRoute from "./ModeratorRoute";
 import AdminRoute from "./AdminRoute";
-
+import ModeratorMyProfile from "../Components/DashBoard/ModeratorDashBoard/ModeratorMyProfile";
+import AdminMyProfile from "../Components/DashBoard/AdminDashBoard/AdminMyProfile";
+import ModeratorStatistics from "../Components/DashBoard/ModeratorDashBoard/ModeratorStatistics";
+import UserStatistics from "../Components/DashBoard/UserDashBoard/UserStatistics";
 
 
 export const router = createBrowserRouter([
@@ -83,8 +86,30 @@ export const router = createBrowserRouter([
                     <UpdateProduct></UpdateProduct>
                 </PrivateRoute>
             },
+            {
+                path: 'user-statistics',
+                element: <PrivateRoute>
+                    <UserStatistics></UserStatistics>
+                </PrivateRoute>
+            },
 
             // Moderator Related Routes //
+            {
+                path: 'moderator/my-profile',
+                element: <PrivateRoute>
+                    <ModeratorRoute>
+                        <ModeratorMyProfile></ModeratorMyProfile>
+                    </ModeratorRoute>
+                </PrivateRoute>
+            },
+            {
+                path: 'moderator-statistics',
+                element: <PrivateRoute>
+                    <ModeratorRoute>
+                        <ModeratorStatistics></ModeratorStatistics>
+                    </ModeratorRoute>
+                </PrivateRoute>
+            },
             {
                 path: 'review-products',
                 element: <PrivateRoute>
@@ -103,6 +128,14 @@ export const router = createBrowserRouter([
             },
 
             // Admin Related Routes //
+            {
+                path: 'admin/my-profile',
+                element: <PrivateRoute>
+                    <AdminRoute>
+                        <AdminMyProfile></AdminMyProfile>
+                    </AdminRoute>
+                </PrivateRoute>
+            },
             {
                 path: 'statistics',
                 element: <PrivateRoute>
