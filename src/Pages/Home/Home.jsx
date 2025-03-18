@@ -10,15 +10,17 @@ import WhatCanYouDo from "./WhatCanYouDo";
 const Home = () => {
 
     return (
-        <div className="w-11/12 mx-auto">
+        <div>
             <Carousel></Carousel>
-            <FeaturedProducts></FeaturedProducts>
-            <TrendingProducts></TrendingProducts>
-            <WhatCanYouDo></WhatCanYouDo>
-            <Users></Users>
-            <Reviews></Reviews>
-            <CouponCarousel></CouponCarousel>
-            <Faqs></Faqs>
+            <div className="w-11/12 mx-auto">
+                <FeaturedProducts></FeaturedProducts>
+                <TrendingProducts></TrendingProducts>
+                <WhatCanYouDo></WhatCanYouDo>
+                <Users></Users>
+                <Reviews></Reviews>
+                <CouponCarousel></CouponCarousel>
+                <Faqs></Faqs>
+            </div>
         </div>
     );
 };

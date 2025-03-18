@@ -81,6 +81,7 @@ const Login = () => {
               </label>
               <input
                 value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
                 type='email'
                 name='email'
                 id='email'
@@ -98,6 +99,7 @@ const Login = () => {
               </div>
               <input
                 value={passwordInput}
+                onChange={(e) => setPasswordInput(e.target.value)}
                 type='password'
                 name='password'
                 autoComplete='current-password'

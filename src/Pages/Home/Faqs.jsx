@@ -9,15 +9,14 @@ const Faqs = () => {
 
     return (
         <div className="text-[#87CEEB] mb-12">
-            {/* <h2 className="text-[#87CEEB] text-4xl font-bold mb-6 text-center"> {text} <Cursor></Cursor> </h2> */}
 
             <div className="gap-x-4 justify-between items-center">
 
-                <div className="w-1/6 mx-auto">
+                <div className="w-1/6 mx-auto" data-aos="fade-down" data-aos-duration="2000">
                     <img src={faqPic} className="w-full" alt="" />
                 </div>
 
-                <div className="w-full">
+                <div className="w-full" data-aos="fade-up" data-aos-duration="2000">
                     <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
                         <input type="radio" name="my-accordion-2" defaultChecked />
                         <div className="collapse-title text-2xl font-bold"> 1. What is Tech Horizon?</div>

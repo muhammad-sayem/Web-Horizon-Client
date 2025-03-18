@@ -11,7 +11,12 @@ const MainLayout = () => {
 
     return (
         <div>
-            {loginPage || <div className='w-11/12 mx-auto'><Navbar></Navbar></div>}
+            {
+                loginPage ||
+                <div className='w-11/12 mx-auto'>
+                    <Navbar></Navbar>
+                </div>
+            }
             <Outlet></Outlet>
             {loginPage || <Footer></Footer>}
         </div>

@@ -37,12 +37,12 @@ const Users = () => {
     return (
 
         <div className='mb-8'>
-            <h2 className="text-4xl text-[#1A2634] font-bold mb-8 text-center">
+            <h2 className="text-4xl text-[#1A2634] dark:text-[#87CEEB] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="2000">
                 {text} <Cursor />
             </h2>
 
-            <div className='flex justify-center gap-x-2'>
-                <div className='shadow-xl p-12 rounded-xl' data-aos="fade-left"
+            <div className='md:flex justify-center gap-x-2 dark:gap-x-6'>
+                <div className='shadow-xl dark:shadow-[1px_1px_8px_#87CEEB] p-12 rounded-xl dark:text-[#87CEEB]' data-aos="fade-left"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="2000">
@@ -55,7 +55,7 @@ const Users = () => {
                     }
                 </div>
 
-                <div className='shadow-xl p-12 rounded-xl' data-aos="fade-down"
+                <div className='shadow-xl dark:shadow-[1px_1px_8px_#87CEEB] p-12 rounded-xl dark:text-[#87CEEB]' data-aos="fade-down"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="2000">
@@ -68,7 +68,7 @@ const Users = () => {
                     }
                 </div>
 
-                <div className='text-center shadow-xl p-12 rounded-xl' data-aos="fade-right"
+                <div className='text-center shadow-xl dark:shadow-[1px_1px_8px_#87CEEB] p-12 rounded-xl dark:text-[#87CEEB]' data-aos="fade-right"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="2000">

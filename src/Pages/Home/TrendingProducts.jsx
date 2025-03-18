@@ -30,9 +30,9 @@ const TrendingProducts = () => {
 
     return (
         <div className="my-8">
-            <h2 className="text-[#1A2634] text-4xl font-bold mb-6 text-center"> {text} <Cursor></Cursor> </h2>
+            <h2 className="text-[#1A2634] dark:text-[#87CEEB] text-4xl font-bold mb-6 text-center" data-aos="fade-down" data-aos-duration="2000"> {text} <Cursor></Cursor> </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="2000">
                 {
                     displayProducts.map(treProduct => <TrendingProductCard
                         key={treProduct._id}
@@ -43,7 +43,7 @@ const TrendingProducts = () => {
             </div>
 
             <Link to='/products'>
-                <button className="mt-6 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl font-bold"> View All  </button>
+                <button className="mt-6 bg-[#1A2634] text-[#87CEEB] dark:text-[#1A2634] dark:bg-[#87CEEB] dark:hover:text-[#87CEEB] dark:hover:bg-black px-6 py-3 rounded-xl text-xl font-bold"> View All  </button>
             </Link>
         </div>
     );

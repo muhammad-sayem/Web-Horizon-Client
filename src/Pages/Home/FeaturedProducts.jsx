@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import FeatureProductCard from "./FeatureProductCard";
 import { useState } from "react";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const FeaturedProducts = () => {
     const [text] = useTypewriter({
@@ -32,9 +32,10 @@ const FeaturedProducts = () => {
 
     return (
         <div className="my-8 lg:my-16">
-            <h2 className="text-[#1A2634] text-4xl font-bold mb-6 text-center"> {text} <Cursor></Cursor> </h2>
+            <h2 className="text-[#1A2634] dark:text-[#87CEEB] text-4xl font-bold mb-6 text-center" data-aos="fade-down"
+                data-aos-duration="2000"> {text} <Cursor></Cursor> </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="2000">
                 {
                     displayProducts.map(feaProduct => <FeatureProductCard
                         key={feaProduct._id}
@@ -44,7 +45,7 @@ const FeaturedProducts = () => {
                 }
             </div>
 
-            <button onClick={() => setShowAll(!showAll)} className="mt-6 bg-[#1A2634] text-[#87CEEB] px-6 py-3 rounded-xl text-xl font-bold"> {showAll ? "View Less" : "View All"} </button>
+            <button onClick={() => setShowAll(!showAll)} className="mt-6 bg-[#1A2634] text-[#87CEEB] dark:text-[#1A2634] dark:bg-[#87CEEB] dark:hover:text-[#87CEEB] dark:hover:bg-black px-6 py-3 rounded-xl text-xl font-bold"> {showAll ? "View Less" : "View All"} </button>
         </div>
     );
 };

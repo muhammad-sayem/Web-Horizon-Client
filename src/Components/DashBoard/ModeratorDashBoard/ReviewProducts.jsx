@@ -73,7 +73,7 @@ const ReviewProducts = () => {
 
   return (
     <div className="max-w-full w-full px-2 overflow-hidden">
-      <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold my-4">
+      <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold dark:text-[#87CEEB] my-4">
         Review Products
       </h2>
       <div className="overflow-x-auto w-full">
@@ -81,7 +81,7 @@ const ReviewProducts = () => {
 
           {/* Table Header */}
           <thead>
-            <tr className="bg-gray-200 text-sm md:text-md">
+            <tr className="bg-gray-200 dark:bg-[#87CEEB] dark:text-black text-sm md:text-md">
               <th className="px-2 py-2">Product Name</th>
               <th className="px-2 py-2">Details</th>
               <th className="px-2 py-2">Feature</th>

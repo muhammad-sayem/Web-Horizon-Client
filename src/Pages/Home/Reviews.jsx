@@ -10,8 +10,8 @@ const Reviews = () => {
 
     return (
         <div className='w-11/12 mx-auto mb-16'>
-            <h2 className='text-4xl text-center font-black mb-8'>
-                <span className="text-[#1A2634]"> {reviewsText}<Cursor></Cursor> </span>
+            <h2 className='text-4xl text-center font-black mb-8' data-aos="fade-left" data-aos-duration="2000">
+                <span className="text-[#1A2634] dark:text-[#87CEEB]"> {reviewsText}<Cursor></Cursor> </span>
             </h2>
 
             <ReviewCard></ReviewCard>

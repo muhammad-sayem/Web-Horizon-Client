@@ -58,13 +58,13 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4"> My Products </h2>
+      <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4 dark:text-[#87CEEB]"> My Products </h2>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra">
           {/* head */}
           <thead>
-            <tr>
+            <tr className="dark:text-[#87CEEB]">
               <th>Product Name</th>
               <th>Votes</th>
               <th>Status</th>
@@ -77,8 +77,8 @@ const MyProducts = () => {
             {
               myProducts.map(product => (
                 <tr key={product._id}>
-                  <th> {product.productName} </th>
-                  <td> {product.upvotes} </td>
+                  <th className="dark:text-[#87CEEB]"> {product.productName} </th>
+                  <td className="dark:text-[#87CEEB]"> {product.upvotes} </td>
 
                   <td>
                     <span className={
@@ -88,10 +88,10 @@ const MyProducts = () => {
                     </span>
                   </td>
 
-                  <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-2 md:px-5 py-2 rounded-xl font-bold"> Update </Link> </td>
+                  <td> <Link to={`/dashboard/product/update/${product._id}`} className="bg-blue-400 px-2 md:px-5 py-2 rounded-xl font-bold dark:text-black"> Update </Link> </td>
 
 
-                  <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-2 md:px-5 py-2 rounded-xl font-bold"> Delete </button> </td>
+                  <td> <button onClick={() => handleDeleteProduct(product._id)} className="bg-red-500 px-2 md:px-5 py-2 rounded-xl font-bold dark:text-black"> Delete </button> </td>
 
                   {/* Modal */}
                   {/* <UpdateModal
