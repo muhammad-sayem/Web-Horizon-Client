@@ -45,7 +45,9 @@ const FeaturedProducts = () => {
                 }
             </div>
 
-            <button onClick={() => setShowAll(!showAll)} className="mt-6 bg-[#1A2634] text-[#87CEEB] dark:text-[#1A2634] dark:bg-[#87CEEB] dark:hover:text-[#87CEEB] dark:hover:bg-black px-6 py-3 rounded-xl text-xl font-bold"> {showAll ? "View Less" : "View All"} </button>
+            <div className="w-3/4 mx-auto">
+                <button onClick={() => setShowAll(!showAll)} className="w-full mt-6 bg-[#1A2634] text-[#87CEEB] dark:text-[#1A2634] dark:bg-[#87CEEB] dark:hover:text-[#87CEEB] dark:hover:bg-black px-3 py-2 rounded-xl text-md font-bold"> {showAll ? "View Less" : "View All"} </button>
+            </div>
         </div>
     );
 };

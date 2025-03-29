@@ -21,7 +21,7 @@ export default function Carousel() {
                 centeredSlides={true}
                 loop={true}
                 autoplay={{
-                    delay: 3000,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -34,20 +34,19 @@ export default function Carousel() {
                 <SwiperSlide>
                     <Slide
                         image={bgimg1}
-                        text='Discover & Share the Best Tech Products - A World of Innovation Awaits'
+                        text='Discover & Share the Best Websites – Unleash Digital Innovation!'
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Slide
                         image={bgimg2}
-                        text='Showcase Your Innovation & Explore the Best in Tech – Bringing Ideas to the Spotlight!Discover & Share the Best Tech Products – A World of Innovation Awaits!'
-                        
+                        text=' Showcase Your Website & Explore the Web’s Finest – Elevate Your Online Presence!'
                     />
                 </SwiperSlide>
                 <SwiperSlide>
                     <Slide
                         image={bgimg3}
-                        text='Upvote, Review & Explore the Latest Innovations – Experience the Tech That Sets New Standards!'
+                        text='Like, Review & Explore Cutting-Edge Websites – Shaping the Future of the Web!'
                     />
                 </SwiperSlide>
             </Swiper>

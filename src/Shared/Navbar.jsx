@@ -23,7 +23,7 @@ const Navbar = () => {
         <Link to='/' className='flex items-center gap-2'>
           <img className='w-10 h-10' src={logo} alt='Logo' />
           <span className='font-black text-md text-[#1A2634] dark:text-[#87CEEB] md:text-xl'>
-            Tech Horizon
+            Web Horizon
           </span>
         </Link>
 
