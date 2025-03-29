@@ -76,7 +76,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
 
                     <button onClick={() => updateUpvote(_id)} disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"} className={`border-2 border-gray-300 text-gray-600 px-5 py-1 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                         ? 'bg-gray-400 text-gray-700 border-2 border-black cursor-not-allowed'
-                        : 'hover:bg-[#1A2634] hover:text-[#87CEEB] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
+                        : 'bg-[#87CEEB] text-[#1A2634] hover:bg-[#1A2634] hover:text-[#87CEEB] hover:cursor-pointer'}`}> <FiTriangle size={20}></FiTriangle> {upvotes} </button>
                 </div>
             </div>
         </div>

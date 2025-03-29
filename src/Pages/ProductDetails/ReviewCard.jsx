@@ -10,7 +10,7 @@ const ReviewCard = ({ review, refetch }) => {
                 <div className="flex justify-center">
                     <img src={reviewerImage} className="w-16 h-16 mb-4 rounded-full" alt="" />
                 </div>
-                <h2 className="mb-0 text-center text-xl"> {reviewerName} </h2>
+                <h2 className="mb-0 text-center text-xl dark:text-[#87CEEB] dark:font-bold"> {reviewerName} </h2>
 
                 <div className="flex justify-center mt-2">
                     <Rating
@@ -24,7 +24,7 @@ const ReviewCard = ({ review, refetch }) => {
             </div>
 
             <div className="w-5/6">
-                <p> {reviewDescription} </p>
+                <p className="dark:text-white"> {reviewDescription} </p>
             </div>
         </div>
     );
