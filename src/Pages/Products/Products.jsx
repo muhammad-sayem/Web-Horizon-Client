@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ProductCard from "./ProductCard";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Products = () => {
     const axiosSecure = useAxiosSecure();
@@ -70,13 +70,13 @@ const Products = () => {
                         onChange={(e) => setSort(e.target.value)}
                         value={sort}
                     >
-                        <option value="" disabled>Sort By Upvotes</option>
-                        <option value="asc">Least Upvoted</option>
-                        <option value="desc">Most Upvoted</option>
+                        <option value="" disabled>Sort By Likes</option>
+                        <option value="asc">Least Liked</option>
+                        <option value="desc">Most Liekd</option>
                     </select>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-duration="2000">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-duration="2000">
                     {products.map((product) => (
                         <ProductCard
                             key={product._id}
