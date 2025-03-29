@@ -18,11 +18,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar fixed top-0 left-0 z-20 bg-base-100 w-full px-4 md:px-6 lg:px-8 shadow-md'>
+    <div className='navbar fixed top-0 left-0 z-20 bg-[#2A3439] w-full px-4 md:px-6 lg:px-8 shadow-md'>
       <div className='flex justify-between items-center w-full'>
         <Link to='/' className='flex items-center gap-2'>
           <img className='w-10 h-10' src={logo} alt='Logo' />
-          <span className='font-black text-md text-[#1A2634] dark:text-[#87CEEB] md:text-xl'>
+          <span className='font-black text-md text-[#87CEEB] md:text-xl'>
             Web Horizon
           </span>
         </Link>
@@ -77,12 +77,12 @@ const Navbar = () => {
             </button>
             <ul className='mt-10 space-y-4'>
               <li>
-                <Link to='/' className='font-bold text-[16px] text-[#1A2634] dark:text-[#87CEEB]' onClick={() => setMenuOpen(false)}>
+                <Link to='/' className='font-bold text-[16px] text-[#87CEEB]' onClick={() => setMenuOpen(false)}>
                   Home
                 </Link>
               </li>
               <li>
-                <Link to='/products' className='font-bold text-[16px] text-[#1A2634] dark:text-[#87CEEB]' onClick={() => setMenuOpen(false)}>
+                <Link to='/products' className='font-bold text-[16px] text-[#87CEEB]' onClick={() => setMenuOpen(false)}>
                   Products
                 </Link>
               </li>
@@ -100,12 +100,12 @@ const Navbar = () => {
         <div className='hidden md:flex items-center space-x-4'>
           <ul className='flex space-x-4'>
             <li>
-              <Link to='/' className='font-bold text-[16px] text-[#1A2634] dark:text-[#87CEEB]'>
+              <Link to='/' className='font-bold text-[16px] text-[#87CEEB]'>
                 Home
               </Link>
             </li>
             <li>
-              <Link to='/products' className='font-bold text-[16px] text-[#1A2634] dark:text-[#87CEEB]'>
+              <Link to='/products' className='font-bold text-[16px] text-[#87CEEB]'>
                 Products
               </Link>
             </li>

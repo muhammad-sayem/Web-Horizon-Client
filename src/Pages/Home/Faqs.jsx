@@ -8,7 +8,7 @@ const Faqs = () => {
     });
 
     return (
-        <div className="text-[#87CEEB] mb-12">
+        <div className="text-[#1A2634] mb-12">
 
             <div className="gap-x-4 justify-between items-center">
 
@@ -17,55 +17,55 @@ const Faqs = () => {
                 </div>
 
                 <div className="w-full" data-aos="fade-up" data-aos-duration="2000">
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" defaultChecked />
-                        <div className="collapse-title text-2xl font-bold"> 1. What is Tech Horizon?</div>
+                        <div className="collapse-title text-xl font-bold"> 1. What is Web Horizon?</div>
                         <div className="collapse-content">
-                            <p>Tech Horizon is a platform where users can discover, share, and review tech products such as web apps, AI tools, software, games, and mobile apps. It allows users to upvote/downvote products, submit new ones, and engage with a tech-focused community.</p>
+                            <p>Tech Horizon is a platform where users can discover, share, and review websites. It allows users to like products, submit new ones, and engage with a tech-focused community.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-2xl font-bold">2. How do I submit a product on Tech Horizon? </div>
+                        <div className="collapse-title text-xl font-bold">2. How do I submit a product on Web Horizon? </div>
                         <div className="collapse-content">
-                            <p>To submit a product, create an account, navigate to the "Submit Product" page, and provide details such as the name, description, category, and a valid link. Your submission will go through a moderation process before being published.</p>
+                            <p>To submit a product, create an account, navigate to the "Add Product" page, and provide details such as the name, description, category, and a valid link. Your submission will go through a moderation process before being published.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-2xl font-bold">3. How can I report a product or review?
+                        <div className="collapse-title text-xl font-bold">3. How can I report a product or review?
                         </div>
                         <div className="collapse-content">
                             <p>If you find a product or review that violates our guidelines, you can report it using the "Report" button. Our moderation team will review the issue and take necessary action.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-2xl font-bold"> 4. How does the product moderation process work?
+                        <div className="collapse-title text-xl font-bold"> 4. How does the product moderation process work?
                         </div>
                         <div className="collapse-content">
                             <p>All submitted products go through a review process by our moderation team. We ensure that each product meets our quality and authenticity standards before being published. If a submission is rejected, users will receive feedback on necessary changes.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-2xl font-bold">  5. How does the upvote system work?
+                        <div className="collapse-title text-xl font-bold">  5. How does the like system work?
                         </div>
                         <div className="collapse-content">
-                            <p>Users can upvote products they find useful or innovative. The more upvotes a product receives, the higher its visibility on the platform, helping the best tech products gain traction.</p>
+                            <p>Users can like products they find useful or innovative. The more likes a product receives, the higher its visibility on the platform, helping the best tech products gain traction.</p>
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#1A2634] mb-2">
+                    <div className="collapse collapse-arrow bg-[#87CEEB] mb-2">
                         <input type="radio" name="my-accordion-2" />
-                        <div className="collapse-title text-2xl font-bold"> 6. Is Tech Horizon free to use?
+                        <div className="collapse-title text-xl font-bold"> 6. Is Web Horizon free to use?
                         </div>
                         <div className="collapse-content">
-                            <p>Yes, Tech Horizon is free to use for discovering and reviewing products. However, certain premium features, such as product promotions and advanced insights, require a subscription.</p>
+                            <p>Yes, Web Horizon is free to use for discovering and reviewing websites. However, certain premium features, such as product promotions and advanced insights, require a subscription.</p>
                         </div>
                     </div>
                 </div>

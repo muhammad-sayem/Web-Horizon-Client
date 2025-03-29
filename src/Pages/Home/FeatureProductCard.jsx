@@ -86,8 +86,6 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                             <p className="text-black font-bold text-md group-hover:text-[#87CEEB]">{upvotes}</p>
                         </div>
                     </button>
-
-
                 </div>
             </div>
         </div >

@@ -31,7 +31,7 @@ const FeaturedProducts = () => {
     console.log(featuredProducts);
 
     return (
-        <div className="my-8 lg:my-16">
+        <div className="my-8">
             <h2 className="text-[#1A2634] dark:text-[#87CEEB] text-4xl font-bold mb-6 text-center" data-aos="fade-down"
                 data-aos-duration="2000"> {text} <Cursor></Cursor> </h2>
 

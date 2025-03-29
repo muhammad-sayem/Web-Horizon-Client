@@ -41,7 +41,7 @@ const Users = () => {
                 {text} <Cursor />
             </h2>
 
-            <div className='md:flex justify-center gap-x-2 dark:gap-x-6'>
+            <div className='md:flex justify-center gap-x-6'>
                 <div className='shadow-xl dark:shadow-[1px_1px_8px_#87CEEB] p-12 rounded-xl dark:text-[#87CEEB]' data-aos="fade-left"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
