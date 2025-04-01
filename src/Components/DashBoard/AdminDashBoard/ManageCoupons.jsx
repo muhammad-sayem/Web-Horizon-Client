@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import CouponCard from "./CouponCard";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageCoupons = () => {
   const { user } = useAuth();
@@ -67,7 +67,6 @@ const ManageCoupons = () => {
         }
       </div>
 
-
       <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold mt-16 mb-8 dark:text-[#87CEEB]">
         Add New Coupon
       </h2>
@@ -120,7 +119,7 @@ const ManageCoupons = () => {
         </div>
 
         <div className="my-8">
-            <button className="btn w-full bg-[#1A2634] dark:bg-[#87CEEB] dark:text-black text-white text-xl font-bold">
+            <button className="btn w-full bg-[#1A2634] dark:bg-[#87CEEB] dark:text-black text-white text-xl font-bold dark:hover:text-[#87CEEB] dark:hover:border-2 dark:hover:border-[#87CEEB]">
             Add Coupon
           </button>
         </div>

@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAuth from '../../../Hooks/useAuth';
 import LoadingSpinner from '../../../Shared/LoadingSpinner';
-import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useState } from 'react';
 import { imageUpload } from '../../../api/utils';
 import { WithContext as ReactTags } from "react-tag-input";
+import useAuth from '../../../hooks/useAuth';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AddProducts = () => {
     const { user, loading } = useAuth();
@@ -196,7 +196,7 @@ const AddProducts = () => {
                 </div>
 
                 <div className="w-full px-6 lg:px-0 lg:w-4/5 mx-auto mt-4">
-                    <button className="btn w-full bg-[#1A2634] text-white text-xl font-bold"> Add Product </button>
+                    <button className="btn w-full bg-[#1A2634] text-white text-xl font-bold hover:text-[#1A2634] hover:border-2 hover:border-[#1A2634]"> Add Product </button>
                 </div>
             </form>
         </div>

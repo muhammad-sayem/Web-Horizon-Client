@@ -93,7 +93,7 @@ const ReviewProducts = () => {
           <tbody>
             {sortedProducts.map(product => (
               <tr key={product._id} className="border border-gray-300">
-                <td className="px-2 py-2 text-sm md:text-md">{product.productName}</td>
+                <td className="px-2 py-2 text-sm md:text-md dark:text-[#87CEEB]">{product.productName}</td>
 
 
                 <td className="px-2 py-2">

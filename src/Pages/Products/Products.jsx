@@ -92,7 +92,7 @@ const Products = () => {
                         <button
                             key={number}
                             onClick={() => setCurrentPage(number + 1)}
-                            className={`px-4 py-2 border rounded-md ${currentPage === number + 1 ? 'bg-[#87CEEB] text-black' : 'bg-[#1A2634] text-[#87CEEB]'}`}
+                            className={`px-4 py-2 border rounded-md ${currentPage === number + 1 ? 'bg-[#1A2634] text-[#87CEEB]' : 'bg-[#87CEEB] text-[#1A2634]'}`}
                         >
                             {number + 1}
                         </button>

@@ -96,10 +96,10 @@ const ManageUsers = () => {
           <tbody>
             {allUsers.map((singleUser) => (
               <tr key={singleUser._id} className="border-b border-gray-300 dark:border-[#87CEEB] dark:text-white">
-                <td className="p-3 text-center">
+                <td className="p-3 text-center dark:text-[#87CEEB]">
                   {singleUser?.name}
                 </td>
-                <td className="p-3 text-center">
+                <td className="p-3 text-center dark:text-[#87CEEB]">
                   {singleUser?.email}
                 </td>
 

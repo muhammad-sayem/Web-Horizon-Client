@@ -73,7 +73,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                 </div>
 
                 <div className="flex gap-x-1">
-                    <Link to={`/product/${_id}`}> <button className="px-3 py-1 bg-[#1A2634] text-[#87CEEB]  hover:text-[#1A2634] hover:bg-[#87CEEB] dark:bg-[#87CEEB] dark:text-[#1A2634] dark:hover:text-[#87CEEB] font-bold text-md rounded-md"> Details </button> </Link>
+                    <Link to={`/product/${_id}`}> <button className="px-3 py-1 bg-[#1A2634] text-[#87CEEB]  hover:text-[#1A2634] hover:bg-[#87CEEB] dark:bg-[#87CEEB] dark:text-[#1A2634] dark:hover:text-[#87CEEB] dark:hover:bg-[#1A2634] dark:hover:border-2 dark:hover:border-[#87CEEB] font-bold text-md rounded-md"> Details </button> </Link>
 
                     <button onClick={() => updateUpvote(_id)}
                         disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}

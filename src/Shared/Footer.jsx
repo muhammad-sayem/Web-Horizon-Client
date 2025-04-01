@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="">
           <div className="flex items-center gap-x-4">
             <p> <img className="w-16 h-16" src={logo} alt="" /> </p>
-            <h3 className="text-3xl font-bold mb-4 text-[#87CEEB]">  Tech Horizon </h3>
+            <h3 className="text-3xl font-bold mb-4 text-[#87CEEB]"> Web Horizon </h3>
           </div>
           <p className="text-[#87CEEB] text-lg"> Exploring the Web, discover, share, and elevate the latest in websites, web apps, portfolios, blogs, e-commerce platforms, and more. Join Web Horizon to connect with creators, upvote your favorites, and be part of the future of the web. Unlock premium features and shape the next wave of online innovation with us! </p>
         </div>
