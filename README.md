@@ -1,5 +1,5 @@
-Website Name: Tech Horizon
-Live Link: https://tech-horizon-final.netlify.app/
+Website Name: Web Horizon
+Live Link: https://web-horizon-final.netlify.app/
 
 Features: 
     1) Separate Roles used (Admin, Moderator, User)
