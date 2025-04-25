@@ -54,7 +54,7 @@ const ManageCoupons = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-12">
 
-      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold mt-4 mb-10 dark:text-[#87CEEB]">
+      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold mt-4 mb-10 darkDamagetext-[#87CEEB]">
         Available Coupons
       </h2>
 
@@ -67,7 +67,7 @@ const ManageCoupons = () => {
         }
       </div>
 
-      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold mt-16 mb-8 dark:text-[#87CEEB]">
+      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold mt-16 mb-8 darkDamagetext-[#87CEEB]">
         Add New Coupon
       </h2>
 
@@ -76,7 +76,7 @@ const ManageCoupons = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
           <div>
-            <p className="text-[#1A2634] text-lg font-bold dark:text-[#87CEEB]">Coupon Code</p>
+            <p className="text-[#1A2634] text-lg font-bold darkDamagetext-[#87CEEB]">Coupon Code</p>
             <input
               type="text"
               name="couponCode"
@@ -87,7 +87,7 @@ const ManageCoupons = () => {
           </div>
 
           <div>
-            <p className="text-[#1A2634] text-lg font-bold dark:text-[#87CEEB]">Expiry Date</p>
+            <p className="text-[#1A2634] text-lg font-bold darkDamagetext-[#87CEEB]">Expiry Date</p>
             <input
               type="date"
               name="expiryDate"
@@ -98,7 +98,7 @@ const ManageCoupons = () => {
         </div>
 
         <div className="mt-6">
-          <p className="text-[#1A2634] text-lg font-bold dark:text-[#87CEEB]">Coupon Description</p>
+          <p className="text-[#1A2634] text-lg font-bold darkDamagetext-[#87CEEB]">Coupon Description</p>
           <textarea
             className="textarea textarea-bordered w-full"
             name="couponDescription"
@@ -108,7 +108,7 @@ const ManageCoupons = () => {
         </div>
 
         <div className="mt-6">
-          <p className="text-[#1A2634] text-lg font-bold dark:text-[#87CEEB]">Discount Amount</p>
+          <p className="text-[#1A2634] text-lg font-bold darkDamagetext-[#87CEEB]">Discount Amount</p>
           <input
             type="text"
             name="discountAmount"
@@ -119,7 +119,7 @@ const ManageCoupons = () => {
         </div>
 
         <div className="my-8">
-            <button className="btn w-full bg-[#1A2634] dark:bg-[#87CEEB] dark:text-black text-white text-xl font-bold dark:hover:text-[#87CEEB] dark:hover:border-2 dark:hover:border-[#87CEEB]">
+            <button className="btn w-full bg-[#1A2634] darkDamagebg-[#87CEEB] darkDamagetext-black text-white text-xl font-bold darkDamagehover:text-[#87CEEB] darkDamagehover:border-2 darkDamagehover:border-[#87CEEB]">
             Add Coupon
           </button>
         </div>

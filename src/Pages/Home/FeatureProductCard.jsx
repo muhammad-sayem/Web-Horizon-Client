@@ -52,17 +52,17 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
 
     return (
         <div>
-            <div className=" p-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] dark:shadow-[1px_1px_8px_#87CEEB] h-full rounded-2xl">
+            <div className=" p-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] darkDamageshadow-[1px_1px_8px_#87CEEB] h-full rounded-2xl">
 
                 <div className="flex gap-x-3 items-center">
                     {/* <img src={productImage} className="w-16 h-16 mb-4" alt="" /> */}
-                    <h2 className="text-xl dark:text-[#87CEEB] font-bold"> {productName} </h2>
+                    <h2 className="text-xl darkDamagetext-[#87CEEB] font-bold"> {productName} </h2>
                 </div>
 
-                <div className="mt-2 dark:text-white">
+                <div className="mt-2 darkDamagetext-white">
                     <p> {productDescription.length > 60 ? productDescription.slice(0, 60) + "..." : productDescription} </p>
 
-                    <div className="my-3 dark:text-[#87CEEB]">
+                    <div className="my-3 darkDamagetext-[#87CEEB]">
                         <h3 className="text-lg font-bold inline"> Tags: </h3>
                         {
                             tags.map((tag, index) => (
@@ -73,7 +73,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                 </div>
 
                 <div className="flex gap-x-1">
-                    <Link to={`/product/${_id}`}> <button className="px-3 py-1 bg-[#1A2634] text-[#87CEEB]  hover:text-[#1A2634] hover:bg-[#87CEEB] dark:bg-[#87CEEB] dark:text-[#1A2634] dark:hover:text-[#87CEEB] dark:hover:bg-[#1A2634] dark:hover:border-2 dark:hover:border-[#87CEEB] font-bold text-md rounded-md"> Details </button> </Link>
+                    <Link to={`/product/${_id}`}> <button className="px-3 py-1 bg-[#1A2634] text-[#87CEEB]  hover:text-[#1A2634] hover:bg-[#87CEEB] darkDamagebg-[#87CEEB] darkDamagetext-[#1A2634] darkDamagehover:text-[#87CEEB] darkDamagehover:bg-[#1A2634] darkDamagehover:border-2 darkDamagehover:border-[#87CEEB] font-bold text-md rounded-md"> Details </button> </Link>
 
                     <button onClick={() => updateUpvote(_id)}
                         disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}

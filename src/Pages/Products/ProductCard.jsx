@@ -48,18 +48,18 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
     return (
         <div>
-            <div className="w-full shadow-2xl dark:shadow-[1px_1px_8px_#87CEEB] p-8 rounded-2xl flex flex-col justify-between h-full">
+            <div className="w-full shadow-2xl darkDamageshadow-[1px_1px_8px_#87CEEB] p-8 rounded-2xl flex flex-col justify-between h-full">
                 <div className="flex items-center gap-x-4">
                     <img src={productImage} className="w-16 h-16" alt="" />
-                    <h3 className="text-xl dark:text-[#87CEEB] font-black"> {productName} </h3>
+                    <h3 className="text-xl darkDamagetext-[#87CEEB] font-black"> {productName} </h3>
                 </div>
 
-                <p className="text-md my-2 flex-grow dark:text-white">
+                <p className="text-md my-2 flex-grow darkDamagetext-white">
                     {productDescription.slice(0, 80)}{productDescription.length > 100 ? "..." : ""}
                 </p>
 
                 <div className="space-x-3 flex">
-                    <p className="text-lg font-black mb-2 inline dark:text-[#87CEEB]"> Tags: </p>
+                    <p className="text-lg font-black mb-2 inline darkDamagetext-[#87CEEB]"> Tags: </p>
                     {
                         tags.map((tag, index) => (
                             <p key={index} className="text-md inline ml-1"> {tag} |</p>
@@ -69,7 +69,7 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
                 <div className="flex items-center gap-x-2 justify- mt-2">
 
-                    <button className="btn rounded-xl text-[#87CEEB] font-bold text-lg bg-black dark:bg-[#87CEEB] dark:text-black hover:text-black dark:hover:text-[#87CEEB]"> <Link to={`/product/${_id}`}> Details </Link> </button>
+                    <button className="btn rounded-xl text-[#87CEEB] font-bold text-lg bg-black darkDamagebg-[#87CEEB] darkDamagetext-black hover:text-black darkDamagehover:text-[#87CEEB]"> <Link to={`/product/${_id}`}> Details </Link> </button>
 
                     <button
                         onClick={updateUpvote}

@@ -66,7 +66,7 @@ const Products = () => {
                     </div>
 
                     <select
-                        className='p-4 border-2 border-[#1A2634] rounded-lg text-gray-700 outline-none focus:ring focus:ring-[#1A2634] focus:ring-opacity-50 w-full md:w-1/6 text-lg font-bold dark:text-[#87CEEB]'
+                        className='p-4 border-2 border-[#1A2634] rounded-lg text-gray-700 outline-none focus:ring focus:ring-[#1A2634] focus:ring-opacity-50 w-full md:w-1/6 text-lg font-bold darkDamagetext-[#87CEEB]'
                         onChange={(e) => setSort(e.target.value)}
                         value={sort}
                     >

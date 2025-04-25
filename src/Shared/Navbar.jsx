@@ -56,7 +56,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className='mt-2'>
-                    <button onClick={handeSignOut} className='bg-gray-200 block text-center dark:text-[#87CEEB] dark:bg-black dark:font-bold'>
+                    <button onClick={handeSignOut} className='bg-gray-200 block text-center darkDamagetext-[#87CEEB] darkDamagebg-black darkDamagefont-bold'>
                       Logout
                     </button>
                   </li>
@@ -65,14 +65,14 @@ const Navbar = () => {
             </div>
           )}
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className='text-2xl text-[#1A2634] dark:text-[#87CEEB]'>
+          <button onClick={() => setMenuOpen(!menuOpen)} className='text-2xl text-[#1A2634] darkDamagetext-[#87CEEB]'>
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
 
         <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-transform transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
           <div className='w-64 bg-base-100 h-full shadow-lg p-5'>
-            <button onClick={() => setMenuOpen(false)} className='text-2xl text-[#1A2634] dark:text-[#87CEEB] absolute top-4 right-4'>
+            <button onClick={() => setMenuOpen(false)} className='text-2xl text-[#1A2634] darkDamagetext-[#87CEEB] absolute top-4 right-4'>
               <FiX />
             </button>
             <ul className='mt-10 space-y-4'>
@@ -88,7 +88,7 @@ const Navbar = () => {
               </li>
               {!user && (
                 <li>
-                  <Link to='/login' className='font-bold text-[#1A2634] dark:text-[#87CEEB]' onClick={() => setMenuOpen(false)}>
+                  <Link to='/login' className='font-bold text-[#1A2634] darkDamagetext-[#87CEEB]' onClick={() => setMenuOpen(false)}>
                     Login
                   </Link>
                 </li>
@@ -111,7 +111,7 @@ const Navbar = () => {
             </li>
             {!user && (
               <li>
-                <Link to='/login' className='font-bold text-[#1A2634] dark:text-[#87CEEB]'>
+                <Link to='/login' className='font-bold text-[#1A2634] darkDamagetext-[#87CEEB]'>
                   Login
                 </Link>
               </li>
@@ -146,7 +146,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className='mt-2'>
-                    <button onClick={handeSignOut} className='bg-gray-200 block text-center dark:text-[#87CEEB] dark:bg-black dark:font-bold'>
+                    <button onClick={handeSignOut} className='bg-gray-200 block text-center darkDamagetext-[#87CEEB] darkDamagebg-black darkDamagefont-bold'>
                       Logout
                     </button>
                   </li>

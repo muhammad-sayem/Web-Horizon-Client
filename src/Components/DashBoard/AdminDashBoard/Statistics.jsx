@@ -30,7 +30,7 @@ const Statistics = () => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4 md:my-8 lg:my-12 dark:text-[#87CEEB]"> Admin Statistics </h2>
+            <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4 md:my-8 lg:my-12 darkDamagetext-[#87CEEB]"> Admin Statistics </h2>
             <ResponsiveContainer width="50%" height={300}>
                 <PieChart>
                     <Pie
