@@ -11,15 +11,19 @@ const Home = () => {
 
     return (
         <div>
-            <Carousel></Carousel>
-            <div className="w-11/12 mx-auto">
-                <FeaturedProducts></FeaturedProducts>
-                <TrendingProducts></TrendingProducts>
+            <div className="mb-16">
+                <Carousel></Carousel>
+            </div>
+            <div>
+                <div className="">
+                    <FeaturedProducts></FeaturedProducts>
+                    <TrendingProducts></TrendingProducts>
+                </div>
                 <WhatCanYouDo></WhatCanYouDo>
                 <Users></Users>
                 <Reviews></Reviews>
                 <CouponCarousel></CouponCarousel>
-                <Faqs></Faqs>
+                {/* <Faqs></Faqs> */}
             </div>
         </div>
     );

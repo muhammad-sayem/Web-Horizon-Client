@@ -10,8 +10,8 @@ import 'swiper/css/navigation'
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
+import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 export default function CouponCarousel() {
   const [text] = useTypewriter({
@@ -30,8 +30,8 @@ export default function CouponCarousel() {
   });
 
   return (
-    <div className='mx-auto mb-8'>
-      <h2 className="text-4xl darkDamagetext-[#87CEEB] font-bold mb-2 text-center" data-aos="fade-down" data-aos-duration="2000"> {text} <Cursor></Cursor> </h2>
+    <div className='w-4/5 mx-auto mb-28'>
+      <h2 className="text-4xl darkDamagetext-[#f97d5e] font-bold mb-2 text-center text-[#F97D5E]" data-aos="fade-down" data-aos-duration="1500"> {text} <Cursor></Cursor> </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -43,11 +43,11 @@ export default function CouponCarousel() {
         pagination={{ clickable: true }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className='mySwiper'
+        className='mySwiper' data-aos="fade-up" data-aos-duration="1500"
       >
         {allCoupons.map((coupon, index) => (
           <SwiperSlide key={index}>
-            <div className='flex justify-center w-full h-[350px] md:h-[300px] lg:h-72 text-[#1A2634] bg-[#87CEEB]'>
+            <div className='flex justify-center text-white h-[350px] md:h-[300px] lg:h-72 bg-[#f97d5e]'>
               <div className='text-center py-5'>
                 <div className='flex justify-center items-center gap-x-2 mb-6'>
                   <FaStar size={30} />
@@ -56,7 +56,7 @@ export default function CouponCarousel() {
                 </div>
 
                 <div>
-                  <div className='bg-[#1A2634] text-[#87CEEB] px-12 md:px-48 lg:px-96 py-1 mb-4'>
+                  <div className=' text-white px-12 md:px-48 lg:px-96 py-1 mb-4'>
                     <h3 className='text-5xl font-bold mb-2'> Flat ${coupon.discountAmount} Off </h3>
                     <p className='text-xl font-bold'> Coupon Code: {coupon.couponCode} </p>
                   </div>

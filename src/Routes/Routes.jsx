@@ -25,6 +25,9 @@ import ModeratorMyProfile from "../Components/DashBoard/ModeratorDashBoard/Moder
 import AdminMyProfile from "../Components/DashBoard/AdminDashBoard/AdminMyProfile";
 import ModeratorStatistics from "../Components/DashBoard/ModeratorDashBoard/ModeratorStatistics";
 import UserStatistics from "../Components/DashBoard/UserDashBoard/UserStatistics";
+import AboutUs from "../Pages/AboutUs/AboutUs";
+import Faq from "../Pages/Faq/Faq";
+import WhyChooseUs from "../Pages/WhyChooseUs/WhyChooseUs";
 
 
 export const router = createBrowserRouter([
@@ -53,6 +56,18 @@ export const router = createBrowserRouter([
                 path: '/product/:id',
                 element: <ProductDetails></ProductDetails>
             },
+            {
+                path: '/about-us',
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/faq',
+                element: <Faq></Faq>
+            },
+            {
+                path: '/why-choose-us',
+                element: <WhyChooseUs></WhyChooseUs>
+            }
         ]
     },
 

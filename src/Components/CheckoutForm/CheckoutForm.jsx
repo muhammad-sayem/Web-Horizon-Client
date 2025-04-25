@@ -143,7 +143,7 @@ const CheckoutForm = () => {
             Apply
           </button>
         </div>
-        <button type="submit" className='btn w-full bg-[#1A2634] text-[#87CEEB]' disabled={!stripe || !clientSecret}>
+        <button type="submit" className='btn w-full bg-[#1A2634] text-[#f97d5e]' disabled={!stripe || !clientSecret}>
           Pay ${discountedPrice}
         </button>
       </form>

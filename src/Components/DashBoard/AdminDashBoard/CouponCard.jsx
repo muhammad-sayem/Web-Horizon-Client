@@ -38,11 +38,11 @@ const CouponCard = ({ coupon, refetch }) => {
     }
 
     return (
-        <div className="border border-gray-300 darkDamageborder-[#87CEEB] shadow-2xl px-6 py-10 rounded-tr-3xl rounded-bl-3xl">
-            <h2 className="text-xl font-black mb-1 darkDamagetext-[#87CEEB]"> Code: {couponCode} </h2>
-            <p className="text-md font-bold mb-1 darkDamagetext-[#87CEEB]"> Discount Amount: {discountAmount} </p>
+        <div className="border border-gray-300 darkDamageborder-[#f97d5e] shadow-2xl px-6 py-10 rounded-tr-3xl rounded-bl-3xl">
+            <h2 className="text-xl font-black mb-1 darkDamagetext-[#f97d5e]"> Code: {couponCode} </h2>
+            <p className="text-md font-bold mb-1 darkDamagetext-[#f97d5e]"> Discount Amount: {discountAmount} </p>
             <p className="m2-4 text-xs darkDamagetext-white"> {couponDescription} </p>
-            <p className="text-md font-bold mb-2 darkDamagetext-[#87CEEB]"> Expiry Date: {expiryDate} </p>
+            <p className="text-md font-bold mb-2 darkDamagetext-[#f97d5e]"> Expiry Date: {expiryDate} </p>
 
             <div className="space-x-2 darkDamagetext-black">
                 <button onClick={() => document.getElementById(`my_modal_${_id}`).showModal()} className="bg-blue-500 font-bold text-md px-3 py-1 rounded-md"> Edit Coupon </button>

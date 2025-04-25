@@ -47,7 +47,7 @@ const ReportedContents = () => {
 
     return (
         <div className="max-w-full px-2">
-            <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold my-4 darkDamagetext-[#87CEEB]">
+            <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold my-4 darkDamagetext-[#f97d5e]">
                 Reported Contents
             </h2>
 
@@ -55,7 +55,7 @@ const ReportedContents = () => {
                 <table className="table table-zebra w-full min-w-max border border-gray-300">
                     {/* Table Head */}
                     <thead>
-                        <tr className="bg-gray-200 darkDamagebg-[#87CEEB] darkDamagetext-black text-sm md:text-md">
+                        <tr className="bg-gray-200 darkDamagebg-[#f97d5e] darkDamagetext-black text-sm md:text-md">
                             <th className="px-2 py-2 text-center">Product Name</th>
                             <th className="px-2 py-2 text-center">Details</th>
                             <th className="px-2 py-2 text-center">Delete</th>

@@ -1,23 +1,23 @@
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import faqPic from "../../assets/images/faq.png";
 
-const Faqs = () => {
+const Faq = () => {
     const [text] = useTypewriter({
-        words: ["FAQ'S"],
+        words: ["Frequently Asked Questions"],
         loop: 0
     });
 
     return (
-        <div className="text-[#1A2634] mb-12">
+        <div className="text-[#1A2634] my-28 w-4/5 mx-auto">
 
             <div className="gap-x-4 justify-between items-center">
 
-                <div className="w-1/6 mx-auto" data-aos="fade-down" data-aos-duration="2000">
-                    <img src={faqPic} className="w-full" alt="" />
+                <div data-aos="fade-down" data-aos-duration="1500">
+                    <h2 className="text-[#f97d5e] text-center darkDamagetext-[#f97d5e] text-4xl font-bold mb-4"> {text} <Cursor></Cursor> </h2>
                 </div>
 
-                <div className="w-full" data-aos="fade-up" data-aos-duration="2000">
-                    <div className="collapse collapse-arrow bg-[#f97d5e] mb-2">
+                <div className="w-full" data-aos="fade-up" data-aos-duration="1500">
+                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
                         <input type="radio" name="my-accordion-2" defaultChecked />
                         <div className="collapse-title text-xl font-bold"> 1. What is Web Horizon?</div>
                         <div className="collapse-content">
@@ -25,7 +25,7 @@ const Faqs = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#f97d5e] mb-2">
+                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold">2. How do I submit a product on Web Horizon? </div>
                         <div className="collapse-content">
@@ -33,7 +33,7 @@ const Faqs = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#f97d5e] mb-2">
+                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold">3. How can I report a product or review?
                         </div>
@@ -42,7 +42,7 @@ const Faqs = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#f97d5e] mb-2">
+                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold"> 4. How does the product moderation process work?
                         </div>
@@ -51,7 +51,7 @@ const Faqs = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#f97d5e] mb-2">
+                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold">  5. How does the like system work?
                         </div>
@@ -60,7 +60,7 @@ const Faqs = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow bg-[#f97d5e] mb-2">
+                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold"> 6. Is Web Horizon free to use?
                         </div>
@@ -74,4 +74,4 @@ const Faqs = () => {
     );
 };
 
-export default Faqs;
+export default Faq;

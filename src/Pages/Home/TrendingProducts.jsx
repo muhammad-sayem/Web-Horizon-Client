@@ -2,8 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import TrendingProductCard from "./TrendingProductCard";
 import { Link } from "react-router-dom";
-import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const TrendingProducts = () => {
     const [text] = useTypewriter({
@@ -29,10 +29,20 @@ const TrendingProducts = () => {
     // console.log(featuredProducts);
 
     return (
-        <div className="mb-8">
-            <h2 className="text-[#1A2634] darkDamagetext-[#87CEEB] text-4xl font-bold mb-6 text-center" data-aos="fade-down" data-aos-duration="2000"> {text} <Cursor></Cursor> </h2>
+        <div className="w-4/5 mx-auto">
+            <div className="flex justify-between mb-4" data-aos="fade-down" data-aos-duration="1500">
+                <h2 className="text-[#f97d5e] darkDamagetext-[#f97d5e] text-4xl font-bold"> {text} <Cursor></Cursor> </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" data-aos="fade-up" data-aos-duration="2000">
+                <div>
+                    <Link to='/products'>
+                        <div className="">
+                            <button className="w-full text-white bg-[#f97d5e] px-12 py-2 rounded-xl text-xl font-bold transition-transform duration-200 ease-in-out transform hover:scale-105"> View All Websites  </button>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" data-aos="fade-up" data-aos-duration="1500">
                 {
                     displayProducts.map(treProduct => <TrendingProductCard
                         key={treProduct._id}
@@ -42,12 +52,7 @@ const TrendingProducts = () => {
                 }
             </div>
 
-            <Link to='/products'>
-                <div className="">
-                    <button className="w-full mt-6 bg-[#1A2634] text-[#87CEEB] hover:bg-[#87CEEB] hover:text-[#1A2634] hover:border-2 hover:border-[#1A2634] darkDamagetext-[#1A2634] darkDamagebg-[#87CEEB] darkDamagehover:text-[#87CEEB] darkDamagehover:bg-black darkDamagehover:border-2 darkDamagehover:border-[#87CEEB] px-3 py-2 rounded-xl text-lg font-bold"> View All  </button>
 
-                </div>
-            </Link>
         </div>
     );
 };

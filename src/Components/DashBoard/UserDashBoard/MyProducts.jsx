@@ -53,7 +53,7 @@ const MyProducts = () => {
 
   return (
     <div className="max-w-full w-full px-2 overflow-hidden">
-      <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold darkDamagetext-[#87CEEB] my-4">
+      <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold darkDamagetext-[#f97d5e] my-4">
         My Products
       </h2>
 
@@ -61,7 +61,7 @@ const MyProducts = () => {
         <table className="table table-zebra w-full min-w-max table-fixed border border-gray-300">
           {/* Table Header */}
           <thead>
-            <tr className="bg-gray-200 darkDamagebg-[#87CEEB] darkDamagetext-black text-sm md:text-md">
+            <tr className="bg-gray-200 darkDamagebg-[#f97d5e] darkDamagetext-black text-sm md:text-md">
               <th className="px-2 py-2">Product Name</th>
               <th className="px-2 py-2">Likes</th>
               <th className="px-2 py-2">Status</th>

@@ -22,7 +22,7 @@ const FeaturedProducts = () => {
         }
     });
 
-    const displayProducts = showAll ? featuredProducts : featuredProducts.slice(0, 4);
+    const displayProducts = showAll ? featuredProducts : featuredProducts.slice(0, 3);
 
     if (isLoading) {
         return <LoadingSpinner></LoadingSpinner>
@@ -31,10 +31,20 @@ const FeaturedProducts = () => {
     console.log(featuredProducts);
 
     return (
-        <div className="my-8">
-            <h2 className="text-[#1A2634] darkDamagetext-[#87CEEB] text-4xl font-bold mb-6 text-center"> {text} <Cursor></Cursor> </h2>
+        <div className="w-4/5 mb-28 mx-auto">
+            <div className="flex justify-between mb-4" data-aos="fade-down" data-aos-duration="1500">
+                <h2 className="text-[#f97d5e] darkDamagetext-[#f97d5e] text-4xl font-bold"> {text} <Cursor></Cursor> </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <button
+                        onClick={() => setShowAll(!showAll)}
+                        className="w-full text-white bg-[#f97d5e] px-12 py-2 rounded-xl text-xl font-bold transition-transform duration-200 ease-in-out transform hover:scale-105">
+                        {showAll ? "View Less" : "View All Featured"}
+                    </button>
+                </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" data-aos="fade-up" data-aos-duration="1500">
                 {
                     displayProducts.map(feaProduct => <FeatureProductCard
                         key={feaProduct._id}
@@ -43,11 +53,8 @@ const FeaturedProducts = () => {
                     ></FeatureProductCard>)
                 }
             </div>
-
-            <div className="">
-                <button onClick={() => setShowAll(!showAll)} className="w-full mt-6 bg-[#1A2634] text-[#87CEEB] hover:bg-[#87CEEB] hover:text-[#1A2634] hover:border-2 hover:border-[#1A2634] darkDamagetext-[#1A2634] darkDamagebg-[#87CEEB] darkDamagehover:text-[#87CEEB] darkDamagehover:bg-black darkDamagehover:border-2 darkDamagehover:border-[#87CEEB] px-3 py-2 rounded-xl text-lg font-bold"> {showAll ? "View Less" : "View All"} </button>
-            </div>
         </div>
+
     );
 };
 

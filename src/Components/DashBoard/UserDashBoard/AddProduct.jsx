@@ -81,7 +81,7 @@ const AddProducts = () => {
     }
 
     return (
-        <div className="bg-[#87CEEB] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
+        <div className="bg-[#f97d5e] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
             <h2 className="text-4xl text-center text-[#1A2634] font-bold mb-8"> Add a Product </h2>
 
             <form onSubmit={handleSubmit}>
@@ -166,8 +166,8 @@ const AddProducts = () => {
                                     inputFieldPosition="inline"
                                     placeholder="Add new tag"
                                     classNames={{
-                                        tag: "bg-[#1A2634] text-[#87CEEB] px-3 py-1 rounded mr-2 mb-2",
-                                        remove: "text-[#87CEEB] ml-2 cursor-pointer font-bold"
+                                        tag: "bg-[#1A2634] text-[#f97d5e] px-3 py-1 rounded mr-2 mb-2",
+                                        remove: "text-[#f97d5e] ml-2 cursor-pointer font-bold"
                                     }}
                                 />
                             </div>
@@ -176,7 +176,7 @@ const AddProducts = () => {
                         <div className='flex flex-col w-max'>
                             <p className='text-[#1A2634] text-lg font-bold mb-2'> Upload Product Image </p>
                             <label>
-                                <div className='bg-[#1A2634] text-[#87CEEB]  rounded font-semibold cursor-pointer py-1 px-12 hover:bg-[#1A2634] text-lg'>
+                                <div className='bg-[#1A2634] text-[#f97d5e]  rounded font-semibold cursor-pointer py-1 px-12 hover:bg-[#1A2634] text-lg'>
                                     {uploadImageButtonText}
                                 </div>
                                 <input

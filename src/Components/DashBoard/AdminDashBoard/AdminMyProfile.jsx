@@ -26,10 +26,10 @@ const AdminMyProfile = () => {
  
 
   return (
-    <div className="w-full md:w-2/5 mx-auto my-12 shadow-2xl darkDamageshadow-[1px_1px_8px_#87CEEB] rounded-2xl p-5">
+    <div className="w-full md:w-2/5 mx-auto my-12 shadow-2xl darkDamageshadow-[1px_1px_8px_#f97d5e] rounded-2xl p-5">
 
       <div className=" mb-6 md:mb-0 text-center">
-        <h2 className="text-3xl font-bold mb-2 darkDamagetext-[#87CEEB]"> My Profile </h2>
+        <h2 className="text-3xl font-bold mb-2 darkDamagetext-[#f97d5e]"> My Profile </h2>
         <div className="flex justify-center my-4">
           <img
             src={user?.photoURL}

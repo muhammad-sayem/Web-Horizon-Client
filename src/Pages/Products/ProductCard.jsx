@@ -48,10 +48,10 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
     return (
         <div>
-            <div className="w-full shadow-2xl darkDamageshadow-[1px_1px_8px_#87CEEB] p-8 rounded-2xl flex flex-col justify-between h-full">
+            <div className="w-full shadow-2xl darkDamageshadow-[1px_1px_8px_#f97d5e] p-8 rounded-2xl flex flex-col justify-between h-full">
                 <div className="flex items-center gap-x-4">
                     <img src={productImage} className="w-16 h-16" alt="" />
-                    <h3 className="text-xl darkDamagetext-[#87CEEB] font-black"> {productName} </h3>
+                    <h3 className="text-xl darkDamagetext-[#f97d5e] font-black"> {productName} </h3>
                 </div>
 
                 <p className="text-md my-2 flex-grow darkDamagetext-white">
@@ -59,7 +59,7 @@ const ProductCard = ({ product, refetch, isLoading }) => {
                 </p>
 
                 <div className="space-x-3 flex">
-                    <p className="text-lg font-black mb-2 inline darkDamagetext-[#87CEEB]"> Tags: </p>
+                    <p className="text-lg font-black mb-2 inline darkDamagetext-[#f97d5e]"> Tags: </p>
                     {
                         tags.map((tag, index) => (
                             <p key={index} className="text-md inline ml-1"> {tag} |</p>
@@ -69,14 +69,14 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
                 <div className="flex items-center gap-x-2 justify- mt-2">
 
-                    <button className="btn rounded-xl text-[#87CEEB] font-bold text-lg bg-black darkDamagebg-[#87CEEB] darkDamagetext-black hover:text-black darkDamagehover:text-[#87CEEB]"> <Link to={`/product/${_id}`}> Details </Link> </button>
+                    <button className="btn rounded-xl text-[#f97d5e] font-bold text-lg bg-black darkDamagebg-[#f97d5e] darkDamagetext-black hover:text-black darkDamagehover:text-[#f97d5e]"> <Link to={`/product/${_id}`}> Details </Link> </button>
 
                     <button
                         onClick={updateUpvote}
                         disabled={owner?.email === user?.email || hasUpvoted || role === "Admin" || role === "Moderator"}
                         className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/2 py-2 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === "Admin" || role === "Moderator"
                             ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                            : "bg-green-500 hover:bg-green-700 hover:text-[#87CEEB] hover:cursor-pointer"}`}
+                            : "bg-green-500 hover:bg-green-700 hover:text-[#f97d5e] hover:cursor-pointer"}`}
                     >
                         <AiFillLike size={25} /> Like ({upvotes})
                     </button>
