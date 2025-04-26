@@ -9,8 +9,9 @@ import { useState, useEffect } from "react";
 import ProductReviewModal from "./ProductReviewModal";
 import Reviews from "./Reviews";
 import UseRole from "../../hooks/useRole";
-import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../Hooks/useAuth";
+import { AiFillLike } from "react-icons/ai";
 
 const ProductDetails = () => {
     const axiosSecure = useAxiosSecure();
@@ -81,46 +82,46 @@ const ProductDetails = () => {
     }
 
     return (
-        <div className='w-2/3 mx-auto mt-28 mb-12'>
-            <div className='gap-x-8 p-12 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] darkDamageshadow-[1px_1px_8px_#f97d5e] rounded-2xl'>
+        <div className='w-2/3 mx-auto mt-40 mb-12'>
+            <div className='gap-x-8 px-12 py-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl'>
                 <div className='flex flex-col items-center'>
-                    <img src={productImage} alt='' className='h-16 w-16' />
-                    <h3 className="text-2xl font-black darkDamagetext-[#f97d5e]"> {productName} </h3>
+                    <h3 className="text-4xl font-black mb-6"> {productName} </h3>
+                    <img src={productImage} alt='' className='h-96 w-full rounded-xl border' />
                 </div>
 
                 <div className="my-8">
-                    <p className="text-lg text-gray-500 my-4 darkDamagetext-white"> {productDescription} </p>
+                    <p className="text-lg text-gray-500 my-4"> {productDescription} </p>
 
                     <div className="flex gap-x-4 items-center">
-                        <p className="text-xl font-black darkDamagetext-[#f97d5e]"> Tags: </p>
+                        <p className="text-xl font-black "> Tags: </p>
                         {tags.map((tag, index) => (
-                            <p key={index} className="text-[#1A2634] font-bold darkDamagetext-[#f97d5e] text-md">{tag} |</p>
+                            <p key={index} className="text-[#1A2634] font-bold text-md">{tag} |</p>
                         ))}
                     </div>
 
                     <div className="flex gap-x-3 my-8">
-                        <Link to={externalLink} className="flex justify-center items-center gap-x-2 text-xl font-bold border-2 border-black w-1/3 py-2 rounded-full hover:bg-[#1A2634] hover:text-[#f97d5e] darkDamagebg-[#f97d5e] darkDamagetext-[#1A2634] darkDamagehover:border-[#f97d5e]" target="_blank">
+                        <Link to={externalLink} className="flex justify-center items-center gap-x-2 text-xl font-bold border-2 border-black w-1/3 py-2 rounded-full transition-transform duration-200 ease-in-out transform hover:scale-105" target="_blank">
                             <FaExternalLinkAlt size={25}></FaExternalLinkAlt>  Visit
                         </Link>
 
                         <button
                             onClick={updateUpvote}
                             disabled={!user || owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}
-                            className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/3 py-2 rounded-full 
+                            className={`flex justify-center items-center gap-x-2 text-xl font-bold border-2 w-1/3 py-2 rounded-full 
                                 ${!user || owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                                     ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
-                                    : 'bg-green-500 hover:bg-green-700 hover:text-[#f97d5e] hover:cursor-pointer'}`}>
-                            <LuTriangle size={25}></LuTriangle> Upvote ({upvotes})
+                                    : 'border-[#f97d5e] transition-transform duration-200 ease-in-out transform hover:scale-105 hover:cursor-pointer'}`}>
+                            <AiFillLike size={25}></AiFillLike> Like ({upvotes})
                         </button>
 
-                        <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white  font-bold border-2 w-1/3 py-2 rounded-full  ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-red-900 cursor-not-allowed" : "bg-red-600 text-white"}`}>
+                        <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} onClick={handleReport} className={`flex justify-center items-center gap-x-2 text-xl text-white font-bold border-2 w-1/3 py-2 rounded-full transition-transform duration-200 ease-in-out transform hover:scale-105 ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-red-900 cursor-not-allowed" : "bg-red-600 text-white"}`}>
                             <MdReportGmailerrorred size={30}></MdReportGmailerrorred> Report
                         </button>
                     </div>
                 </div>
 
                 <div>
-                    <h2 className="text-3xl text-[#1A2634] font-bold my-4 darkDamagetext-[#f97d5e]"> Reviews </h2>
+                    <h2 className="text-3xl text-[#1A2634] font-bold my-4"> Reviews </h2>
                     <Reviews
                         key={product._id}
                         product={product}
@@ -128,7 +129,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div>
-                    <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`px-10 py-3 text-lg font-bold bg-[#1A2634] text-[#f97d5e] darkDamagetext-[#1A2634] darkDamagebg-[#f97d5e] darkDamagehover:bg-[#1A2634] darkDamagehover:text-[#f97d5e] darkDamagehover:border darkDamagehover:border-[#f97d5e] ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#1A2634] text-white"}`}> Add a Review </button>
+                    <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`px-10 py-3 text-lg font-bold bg-[#1A2634] text-[#f97d5e] ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#f97d5e] text-white transition-transform duration-200 ease-in-out transform hover:scale-105"}`}> Add a Review </button>
                 </div>
 
                 {/* Modal Part */}

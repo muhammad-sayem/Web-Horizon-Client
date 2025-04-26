@@ -88,7 +88,7 @@ const Navbar = () => {
               </li>
               {!user && (
                 <li>
-                  <Link to='/login' className='font-bold text-[#1A2634] darkDamagetext-[#f97d5e]' onClick={() => setMenuOpen(false)}>
+                  <Link to='/login' className='font-bold text-[#1A2634]' onClick={() => setMenuOpen(false)}>
                     Login
                   </Link>
                 </li>
@@ -121,6 +121,14 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+            {
+              user && (
+                <Link className='text-[#f97d5e] font-bold' to={role === 'User' ? '/dashboard/my-profile' 
+                  : role === 'Moderator' ? '/dashboard/moderator/my-profile'
+                        : role === 'Admin' ? '/dashboard/admin/my-profile': '/'}
+                > DASHBOARD </Link>
+              )
+            }
           </ul>
 
           {user && (

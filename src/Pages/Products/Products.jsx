@@ -3,7 +3,8 @@ import ProductCard from "./ProductCard";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import sorryImage from "../../assets/images/sorry image.png";
 
 const Products = () => {
     const axiosSecure = useAxiosSecure();
@@ -36,6 +37,14 @@ const Products = () => {
         refetch();
     };
 
+    const handleShowAll = () => {
+        setSearch("");
+        setQuery("");
+        setSort("");
+        setCurrentPage(1);
+        refetch();
+    };
+
     if (isLoading) {
         return <LoadingSpinner />;
     }
@@ -46,9 +55,10 @@ const Products = () => {
                 <title>Products</title>
             </Helmet>
 
-            <div className="w-11/12 mx-auto mt-32 mb-12">
-                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-                    <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#f97d5e] border-4 border-[#f97d5e] w-full md:w-1/2 lg:w-1/3'>
+            <div className="w-4/5 mx-auto mt-40 mb-12">
+
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20">
+                    <div className='flex items-center p-1 overflow-hidden rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-black focus-within:ring-[#f97d5e] border-2 border-[#f97d5e] w-full md:w-1/2 lg:w-1/3'>
                         <input
                             className='flex-grow px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                             type='text'
@@ -60,13 +70,13 @@ const Products = () => {
                         />
                         <button
                             onClick={handleSearch}
-                            className='px-1 md:px-4 py-3 text-sm tracking-wider font-black uppercase transition-colors duration-300 transform bg-black text-[#f97d5e] rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                            className='px-1 md:px-4 py-3 text-sm tracking-wider font-black uppercase transition-transform duration-200 ease-in-out transform hover:scale-105 text-white bg-[#f97d5e] rounded-md  focus:bg-gray-600 focus:outline-none'>
                             Search
                         </button>
                     </div>
 
                     <select
-                        className='p-4 border-2 border-[#1A2634] rounded-lg text-gray-700 outline-none focus:ring focus:ring-[#1A2634] focus:ring-opacity-50 w-full md:w-1/6 text-lg font-bold darkDamagetext-[#f97d5e]'
+                        className='p-4 border-2 border-[#f97d5e] rounded-lg text-gray-700 outline-none focus:ring focus:ring-[#1A2634] focus:ring-opacity-50 w-full md:w-1/6 text-lg font-bold'
                         onChange={(e) => setSort(e.target.value)}
                         value={sort}
                     >
@@ -74,18 +84,33 @@ const Products = () => {
                         <option value="asc">Least Liked</option>
                         <option value="desc">Most Liekd</option>
                     </select>
+
+                    <div>
+                        <button onClick={handleShowAll} className="px-4 py-2  rounded-lg bg-[#f97d5e] text-white text-lg font-bold transition-transform duration-200 ease-in-out transform hover:scale-105"> Show All </button>
+                    </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="zoom-in" data-aos-duration="2000">
-                    {products.map((product) => (
-                        <ProductCard
-                            key={product._id}
-                            product={product}
-                            refetch={refetch}
-                            isLoading={isLoading}
-                        />
-                    ))}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 min-h-[300px] place-items-center" data-aos="zoom-in" data-aos-duration="2000">
+                    {products.length > 0 ? (
+                        products.map((product, index) => (
+                            <ProductCard
+                                key={product._id}
+                                product={product}
+                                refetch={refetch}
+                                isLoading={isLoading}
+                                animation={index % 2 == 0 ? "zoom-out" : "fade-down"}
+                            />
+                        ))
+                    ) : (
+                        <div className="flex flex-col items-center justify-center col-span-full space-y-4 p-6">
+                            <img src={sorryImage} alt="Sorry" className="w-30 h-30 object-contain" />
+                            <h5 className="text-3xl font-bold text-gray-600">Sorry</h5>
+                            <p className="text-lg font-semibold text-gray-500 text-center">No Websites available in this category.</p>
+                        </div>
+                    )}
                 </div>
+
+
 
                 <div className="flex justify-center mt-8 space-x-2">
                     {[...Array(totalPages).keys()].map((number) => (
