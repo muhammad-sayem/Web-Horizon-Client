@@ -77,14 +77,14 @@ const ManageUsers = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-12">
-      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold my-4 darkDamagetext-[#f97d5e]">
+      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold my-4">
         Manage Users
       </h2>
 
       <div className="overflow-x-auto">
         <table className="table-auto min-w-full border-collapse border border-gray-300 text-xs sm:text-base">
           {/* Table Head */}
-          <thead className="bg-gray-200 text-gray-700 darkDamagebg-[#f97d5e] darkDamagetext-black uppercase">
+          <thead className="bg-gray-200 text-gray-700 uppercase">
             <tr>
               <th className="p-3 text-center">User Name</th>
               <th className="p-3 text-center">User Email</th>
@@ -95,11 +95,11 @@ const ManageUsers = () => {
           
           <tbody>
             {allUsers.map((singleUser) => (
-              <tr key={singleUser._id} className="border-b border-gray-300 darkDamageborder-[#f97d5e] darkDamagetext-white">
-                <td className="p-3 text-center darkDamagetext-[#f97d5e]">
+              <tr key={singleUser._id} className="border-b border-gray-300">
+                <td className="p-3 text-center">
                   {singleUser?.name}
                 </td>
-                <td className="p-3 text-center darkDamagetext-[#f97d5e]">
+                <td className="p-3 text-center">
                   {singleUser?.email}
                 </td>
 

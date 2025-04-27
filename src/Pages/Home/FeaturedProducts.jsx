@@ -31,10 +31,10 @@ const FeaturedProducts = () => {
     console.log(featuredProducts);
 
     return (
-        <div className="w-4/5 mb-28 mx-auto">
-            <div className="flex justify-between mb-4" data-aos="fade-down" data-aos-duration="1500">
+        <div className="w-4/5 my-32 mx-auto">
+            <div className="flex justify-between mb-8" data-aos="fade-down" data-aos-duration="1500">
                 <div className=" w-1/3">
-                    
+
                 </div>
                 <h2 className=" w-1/3 text-[#f97d5e] text-4xl font-bold text-center"> {text} <Cursor></Cursor> </h2>
 
@@ -47,7 +47,7 @@ const FeaturedProducts = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12" data-aos="fade-up" data-aos-duration="1500">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 {
                     displayProducts.map(feaProduct => <FeatureProductCard
                         key={feaProduct._id}

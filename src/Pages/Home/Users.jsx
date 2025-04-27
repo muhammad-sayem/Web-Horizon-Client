@@ -36,7 +36,7 @@ const Users = () => {
 
     return (
 
-        <div className='mb-28 w-4/5 mx-auto'>
+        <div className='mb-32 w-4/5 mx-auto'>
             <h2 className="text-4xl text-[#F97D5E] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="1500">
                 {text} <Cursor />
             </h2>

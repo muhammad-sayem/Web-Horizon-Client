@@ -95,7 +95,7 @@ const ProductDetails = () => {
                     <div className="flex gap-x-4 items-center">
                         <p className="text-xl font-black "> Tags: </p>
                         {tags.map((tag, index) => (
-                            <p key={index} className="text-[#1A2634] font-bold text-md">{tag} |</p>
+                            <p key={index} className="text-[#1A2634] font-bold text-lg">{tag} |</p>
                         ))}
                     </div>
 

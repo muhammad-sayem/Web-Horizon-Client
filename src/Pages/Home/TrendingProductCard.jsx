@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import UseRole from "../../hooks/useRole";
 import { AiFillLike } from "react-icons/ai";
 import useAuth from "../../Hooks/useAuth";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const TrendingProductCard = ({ treProduct, refetch }) => {
     const axiosSecure = useAxiosSecure();
@@ -57,7 +57,7 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
     };
 
     return (
-        <div>
+        <div data-aos="zoom-in-up" data-aos-duration="1500">
             <div className="p-5 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.35)] h-full rounded-2xl">
 
                 <div className="">
@@ -68,7 +68,7 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
                 <div className="mt-2">
                     <p> {productDescription.length > 60 ? productDescription.slice(0, 60) + "..." : productDescription} </p>
 
-                    <div className="my-3">
+                    <div className="my-1">
                         <h3 className="text-lg font-bold inline"> Tags: </h3>
                         {
                             tags.map((tag, index) => (

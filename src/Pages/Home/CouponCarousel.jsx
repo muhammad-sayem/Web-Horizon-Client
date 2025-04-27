@@ -30,8 +30,8 @@ export default function CouponCarousel() {
   });
 
   return (
-    <div className='w-4/5 mx-auto mb-28'>
-      <h2 className="text-4xl darkDamagetext-[#f97d5e] font-bold mb-2 text-center text-[#F97D5E]" data-aos="fade-down" data-aos-duration="1500"> {text} <Cursor></Cursor> </h2>
+    <div className='w-4/5 mx-auto mb-32'>
+      <h2 className="text-4xl font-bold mb-8 text-center text-[#F97D5E]" data-aos="fade-down" data-aos-duration="1500"> {text} <Cursor></Cursor> </h2>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

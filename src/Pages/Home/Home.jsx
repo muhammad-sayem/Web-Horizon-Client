@@ -2,6 +2,7 @@ import Carousel from "../../Components/Carousel/Carousel";
 import CouponCarousel from "./CouponCarousel";
 import Faqs from "./Faqs";
 import FeaturedProducts from "./FeaturedProducts";
+import HeroSection from "./HeroSection";
 import Reviews from "./Reviews";
 import TrendingProducts from "./TrendingProducts";
 import Users from "./Users";
@@ -12,7 +13,8 @@ const Home = () => {
     return (
         <div>
             <div className="mb-16">
-                <Carousel></Carousel>
+                {/* <Carousel></Carousel> */}
+                <HeroSection></HeroSection>
             </div>
             <div>
                 <div className="">

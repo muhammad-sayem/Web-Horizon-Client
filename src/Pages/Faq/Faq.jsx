@@ -13,7 +13,7 @@ const Faq = () => {
             <div className="gap-x-4 justify-between items-center">
 
                 <div data-aos="fade-down" data-aos-duration="1500">
-                    <h2 className="text-[#f97d5e] text-center darkDamagetext-[#f97d5e] text-4xl font-bold mb-4"> {text} <Cursor></Cursor> </h2>
+                    <h2 className="text-[#f97d5e] text-center text-4xl font-bold mb-4"> {text} <Cursor></Cursor> </h2>
                 </div>
 
                 <div className="w-full" data-aos="fade-up" data-aos-duration="1500">

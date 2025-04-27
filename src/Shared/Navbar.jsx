@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className='navbar fixed top-0 left-0 z-20 w-full bg-white px-4 md:px-6 lg:px-8 shadow-md py-4'>
+    <div className='navbar fixed top-0 left-0 z-20 w-full bg-base-100 px-4 md:px-6 lg:px-8 shadow-md py-2'>
       <div className='flex justify-between items-center w-full'>
         <Link to='/' className='flex items-center gap-2'>
           <img className='w-16 h-16' src={logo} alt='Logo' />
@@ -56,7 +56,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className='mt-2'>
-                    <button onClick={handeSignOut} className='bg-gray-200 block text-center darkDamagetext-[#f97d5e] darkDamagebg-black darkDamagefont-bold'>
+                    <button onClick={handeSignOut} className='bg-gray-200 block text-center '>
                       Logout
                     </button>
                   </li>
@@ -65,14 +65,14 @@ const Navbar = () => {
             </div>
           )}
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className='text-2xl text-[#1A2634] darkDamagetext-[#f97d5e]'>
+          <button onClick={() => setMenuOpen(!menuOpen)} className='text-2xl text-[#1A2634]'>
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
 
         <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-transform transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
           <div className='w-64 bg-base-100 h-full shadow-lg p-5'>
-            <button onClick={() => setMenuOpen(false)} className='text-2xl text-[#1A2634] darkDamagetext-[#f97d5e] absolute top-4 right-4'>
+            <button onClick={() => setMenuOpen(false)} className='text-2xl text-[#1A2634] absolute top-4 right-4'>
               <FiX />
             </button>
             <ul className='mt-10 space-y-4'>
@@ -116,7 +116,7 @@ const Navbar = () => {
             </li>
             {!user && (
               <li>
-                <Link to='/login' className='font-bold text-[#1A2634] darkDamagetext-[#f97d5e]'>
+                <Link to='/login' className='font-bold text-[#1A2634]'>
                   LOGIN
                 </Link>
               </li>
@@ -159,7 +159,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className='mt-2'>
-                    <button onClick={handeSignOut} className='bg-gray-200 block text-center darkDamagetext-[#f97d5e] darkDamagebg-black darkDamagefont-bold'>
+                    <button onClick={handeSignOut} className='bg-gray-200 block text-center'>
                       Logout
                     </button>
                   </li>

@@ -46,11 +46,11 @@ const CouponCardModal = ({ coupon, refetch }) => {
         <div>
             <dialog id={`my_modal_${_id}`} className="modal">
                 <div className="modal-box">
-                    <h2 className="text-3xl text-center mb-4 font-bold text-[#1A2634] darkDamagetext-[#f97d5e]"> Edit Coupon Info </h2>
+                    <h2 className="text-3xl text-center mb-4 font-bold text-[#1A2634]"> Edit Coupon Info </h2>
 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-6">
-                            <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Coupon Code</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Coupon Code</p>
                             <input
                                 type="text"
                                 name="couponCode"
@@ -61,7 +61,7 @@ const CouponCardModal = ({ coupon, refetch }) => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Expiry Date</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Expiry Date</p>
                             <input
                                 type="date"
                                 name="expiryDate"
@@ -72,7 +72,7 @@ const CouponCardModal = ({ coupon, refetch }) => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Coupon Description</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Coupon Description</p>
                             <input
                                 type="text"
                                 name="couponDescription"
@@ -83,7 +83,7 @@ const CouponCardModal = ({ coupon, refetch }) => {
                         </div>
 
                         <div className="mb-6">
-                            <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Discount Amount</p>
+                            <p className='text-[#1A2634] text-lg font-bold'>Discount Amount</p>
                             <input
                                 type="text"
                                 name="discountAmount"
@@ -93,7 +93,7 @@ const CouponCardModal = ({ coupon, refetch }) => {
                             />
                         </div>
                         <div className="mx-auto my-2">
-                            <button className="btn w-full bg-[#1A2634] text-white text-xl font-bold darkDamagebg-[#f97d5e] darkDamagetext-black"> Update Coupon Info</button>
+                            <button className="btn w-full bg-[#1A2634] text-white text-xl font-bold"> Update Coupon Info</button>
                         </div>
                     </form>
                     

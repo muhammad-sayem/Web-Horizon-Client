@@ -50,7 +50,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
     }
 
     return (
-        <div>
+        <div data-aos="zoom-in-up" data-aos-duration="1500">
             <div className="bg-white p-4 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] h-full rounded-2xl">
 
                 <div className=" items-center">
@@ -58,10 +58,10 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
                     <h2 className="text-xl font-bold"> {productName} </h2>
                 </div>
 
-                <div className="mt-2">
+                <div className="">
                     <p> {productDescription.length > 60 ? productDescription.slice(0, 60) + "..." : productDescription} </p>
 
-                    <div className="my-3">
+                    <div className="my-1">
                         <h3 className="text-lg font-bold inline"> Tags: </h3>
                         {
                             tags.map((tag, index) => (

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import LoadingSpinner from "../../../Shared/LoadingSpinner";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
@@ -29,7 +29,7 @@ const UserStatistics = () => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl text-center text-[#1A2634] font-bold my-4 md:my-8 lg:my-12 darkDamagetext-[#f97d5e]"> User Statistics </h2>
+            <h2 className="text-5xl text-center font-bold my-4 md:my-8 lg:my-12 text-[#f97d5e]"> User Statistics </h2>
             <ResponsiveContainer width="50%" height={300}>
                 <PieChart>
                     <Pie

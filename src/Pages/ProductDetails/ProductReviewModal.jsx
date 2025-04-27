@@ -61,7 +61,7 @@ const ProductReviewModal = ({ product, refetch }) => {
             <h2 className="text-3xl font-bold text-center text-[#1A2634] mb-4"> Add Your Review </h2>
 
             <div className="mb-6">
-              <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Reviewer Name</p>
+              <p className='text-[#1A2634] text-lg font-bold'>Reviewer Name</p>
               <input
                 type="text"
                 name="reviewerName"
@@ -73,7 +73,7 @@ const ProductReviewModal = ({ product, refetch }) => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Reviewer Image</p>
+              <p className='text-[#1A2634] text-lg font-bold'>Reviewer Image</p>
               <input
                 readOnly
                 type="text"
@@ -85,7 +85,7 @@ const ProductReviewModal = ({ product, refetch }) => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Review Description</p>
+              <p className='text-[#1A2634] text-lg font-bold'>Review Description</p>
               <textarea
                 type="text"
                 name="reviewDescription"
@@ -96,7 +96,7 @@ const ProductReviewModal = ({ product, refetch }) => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#1A2634] text-lg font-bold darkDamagetext-[#f97d5e]'>Rating</p>
+              <p className='text-[#1A2634] text-lg font-bold'>Rating</p>
               <input
                 type="text"
                 name="rating"
@@ -109,7 +109,7 @@ const ProductReviewModal = ({ product, refetch }) => {
             </div>
 
             <div className="w-full mx-auto mt-4">
-              <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`btn w-full text-xl font-bold ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#1A2634] text-white darkDamagebg-[#f97d5e] darkDamagetext-[#1A2634] darkDamagehover:bg-[#1A2634] darkDamagehover:text-[#f97d5e] darkDamagehover:border darkDamagehover:border-[#f97d5e]"} `}> Submit Review </button>
+              <button disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`btn w-full text-xl font-bold ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#1A2634] text-white"} `}> Submit Review </button>
             </div>
 
             <div className="modal-action mt-1">
