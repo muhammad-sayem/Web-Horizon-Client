@@ -11,7 +11,7 @@ const ReviewCard = () => {
             <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-6 rounded-2xl' data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
 
                 <div className='flex justify-center'>
-                    <img src={reviewer1} className='w-24 h-24 rounded-full border-2 border-[#f97d5e]' alt="" />
+                    <img src={reviewer1} className='h-24 w-24 rounded-full border-2 border-[#f97d5e]' alt="" />
                 </div>
 
                 <h2 className='text-center text-[#1A2634] text-2xl font-bold my-2'> Lucas Williams </h2>

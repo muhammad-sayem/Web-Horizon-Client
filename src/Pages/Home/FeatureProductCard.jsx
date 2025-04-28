@@ -54,7 +54,7 @@ const FeatureProductCard = ({ feaProduct, refetch }) => {
             <div className="bg-white p-4 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] h-full rounded-2xl">
 
                 <div className=" items-center">
-                    <img src={productImage} className="w-full h-44 mb-4 border rounded-xl" alt="" />
+                    <img src={productImage} className="w-full h-48 object-fill mb-4 border rounded-xl" alt="" />
                     <h2 className="text-xl font-bold"> {productName} </h2>
                 </div>
 

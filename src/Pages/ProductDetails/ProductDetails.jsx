@@ -86,7 +86,7 @@ const ProductDetails = () => {
             <div className='gap-x-8 px-12 py-6 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl'>
                 <div className='flex flex-col items-center'>
                     <h3 className="text-4xl font-black mb-6"> {productName} </h3>
-                    <img src={productImage} alt='' className='h-96 w-full rounded-xl border' />
+                    <img src={productImage} alt='' className='h-96 w-full  rounded-xl border' />
                 </div>
 
                 <div className="my-8">

@@ -98,7 +98,6 @@ const Products = () => {
                                 product={product}
                                 refetch={refetch}
                                 isLoading={isLoading}
-                                animation={index % 2 == 0 ? "zoom-out" : "fade-down"}
                             />
                         ))
                     ) : (

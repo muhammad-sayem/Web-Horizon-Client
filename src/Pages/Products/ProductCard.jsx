@@ -7,7 +7,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
 import { AiFillLike } from "react-icons/ai";
 
-const ProductCard = ({ product, refetch, isLoading, animation }) => {
+const ProductCard = ({ product, refetch, isLoading }) => {
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [role] = UseRole();
@@ -48,7 +48,7 @@ const ProductCard = ({ product, refetch, isLoading, animation }) => {
 
     return (
         <div>
-            <div className="w-full shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-4 rounded-2xl flex flex-col justify-between h-full" data-aos={animation} data-aos-duration="1500">
+            <div className="w-full shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-4 rounded-2xl flex flex-col justify-between h-full" data-aos="zoom-in-up" data-aos-duration="1500">
                 <div className="gap-x-4">
                     <img src={productImage} className="w-full h-44 rounded-xl border mb-2" alt="" />
                     <h3 className="text-xl font-black"> {productName} </h3>
