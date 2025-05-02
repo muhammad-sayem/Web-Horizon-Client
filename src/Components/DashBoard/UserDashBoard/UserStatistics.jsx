@@ -29,7 +29,7 @@ const UserStatistics = () => {
 
     return (
         <div className="w-full flex flex-col items-center">
-            <h2 className="text-5xl text-center font-bold my-4 md:my-8 lg:my-12 text-[#f97d5e]"> User Statistics </h2>
+            <h2 className="text-5xl text-center font-bold my-4 md:my-8 lg:my-12 text-[#5a45ce]"> User Statistics </h2>
             <ResponsiveContainer width="50%" height={300}>
                 <PieChart>
                     <Pie

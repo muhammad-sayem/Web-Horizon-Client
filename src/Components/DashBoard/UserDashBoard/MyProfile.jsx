@@ -18,7 +18,7 @@ const MyProfile = () => {
   const navigate = useNavigate();
   const [role] = UseRole();
 
-  const { data: allUsers = [], isLoading, refetch } = useQuery({
+  const { data: allUsers = [], isLoading } = useQuery({
     queryKey: ['allUsers'],
     queryFn: async () => {
       const { data } = await axiosSecure.get('/users');
@@ -55,7 +55,7 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="w-full md:w-2/5 mx-auto my-12 shadow-2xl rounded-2xl p-5">
+    <div className="w-full md:w-4/5 lg::w-2/5 mx-auto my-12 shadow-[4px_4px_10px_rgba(90,69,206,0.5)] rounded-2xl p-5">
 
       <div className=" mb-6 md:mb-0 text-center">
         <h2 className="text-3xl font-bold mb-2"> My Profile </h2>
@@ -67,9 +67,9 @@ const MyProfile = () => {
           />
         </div>
         <div className="text-center">
-          <h2 className="text-xl lg:text-2xl font-bold">Name: {user?.displayName}</h2>
-          <p className="text-lg lg:text-2xl font-bold">Email: {user?.email}</p>
-          <p className="text-lg lg:text-2xl font-bold">Role: {role}</p>
+          <h2 className="text-2xl font-bold">Name: {user?.displayName}</h2>
+          <p className="text-2xl font-bold">Email: {user?.email}</p>
+          <p className="text-2xl font-bold">Role: {role}</p>
         </div>
       </div>
 
@@ -84,7 +84,7 @@ const MyProfile = () => {
           <div>
             <button
               onClick={() => document.getElementById(`my_modal_${user?.email}`)?.showModal()}
-              className="bg-[#1A2634] px-6 py-2 text-white text-lg md:text-xl font-bold"
+              className="bg-[#5A45CE] px-6 py-2 text-[#D6C6FF] rounded-lg text-lg md:text-xl font-bold"
             >
               Buy Subscription <br /> $90
             </button>

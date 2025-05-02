@@ -61,15 +61,15 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
             <div className="p-5 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.35)] h-full rounded-2xl">
 
                 <div className="">
-                    <img src={productImage} className="w-full h-44 mb-4 border rounded-xl" alt="" />
-                    <h2 className="text-xl font-bold"> {productName} </h2>
+                    <img src={productImage} className="w-full h-48 lg:h-56 object-fill mb-4 border rounded-xl" alt="" />
+                    <h2 className="text-md lg:text-xl font-bold"> {productName} </h2>
                 </div>
 
                 <div className="mt-2">
                     <p> {productDescription.length > 60 ? productDescription.slice(0, 60) + "..." : productDescription} </p>
 
                     <div className="my-1">
-                        <h3 className="text-lg font-bold inline"> Tags: </h3>
+                        <h3 className="text-md font-bold inline"> Tags: </h3>
                         {
                             tags.map((tag, index) => (
                                 <p key={index} className="text-md inline ml-1">{tag} |</p>
@@ -79,13 +79,13 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
                 </div>
 
                 <div className="flex gap-x-1">
-                    <Link to={`/product/${_id}`}> <button className="px-4 py-1 text-white bg-[#f97d5e] transition-transform duration-200 ease-in-out transform hover:scale-105 font-bold text-md rounded-md"> Details </button> </Link>
+                    <Link to={`/product/${_id}`}> <button className="px-2 lg:px-4 py-1 text-white bg-[#5a45ce] transition-transform duration-200 ease-in-out transform hover:scale-105 font-bold text-sm lg:text-md rounded-md"> Details </button> </Link>
 
                     <button onClick={() => updateUpvote(_id)}
                         disabled={owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"}
-                        className={`group text-gray-600 px-3 py-1 rounded-md flex items-center gap-x-1 ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
+                        className={`group text-gray-600 px-3 rounded-md flex items-center gap-x-1 ${owner?.email === user?.email || hasUpvoted || role === 'Admin' || role === "Moderator"
                             ? 'bg-gray-400 text-gray-700 cursor-not-allowed pointer-events-none'
-                            : 'border border-[#f97d5e] text-[#1A2634] hover:cursor-pointer transform transition-transform duration-200 ease-in-out hover:scale-105'}`}
+                            : 'border border-[#5a45ce] text-[#1A2634] hover:cursor-pointer transform transition-transform duration-200 ease-in-out hover:scale-105'}`}
                     >
                         <div className="flex items-center gap-x-1">
                             <AiFillLike size={20} className="" />
@@ -100,4 +100,4 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
 
 export default TrendingProductCard;
 
-// shadow: shadow-[4px_4px_10px_rgba(0,0,0,0.35)] darkDamageshadow-[1px_1px_8px_#f97d5e]
+// shadow: shadow-[4px_4px_10px_rgba(0,0,0,0.35)] darkDamageshadow-[1px_1px_8px_#5a45ce]

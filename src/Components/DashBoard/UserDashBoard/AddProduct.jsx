@@ -8,199 +8,199 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 
 const AddProducts = () => {
-    const { user, loading } = useAuth();
-    const navigate = useNavigate();
-    const axiosSecure = useAxiosSecure();
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
 
-    const [uploadImageButtonText, setUploadImageButtonText] = useState('Upload Image');
-    const [tags, setTags] = useState([]);
+  const [uploadImageButtonText, setUploadImageButtonText] = useState('Upload Image');
+  const [tags, setTags] = useState([]);
 
-    const handleAddition = (tag) => {
-        setTags([...tags, tag]);
+  const handleAddition = (tag) => {
+    setTags([...tags, tag]);
+  };
+
+  const handleDelete = (i) => {
+    setTags(tags.filter((tag, index) => index !== i));
+  }
+
+  if (loading) {
+    return <LoadingSpinner></LoadingSpinner>
+  }
+
+  if (!user) {
+    return <div> No user found </div>
+  }
+
+  const owner = {
+    name: user?.displayName,
+    email: user?.email,
+    image: user?.photoURL
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const productName = form.productName.value;
+    const productDescription = form.productDescription.value;
+    const productImage = form.image.files[0];
+    const imageUrl = await imageUpload(productImage);
+    const externalLink = form.externalLink.value;
+    const createdAt = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+
+    const tagValues = tags.map(tag => tag.text);
+
+    const formData = {
+      productName,
+      productImage: imageUrl,
+      productDescription,
+      owner,
+      externalLink,
+      tags: tagValues,
+      status: 'Pending',
+      upvotes: parseInt(0),
+      reported: false,
+      featured: false,
+      createdAt
     };
 
-    const handleDelete = (i) => {
-        setTags(tags.filter((tag, index) => index !== i));
+    try {
+      await axiosSecure.post('/products', formData);
+      Swal.fire({
+        title: "Product added successfully!!",
+        icon: "success"
+      });
+      navigate('/dashboard/my-products');
     }
-
-    if (loading) {
-        return <LoadingSpinner></LoadingSpinner>
+    catch (err) {
+      Swal.fire({
+        title: "Something went wrong!!",
+        icon: "error"
+      });
     }
+  }
 
-    if (!user) {
-        return <div> No user found </div>
-    }
+  return (
+    <div className="border-2 border-[#5a45ce] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
+      <h2 className="text-4xl text-center text-[#5a45ce] font-bold mb-8"> Add a Product </h2>
 
-    const owner = {
-        name: user?.displayName,
-        email: user?.email,
-        image: user?.photoURL
-    }
+      <form onSubmit={handleSubmit}>
+        <div className="w-full px-6 lg-px-0 lg:w-4/5 mx-auto">
+          <div className="grid md:grid-cols-2 gap-x-4">
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const form = e.target;
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'>Product Name</p>
+              <input
+                type="text"
+                name="productName"
+                placeholder="Product Name"
+                className="input input-bordered w-full border-[#5a45ce]"
+                required
+              />
+            </div>
 
-        const productName = form.productName.value;
-        const productDescription = form.productDescription.value;
-        const productImage = form.image.files[0];
-        const imageUrl = await imageUpload(productImage);
-        const externalLink = form.externalLink.value;
-        const createdAt = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'>Product Description</p>
+              <textarea
+                className="textarea textarea-bordered w-full border-[#5a45ce]"
+                name="productDescription"
+                placeholder="Description of the product"
+                required
+              />
+            </div>
 
-        const tagValues = tags.map(tag => tag.text);
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'>Owner Name</p>
+              <input
+                type="text"
+                name="ownerName"
+                value={user.displayName}
+                disabled
+                className="input input-bordered w-full !border-[#5a45ce]"
+                required
+              />
+            </div>
 
-        const formData = {
-            productName,
-            productImage: imageUrl,
-            productDescription,
-            owner,
-            externalLink,
-            tags: tagValues,
-            status: 'Pending',
-            upvotes: parseInt(0),
-            reported: false,
-            featured: false,
-            createdAt
-        };
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'>Owner Email</p>
+              <input
+                type="email"
+                name="ownerEmail"
+                value={user.email}
+                disabled
+                className="input input-bordered w-full !border-[#5a45ce]"
+                required
+              />
+            </div>
 
-        try {
-            await axiosSecure.post('/products', formData);
-            Swal.fire({
-                title: "Product added successfully!!",
-                icon: "success"
-            });
-            navigate('/dashboard/my-products');
-        } 
-        catch (err) {
-            Swal.fire({
-                title: "Something went wrong!!",
-                icon: "error"
-            });
-        }
-    }
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'>Owner Image</p>
+              <input
+                type="email"
+                name="ownerImage"
+                value={user.photoURL}
+                disabled
+                className="input input-bordered w-full !border-[#5a45ce]"
+                required
+              />
+            </div>
 
-    return (
-        <div className="border-2 border-[#f97d5e] py-16 my-8 w-11/12 lg:w-10/12 mx-auto rounded-3xl">
-            <h2 className="text-4xl text-center text-[#f97d5e] font-bold mb-8"> Add a Product </h2>
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'>External Link</p>
+              <input
+                type="text"
+                name="externalLink"
+                placeholder="External Link"
+                className="input input-bordered w-full border-[#5a45ce]"
+                required
+              />
+            </div>
 
-            <form onSubmit={handleSubmit}>
-                <div className="w-full px-6 lg-px-0 lg:w-4/5 mx-auto">
-                    <div className="grid md:grid-cols-2 gap-x-4">
+            <div className="mb-6">
+              <p className='text-[#5a45ce] text-lg font-bold'> Tags </p>
+              <div className="w-full">
+                <ReactTags
+                  tags={tags}
+                  handleDelete={handleDelete}
+                  handleAddition={handleAddition}
+                  inputFieldPosition="inline"
+                  placeholder="Add new tag"
+                  classNames={{
+                    tag: "bg-[#5a45ce] text-[#5a45ce] px-3 py-1 rounded mr-2 mb-2",
+                    remove: "text-[#5a45ce] ml-2 cursor-pointer font-bold"
+                  }}
+                />
+              </div>
+            </div>
 
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'>Product Name</p>
-                            <input
-                                type="text"
-                                name="productName"
-                                placeholder="Product Name"
-                                className="input input-bordered w-full border-[#f97d5e]"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'>Product Description</p>
-                            <textarea
-                                className="textarea textarea-bordered w-full border-[#f97d5e]"
-                                name="productDescription"
-                                placeholder="Description of the product"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'>Owner Name</p>
-                            <input
-                                type="text"
-                                name="ownerName"
-                                value={user.displayName}
-                                disabled
-                                className="input input-bordered w-full border-[#f97d5e]"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'>Owner Email</p>
-                            <input
-                                type="email"
-                                name="ownerEmail"
-                                value={user.email}
-                                disabled
-                                className="input input-bordered w-full border-[#f97d5e]"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'>Owner Image</p>
-                            <input
-                                type="email"
-                                name="ownerImage"
-                                value={user.photoURL}
-                                disabled
-                                className="input input-bordered w-full border-[#f97d5e]"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'>External Link</p>
-                            <input
-                                type="text"
-                                name="externalLink"
-                                placeholder="External Link"
-                                className="input input-bordered w-full border-[#f97d5e]"
-                                required
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <p className='text-[#f97d5e] text-lg font-bold'> Tags </p>
-                            <div className="w-full">
-                                <ReactTags
-                                    tags={tags}
-                                    handleDelete={handleDelete}
-                                    handleAddition={handleAddition}
-                                    inputFieldPosition="inline"
-                                    placeholder="Add new tag"
-                                    classNames={{
-                                        tag: "bg-[#f97d5e] text-[#f97d5e] px-3 py-1 rounded mr-2 mb-2",
-                                        remove: "text-[#f97d5e] ml-2 cursor-pointer font-bold"
-                                    }}
-                                />
-                            </div>
-                        </div>
-
-                        <div className='flex flex-col w-max'>
-                            <p className='text-[#f97d5e] text-lg font-bold mb-2'> Upload Product Image </p>
-                            <label>
-                                <div className='bg-[#f97d5e] text-white font-bold rounded cursor-pointer py-1 px-12 hover:bg-[#f97d5e] text-lg'>
-                                    {uploadImageButtonText}
-                                </div>
-                                <input
-                                    onChange={(e) => setUploadImageButtonText(e.target.files[0].name)}
-                                    className='text-sm cursor-pointer w-36 hidden'
-                                    type='file'
-                                    name='image'
-                                    id='image'
-                                    accept='image/*'
-                                    hidden
-                                />
-                            </label>
-                        </div>
-
-                    </div>
-
+            <div className='flex flex-col w-max'>
+              <p className='text-[#5a45ce] text-lg font-bold mb-2'> Upload Product Image </p>
+              <label>
+                <div className='bg-[#5a45ce] text-[#D6C6FF] font-bold rounded cursor-pointer py-1 px-12 hover:bg-[#5a45ce] text-lg'>
+                  {uploadImageButtonText}
                 </div>
+                <input
+                  onChange={(e) => setUploadImageButtonText(e.target.files[0].name)}
+                  className='text-sm cursor-pointer w-36 hidden'
+                  type='file'
+                  name='image'
+                  id='image'
+                  accept='image/*'
+                  hidden
+                />
+              </label>
+            </div>
 
-                <div className="w-full px-6 lg:px-0 lg:w-4/5 mx-auto mt-4">
-                    <button className="w-full py-3 rounded-lg bg-[#f97d5e] text-white text-xl font-bold transition-transform duration-200 ease-in-out transform hover:scale-105"> Add Product </button>
-                </div>
-            </form>
+          </div>
+
         </div>
-    );
+
+        <div className="w-full px-6 lg:px-0 lg:w-4/5 mx-auto mt-4">
+          <button className="w-full py-3 rounded-lg bg-[#5a45ce] text-[#D6C6FF] text-xl font-bold transition-transform duration-200 ease-in-out transform hover:scale-105"> Add Product </button>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default AddProducts;

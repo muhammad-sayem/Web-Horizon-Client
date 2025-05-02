@@ -36,14 +36,14 @@ const Users = () => {
 
     return (
 
-        <div className='mb-32 w-4/5 mx-auto'>
-            <h2 className="text-4xl text-[#F97D5E] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="1500">
+        <div className='mb-12 md:mb-20 lg:mb-32 w-3/5 mx-auto'>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-[#5a45ce] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="1500">
                 {text} <Cursor />
             </h2>
 
-            <div className='md:flex justify-center gap-x-12'>
+            <div className='lg:flex justify-center gap-x-12 space-y-6 md:space-y-0'>
 
-                <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-12 rounded-xl border-b-8 border-[#F97D5E]' data-aos="fade-left"
+                <div className='lg:w-1/3 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] px-2 py-12 rounded-xl border-b-8 border-[#5a45ce]' data-aos="fade-left"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="1500">
@@ -56,7 +56,7 @@ const Users = () => {
                     }
                 </div>
 
-                <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-12 rounded-xl border-b-8 border-[#F97D5E]' data-aos="fade-down"
+                <div className='lg:w-1/3 shadow-[4px_4px_10px_rgba(0,0,0,0.35)] px-2 py-12 rounded-xl border-b-8 border-[#5a45ce]' data-aos="fade-down"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="1500">
@@ -69,7 +69,7 @@ const Users = () => {
                     }
                 </div>
 
-                <div className='text-center shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-12 rounded-xl border-b-8 border-[#F97D5E]' data-aos="fade-right"
+                <div className='lg:w-1/3 text-center shadow-[4px_4px_10px_rgba(0,0,0,0.35)] px-2 py-12 rounded-xl border-b-8 border-[#5a45ce]' data-aos="fade-right"
                 data-aos-offset="200"
                 data-aos-easing="ease-in-sine"
                 data-aos-duration="1500">

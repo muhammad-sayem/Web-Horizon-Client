@@ -13,11 +13,11 @@ const Faq = () => {
             <div className="gap-x-4 justify-between items-center">
 
                 <div data-aos="fade-down" data-aos-duration="1500">
-                    <h2 className="text-[#f97d5e] text-center text-4xl font-bold mb-4"> {text} <Cursor></Cursor> </h2>
+                    <h2 className="text-[#5a45ce] text-center text-4xl font-bold mb-4"> {text} <Cursor></Cursor> </h2>
                 </div>
 
                 <div className="w-full" data-aos="fade-up" data-aos-duration="1500">
-                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
+                    <div className="collapse collapse-arrow border-2 border-[#5a45ce] mb-4">
                         <input type="radio" name="my-accordion-2" defaultChecked />
                         <div className="collapse-title text-xl font-bold"> 1. What is Web Horizon?</div>
                         <div className="collapse-content">
@@ -25,7 +25,7 @@ const Faq = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
+                    <div className="collapse collapse-arrow border-2 border-[#5a45ce] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold">2. How do I submit a product on Web Horizon? </div>
                         <div className="collapse-content">
@@ -33,7 +33,7 @@ const Faq = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
+                    <div className="collapse collapse-arrow border-2 border-[#5a45ce] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold">3. How can I report a product or review?
                         </div>
@@ -42,7 +42,7 @@ const Faq = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
+                    <div className="collapse collapse-arrow border-2 border-[#5a45ce] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold"> 4. How does the product moderation process work?
                         </div>
@@ -51,7 +51,7 @@ const Faq = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
+                    <div className="collapse collapse-arrow border-2 border-[#5a45ce] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold">  5. How does the like system work?
                         </div>
@@ -60,7 +60,7 @@ const Faq = () => {
                         </div>
                     </div>
 
-                    <div className="collapse collapse-arrow border-2 border-[#F97D5E] mb-4">
+                    <div className="collapse collapse-arrow border-2 border-[#5a45ce] mb-4">
                         <input type="radio" name="my-accordion-2" />
                         <div className="collapse-title text-xl font-bold"> 6. Is Web Horizon free to use?
                         </div>

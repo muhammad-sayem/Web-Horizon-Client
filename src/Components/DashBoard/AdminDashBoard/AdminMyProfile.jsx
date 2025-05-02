@@ -26,7 +26,7 @@ const AdminMyProfile = () => {
  
 
   return (
-    <div className="w-full md:w-2/5 mx-auto my-12 shadow-2xl rounded-2xl p-5">
+    <div className="w-full md:w-4/5 lg:w-2/5 mx-auto my-12 shadow-[4px_4px_10px_rgba(90,69,206,0.5)] rounded-2xl p-5">
 
       <div className=" mb-6 md:mb-0 text-center">
         <h2 className="text-3xl font-bold mb-2"> My Profile </h2>

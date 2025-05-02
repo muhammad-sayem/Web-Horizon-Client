@@ -77,14 +77,14 @@ const ManageUsers = () => {
 
   return (
     <div className="px-4 sm:px-6 lg:px-12">
-      <h2 className="text-3xl sm:text-4xl text-center text-[#1A2634] font-bold my-4">
+      <h2 className="text-3xl sm:text-4xl text-center text-[#5A45CE] font-bold my-4">
         Manage Users
       </h2>
 
       <div className="overflow-x-auto">
         <table className="table-auto min-w-full border-collapse border border-gray-300 text-xs sm:text-base">
           {/* Table Head */}
-          <thead className="bg-gray-200 text-gray-700 uppercase">
+          <thead className="bg-[#D6C6FF] text-[#5a45ce] uppercase">
             <tr>
               <th className="p-3 text-center">User Name</th>
               <th className="p-3 text-center">User Email</th>
@@ -103,7 +103,7 @@ const ManageUsers = () => {
                   {singleUser?.email}
                 </td>
 
-                {/* Action Buttons */}
+               
                 <td className="p-3 flex flex-col sm:flex-row justify-center items-center gap-2">
                   
                   <button

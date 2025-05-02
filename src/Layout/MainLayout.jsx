@@ -13,7 +13,7 @@ const MainLayout = () => {
         <div>
             {
                 loginPage ||
-                <div className='w-11/12 mx-auto mt-20'>
+                <div className='mx-auto'>
                     <Navbar></Navbar>
                 </div>
             }

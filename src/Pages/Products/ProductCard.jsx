@@ -50,16 +50,16 @@ const ProductCard = ({ product, refetch, isLoading }) => {
         <div>
             <div className="w-full shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-4 rounded-2xl flex flex-col justify-between h-full" data-aos="zoom-in-up" data-aos-duration="1500">
                 <div className="gap-x-4">
-                    <img src={productImage} className="w-full h-44 rounded-xl border mb-2" alt="" />
-                    <h3 className="text-xl font-black"> {productName} </h3>
+                    <img src={productImage} className="w-full h-48 lg:h-56 rounded-lg border mb-2" alt="" />
+                    <h3 className="text-md lg:text-xl font-bold"> {productName} </h3>
                 </div>
 
-                <p className="text-md my-2 flex-grow">
+                <p className="text-sm my-1 flex-grow">
                     {productDescription.slice(0, 75)}{productDescription.length > 100 ? "..." : ""}
                 </p>
 
-                <div className="space-x-3 flex">
-                    <p className="text-lg font-black mb-2 inline"> Tags: </p>
+                <div className="space-x-3 flex items-center">
+                    <p className="text-md font-black mb-2 mt-1 inline"> Tags: </p>
                     {
                         tags.map((tag, index) => (
                             <p key={index} className="text-md inline ml-1"> {tag} |</p>
@@ -69,16 +69,16 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
                 <div className="flex items-center gap-x-2 mt-2">
 
-                    <button className="px-4 py-1 rounded-xl bg-[#f97d5e] font-bold text-lg text-white transition-transform duration-200 ease-in-out transform hover:scale-105"> <Link to={`/product/${_id}`}> Details </Link> </button>
+                    <button className="px-3 py-1 rounded-lg bg-[#5a45ce] font-bold text-md text-white transition-transform duration-200 ease-in-out transform hover:scale-105"> <Link to={`/product/${_id}`}> Details </Link> </button>
 
                     <button
                         onClick={updateUpvote}
                         disabled={owner?.email === user?.email || hasUpvoted || role === "Admin" || role === "Moderator"}
-                        className={`flex justify-center items-center gap-x-2 text-xl font-bold border-2 w-1/2 py-1 rounded-xl ${owner?.email === user?.email || hasUpvoted || role === "Admin" || role === "Moderator"
+                        className={`flex justify-center items-center gap-x-1 text-lg font-bold border-2 w-1/2 py-[2px] rounded-lg ${owner?.email === user?.email || hasUpvoted || role === "Admin" || role === "Moderator"
                             ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-                            : "border-2 border-[#f97d5e] hover:cursor-pointer transition-transform duration-200 ease-in-out transform hover:scale-105"}`}
+                            : "border-2 border-[#5a45ce] hover:cursor-pointer transition-transform duration-200 ease-in-out transform hover:scale-105"}`}
                     >
-                        <AiFillLike className="" size={25} /> <span className=""> Like ({upvotes}) </span> 
+                        <AiFillLike className="" size={20} /> <span className=""> Like ({upvotes}) </span> 
                     </button>
 
                 </div>

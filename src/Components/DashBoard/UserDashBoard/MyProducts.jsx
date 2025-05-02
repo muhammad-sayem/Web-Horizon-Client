@@ -53,15 +53,15 @@ const MyProducts = () => {
 
   return (
     <div className="max-w-full w-full px-2 overflow-hidden">
-      <h2 className="text-3xl md:text-5xl text-center text-[#f97d5e] font-bold my-12">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl text-center text-[#5a45ce] font-bold my-4 lg:my-8">
         My Products
       </h2>
 
       <div className="overflow-x-auto w-full">
         <table className="table table-zebra w-full min-w-max table-fixed border border-gray-300">
-          {/* Table Header */}
+          
           <thead>
-            <tr className="bg-gray-200 text-sm md:text-md">
+            <tr className="bg-[#D6C6FF] text-[#5a45ce] text-sm md:text-md">
               <th className="px-2 py-2">Product Name</th>
               <th className="px-2 py-2">Likes</th>
               <th className="px-2 py-2">Status</th>

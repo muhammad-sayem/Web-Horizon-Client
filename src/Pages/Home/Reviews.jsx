@@ -9,9 +9,9 @@ const Reviews = () => {
     });
 
     return (
-        <div className='w-4/5 mx-auto mb-32'>
-            <h2 className='text-4xl text-center font-black mb-8' data-aos="fade-down" data-aos-duration="1500">
-                <span className="text-[#F97D5E]"> {reviewsText}<Cursor></Cursor> </span>
+        <div className='w-4/5 mx-auto mb-12 md:mb-20 lg:mb-32'>
+            <h2 className='text-4xl text-center font-bold mb-8' data-aos="fade-down" data-aos-duration="1500">
+                <span className="text-[#5a45ce]"> {reviewsText}<Cursor></Cursor> </span>
             </h2>
 
             <ReviewCard></ReviewCard>

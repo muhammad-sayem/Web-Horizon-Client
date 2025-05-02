@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../assets/images/logo.png';
+import logo2 from '../assets/images/logo 2.png';
 import { AuthContext } from '../Providers/AuthProvider';
 import LoadingSpinner from './LoadingSpinner';
 import UseRole from '../hooks/useRole';
@@ -17,12 +18,16 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+  const textColor = isHome ? "text-[#d6c6ff]" : "text-[#5A45CE]";
+
   return (
-    <div className='navbar fixed top-0 left-0 z-20 w-full bg-base-100 px-4 md:px-6 lg:px-8 shadow-md py-2'>
+    <div className={`navbar fixed top-0 z-10 w-full px-4 md:px-6 lg:px-16  py-2 ${isHome ? 'bg-[#200C3C]' : 'bg-[#F3EFFD]'}`}>
       <div className='flex justify-between items-center w-full'>
         <Link to='/' className='flex items-center gap-2'>
-          <img className='w-16 h-16' src={logo} alt='Logo' />
-          <span className='font-black text-md text-[#f97d5e] md:text-2xl'>
+          <img className='w-12 h-12' src={`${isHome ? logo : logo2}`} alt='Logo' />
+          <span className={`text-sm md:text-xl font-semibold ${textColor}`}>
             Web Horizon
           </span>
         </Link>
@@ -56,7 +61,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li className='mt-2'>
-                    <button onClick={handeSignOut} className='bg-gray-200 block text-center '>
+                    <button onClick={handeSignOut} className='bg-gray-200 block text-center'>
                       Logout
                     </button>
                   </li>
@@ -65,30 +70,35 @@ const Navbar = () => {
             </div>
           )}
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className='text-2xl text-[#1A2634]'>
+          <button onClick={() => setMenuOpen(!menuOpen)} className='text-4xl text-[#d6c6ff]'>
             {menuOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
 
         <div className={`fixed inset-0 bg-black bg-opacity-50 z-30 transition-transform transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden`}>
           <div className='w-64 bg-base-100 h-full shadow-lg p-5'>
-            <button onClick={() => setMenuOpen(false)} className='text-2xl text-[#1A2634] absolute top-4 right-4'>
+            <button onClick={() => setMenuOpen(false)} className='text-4xl text-[#d6c6ff] absolute top-4 right-4'>
               <FiX />
             </button>
             <ul className='mt-10 space-y-4'>
               <li>
-                <Link to='/' className='font-bold text-[16px] text-[#f97d5e]' onClick={() => setMenuOpen(false)}>
+                <Link to='/' className={`text-sm text-[#5A45CE] ${textColor}`} onClick={() => setMenuOpen(false)}>
                   HOME
                 </Link>
               </li>
               <li>
-                <Link to='/products' className='font-bold text-[16px] text-[#f97d5e]' onClick={() => setMenuOpen(false)}>
-                  Products
+                <Link to='/products' className={`text-sm text-[#5A45CE] ${textColor}`} onClick={() => setMenuOpen(false)}>
+                  WEBSITES
+                </Link>
+              </li>
+              <li>
+                <Link to='/about-us' className={`text-sm text-[#5A45CE] ${textColor}`}>
+                  ABOUT US
                 </Link>
               </li>
               {!user && (
                 <li>
-                  <Link to='/login' className='font-bold text-[#1A2634]' onClick={() => setMenuOpen(false)}>
+                  <Link to='/login' className={`text-sm text-[#5A45CE] ${textColor}`} onClick={() => setMenuOpen(false)}>
                     Login
                   </Link>
                 </li>
@@ -100,32 +110,32 @@ const Navbar = () => {
         <div className='hidden md:flex items-center space-x-4'>
           <ul className='flex space-x-4'>
             <li>
-              <Link to='/' className='font-bold text-[16px] text-[#f97d5e]'>
+              <Link to='/' className={`text-sm text-[#5A45CE] ${textColor}`}>
                 HOME
               </Link>
             </li>
             <li>
-              <Link to='/products' className='font-bold text-[16px] text-[#f97d5e]'>
+              <Link to='/products' className={`text-sm text-[#5A45CE] ${textColor}`}>
                 WEBSITES
               </Link>
             </li>
             <li>
-              <Link to='/about-us' className='font-bold text-[16px] text-[#f97d5e]'>
+              <Link to='/about-us' className={`text-sm text-[#5A45CE] ${textColor}`}>
                 ABOUT US
               </Link>
             </li>
             {!user && (
               <li>
-                <Link to='/login' className='font-bold text-[#1A2634]'>
+                <Link to='/login' className={`text-sm text-[#5A45CE] ${textColor}`}>
                   LOGIN
                 </Link>
               </li>
             )}
             {
               user && (
-                <Link className='text-[#f97d5e] font-bold' to={role === 'User' ? '/dashboard/my-profile' 
+                <Link className={`text-sm mt-1 ${textColor}`} to={role === 'User' ? '/dashboard/my-profile'
                   : role === 'Moderator' ? '/dashboard/moderator/my-profile'
-                        : role === 'Admin' ? '/dashboard/admin/my-profile': '/'}
+                    : role === 'Admin' ? '/dashboard/admin/my-profile' : '/'}
                 > DASHBOARD </Link>
               )
             }

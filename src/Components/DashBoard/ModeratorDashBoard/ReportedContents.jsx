@@ -4,96 +4,96 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const ReportedContents = () => {
-    const axiosSecure = useAxiosSecure();
+  const axiosSecure = useAxiosSecure();
 
-    const { data: products = [], refetch, isLoading } = useQuery({
-        queryKey: ['reported-products'],
-        queryFn: async () => {
-            const { data } = await axiosSecure.get('/products/reported');
-            return data;
-        }
-    });
-
-    const handleDeleteProduct = async (id) => {
-        try {
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then(async(result) => {
-                if (result.isConfirmed) {
-                    await axiosSecure.delete(`/product/${id}`);
-                    refetch();
-                    Swal.fire({
-                        title: "Deleted!",
-                        text: "Your file has been deleted.",
-                        icon: "success"
-                    });
-                }
-            });
-        }
-        catch (err) {
-            console.log(err);
-            Swal.fire({
-                title: "Something Went Wrong",
-                icon: "error"
-            });
-        }
+  const { data: products = [], refetch, isLoading } = useQuery({
+    queryKey: ['reported-products'],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get('/products/reported');
+      return data;
     }
+  });
 
-    return (
-        <div className="max-w-full px-2">
-            <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold my-4">
-                Reported Contents
-            </h2>
+  const handleDeleteProduct = async (id) => {
+    try {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await axiosSecure.delete(`/product/${id}`);
+          refetch();
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your file has been deleted.",
+            icon: "success"
+          });
+        }
+      });
+    }
+    catch (err) {
+      console.log(err);
+      Swal.fire({
+        title: "Something Went Wrong",
+        icon: "error"
+      });
+    }
+  }
 
-            <div className="overflow-x-auto">
-                <table className="table table-zebra w-full min-w-max border border-gray-300">
-                    {/* Table Head */}
-                    <thead>
-                        <tr className="bg-gray-200 text-sm md:text-md">
-                            <th className="px-2 py-2 text-center">Product Name</th>
-                            <th className="px-2 py-2 text-center">Details</th>
-                            <th className="px-2 py-2 text-center">Delete</th>
-                        </tr>
-                    </thead>
+  return (
+    <div className="max-w-full px-2">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl text-center text-[#5A45CE] font-bold my-4">
+        Reported Contents
+      </h2>
 
-                    <tbody>
-                        {products.map(product => (
-                            <tr key={product._id} className="border text-center">
-                                <td className="px-2 py-2 text-sm md:text-md">{product.productName}</td>
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full min-w-max border border-gray-300">
 
-                                {/* View Details Button */}
-                                <td className="px-2 py-2">
-                                    <Link
-                                        to={`/product/${product._id}`}
-                                        className="bg-blue-500 text-white text-sm md:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center"
-                                    >
-                                        View Details
-                                    </Link>
-                                </td>
+          <thead>
+            <tr className="bg-[#D6C6FF] text-[#5a45ce] text-[12px] md:text-sm lg:text-md">
+              <th className="px-2 py-2 text-center">Product Name</th>
+              <th className="px-2 py-2 text-center">Details</th>
+              <th className="px-2 py-2 text-center">Delete</th>
+            </tr>
+          </thead>
 
-                                {/* Delete Button */}
-                                <td className="px-2 py-2">
-                                    <button
-                                        onClick={() => handleDeleteProduct(product._id)}
-                                        className="bg-red-500 text-white text-sm md:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center hover:bg-red-600"
-                                    >
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
+          <tbody>
+            {products.map(product => (
+              <tr key={product._id} className="border border-gray-300 text-center">
+                <td className="px-2 py-2 text-sm md:text-md">{product.productName}</td>
 
-                </table>
-            </div>
-        </div>
-    );
+                {/* View Details Button */}
+                <td className="px-2 py-2">
+                  <Link
+                    to={`/product/${product._id}`}
+                    className="bg-blue-500 text-white text-[12px] md:text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-lg block w-full max-w-[150px] text-center"
+                  >
+                    View Details
+                  </Link>
+                </td>
+
+                {/* Delete Button */}
+                <td className="px-2 py-2">
+                  <button
+                    onClick={() => handleDeleteProduct(product._id)}
+                    className="bg-red-500 text-white text-sm md:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-lg block w-full max-w-[150px] text-center hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default ReportedContents;

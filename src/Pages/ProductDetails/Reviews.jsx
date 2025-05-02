@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import ReviewCard from "./ReviewCard";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Reviews = ({product}) => {
     const axiosSecure = useAxiosSecure();

@@ -73,15 +73,15 @@ const ReviewProducts = () => {
 
   return (
     <div className="max-w-full w-full px-2 overflow-hidden">
-      <h2 className="text-3xl md:text-5xl text-center text-[#1A2634] font-bold my-4">
+      <h2 className="text-2xl md:text-3xl lg:text-4xl text-center text-[#5A45CE] font-bold my-4">
         Review Products
       </h2>
       <div className="overflow-x-auto w-full">
         <table className="table table-zebra w-full min-w-max table-fixed border border-gray-300">
 
-          {/* Table Header */}
+          
           <thead>
-            <tr className="bg-gray-200 text-sm md:text-md">
+            <tr className="bg-[#D6C6FF] text-[#5a45ce] text-sm md:text-md">
               <th className="px-2 py-2">Product Name</th>
               <th className="px-2 py-2">Details</th>
               <th className="px-2 py-2">Feature</th>
@@ -99,7 +99,7 @@ const ReviewProducts = () => {
                 <td className="px-2 py-2">
                   <Link
                     to={`/product/${product._id}`}
-                    className="bg-blue-500 text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center"
+                    className="bg-blue-500 text-white text-[12px] md:text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-lg block w-full max-w-[150px] text-center"
                   >
                     View Details
                   </Link>
@@ -110,7 +110,7 @@ const ReviewProducts = () => {
                   <button
                     disabled={product.featured === true}
                     onClick={() => handleMakeFeatured(product)}
-                    className={`text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center ${product.featured ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"
+                    className={`text-white text-[12px] md:text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-lg block w-full max-w-[150px] text-center ${product.featured ? "bg-yellow-900 cursor-not-allowed" : "bg-yellow-500 hover:bg-yellow-600"
                       }`}
                   >
                     Make Featured
@@ -122,7 +122,7 @@ const ReviewProducts = () => {
                   <button
                     disabled={product.status === "Accepted"}
                     onClick={() => handleAccept(product._id)}
-                    className={`text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center ${product.status === "Accepted" ? "bg-green-900 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
+                    className={`text-white text-[12px] md:text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-lg block w-full max-w-[150px] text-center ${product.status === "Accepted" ? "bg-green-900 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
                       }`}
                   >
                     Accept
@@ -134,7 +134,7 @@ const ReviewProducts = () => {
                   <button
                     disabled={product.status === "Rejected"}
                     onClick={() => handleReject(product._id)}
-                    className={`text-white text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-xl block w-full max-w-[150px] text-center ${product.status === "Rejected" ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-600"
+                    className={`text-white text-[12px] md:text-sm lg:text-md font-semibold px-3 md:px-4 py-1 md:py-2 rounded-lg block w-full max-w-[150px] text-center ${product.status === "Rejected" ? "bg-red-900 cursor-not-allowed" : "bg-red-500 hover:bg-red-600"
                       }`}
                   >
                     Reject
