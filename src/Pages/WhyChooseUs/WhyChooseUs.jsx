@@ -3,10 +3,10 @@ import { FaCircleQuestion } from "react-icons/fa6";
 
 const WhyChooseUs = () => {
     return (
-        <div className='mt-32 mb-28 w-4/6 mx-auto'>
+        <div className='mt-32 mb-28 w-4/6 mx-auto text-[#5A45CE]'>
             <h3 className='text-5xl text-[#5a45ce] font-bold mb-4 text-center' data-aos="fade-down" data-aos-duration="1500"> Why Choose Us </h3>
 
-            <div className='bg-[#fcc6b8] p-12 rounded-xl' data-aos="fade-up" data-aos-duration="1500">
+            <div className='bg-[#cec5ff] p-12 rounded-xl' data-aos="fade-up" data-aos-duration="1500">
                 <div className='flex items-center gap-x-2'>
                     <FaCircleQuestion size={20}></FaCircleQuestion>
                     <h4 className='text-2xl font-bold'> Looking for a place where your website truly stands out? </h4>

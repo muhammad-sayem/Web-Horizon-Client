@@ -37,9 +37,9 @@ const Users = () => {
     return (
 
         <div className='mb-12 md:mb-20 lg:mb-32 w-3/5 mx-auto'>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl text-[#5a45ce] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="1500">
-                {text} <Cursor />
-            </h2>
+            {/* <h2 className="text-2xl md:text-3xl lg:text-4xl text-[#5a45ce] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="1500"> {text} <Cursor /> </h2> */}
+
+            <h2 className="text-2xl md:text-3xl lg:text-4xl text-[#5a45ce] font-bold mb-8 text-center" data-aos="fade-right" data-aos-duration="1500"> Our Users </h2>
 
             <div className='lg:flex justify-center gap-x-12 space-y-6 md:space-y-0'>
 

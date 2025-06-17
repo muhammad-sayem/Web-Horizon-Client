@@ -31,7 +31,9 @@ export default function CouponCarousel() {
 
   return (
     <div className='w-4/5 mx-auto mb-12 md:mb-20 lg:mb-32'>
-      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8 text-center text-[#5a45ce]" data-aos="fade-down" data-aos-duration="1500"> {text} <Cursor></Cursor> </h2>
+      {/* <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8 text-center text-[#5a45ce]" data-aos="fade-down" data-aos-duration="1500"> {text} <Cursor></Cursor> </h2> */}
+
+      <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 lg:mb-8 text-center text-[#5a45ce]" data-aos="fade-down" data-aos-duration="1500"> Available Offers </h2>
 
       <Swiper
         spaceBetween={30}

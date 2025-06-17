@@ -6,7 +6,7 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 
 const HeroSection = () => {
     const [text] = useTypewriter({
-        words: ["Discover & Share Top Websites – Spark Innovation!"],
+        words: ["Discover & Share Top Websites - Spark Innovation!"],
         loop: 0
     });
 
@@ -21,7 +21,7 @@ const HeroSection = () => {
                 maskImage: `linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)`
             }}
         >
-            <div className="flex flex-col md:flex-row items-center justify-between text-white px-4 py-20 lg:py-16 md:px-8 lg:px-20 gap-8">
+            <div className="flex flex-col md:flex-row items-center justify-between text-white px-4 py-20 lg:py-10 md:px-8 lg:px-20 md:gap-8 ">
                 
                 <div className="w-full md:w-1/2 text-center md:text-left">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 md:mb-2">Discover Great Websites</h2>
@@ -40,7 +40,7 @@ const HeroSection = () => {
                 </div>
 
                 <div className="w-full md:w-1/2 flex justify-center">
-                    <img src={heroImage} alt="Hero" className="w-full max-w-md md:max-w-full" />
+                    <img src={heroImage} alt="Hero" className="w-full h-[350px] lg:h-[550px] max-w-md md:max-w-full" />
                 </div>
             </div>
         </div>

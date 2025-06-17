@@ -17,3 +17,17 @@ body {
     overflow-x: hidden;
     font-family: "Poppins", sans-serif;
 }
+
+@keyframes repurpleGlowBlink {
+    0%, 100% {
+      box-shadow: 0 0 10px 2px rgba(90, 69, 206, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 20px 4px rgba(90, 69, 206, 0.4);
+    }
+  }
+  
+  .blink-purple-glow {
+    animation: repurpleGlowBlink 1.5s infinite;
+  }
+  

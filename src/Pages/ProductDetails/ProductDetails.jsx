@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import LoadingSpinner from "../../Shared/LoadingSpinner";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { LuTriangle } from "react-icons/lu";
@@ -19,6 +19,7 @@ const ProductDetails = () => {
   const { user } = useAuth();
   const [role] = UseRole();
   const [hasUpvoted, setHasUpvoted] = useState(false);
+  const navigate = useNavigate();
 
   const { data: product = {}, isLoading, refetch } = useQuery({
     queryKey: ['product', id],
@@ -63,6 +64,11 @@ const ProductDetails = () => {
   };
 
   const handleReport = async () => {
+    if(!user){
+      navigate('/login');
+      return;
+    }
+    
     try {
       await axiosSecure.patch(`/product/report/${id}`);
       refetch();
@@ -142,7 +148,7 @@ const ProductDetails = () => {
         </div>
 
         <div>
-          <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`px-10 py-3 text-lg font-bold bg-[#1A2634] text-[#5a45ce] ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#5a45ce] text-white transition-transform duration-200 ease-in-out transform hover:scale-105"}`}> Add a Review </button>
+          <button onClick={() => document.getElementById(`my_modal_${id}`).showModal()} disabled={owner?.email === user?.email || role === "Admin" || role === "Moderator"} className={`px-10 py-3 text-lg font-bold bg-[#1A2634] text-[#5a45ce] ${owner?.email === user?.email || role === "Admin" || role === "Moderator" ? "bg-gray-500 cursor-not-allowed" : "bg-[#5a45ce] text-[#D6C6FF] transition-transform duration-200 ease-in-out transform hover:scale-105"}`}> Add a Review </button>
         </div>
 
         <ProductReviewModal

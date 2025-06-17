@@ -1,11 +1,11 @@
 import { FiTriangle } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import UseRole from "../../hooks/useRole";
 import { AiFillLike } from "react-icons/ai";
-import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const TrendingProductCard = ({ treProduct, refetch }) => {
     const axiosSecure = useAxiosSecure();
@@ -13,6 +13,7 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
     const [role] = UseRole();
     const [hasUpvoted, setHasUpvoted] = useState(false);
     const { _id, productName, productImage, tags, upvotes, owner, upVotedUsers, productDescription } = treProduct;
+    const navigate = useNavigate();
 
     // console.log("Owner Email:", owner?.email);
     // console.log("User Email:", user?.email);
@@ -25,6 +26,11 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
     }, [user, upVotedUsers]);
 
     const updateUpvote = async () => {
+        if(!user){
+            navigate('/login');
+            return;
+        }
+
         if (hasUpvoted) {
             return;
         }
@@ -58,7 +64,7 @@ const TrendingProductCard = ({ treProduct, refetch }) => {
 
     return (
         <div data-aos="zoom-in-up" data-aos-duration="1500">
-            <div className="p-5 bg-white shadow-[4px_4px_10px_rgba(0,0,0,0.35)] h-full rounded-2xl">
+            <div className="p-5 blink-purple-glow h-full rounded-2xl">
 
                 <div className="">
                     <img src={productImage} className="w-full h-48 lg:h-56 object-fill mb-4 border rounded-xl" alt="" />

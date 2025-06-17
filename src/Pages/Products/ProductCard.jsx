@@ -1,7 +1,7 @@
 import { LuTriangle } from "react-icons/lu";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseRole from "../../hooks/useRole";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAuth from "../../hooks/useAuth";
@@ -12,6 +12,7 @@ const ProductCard = ({ product, refetch, isLoading }) => {
     const { user } = useAuth();
     const [role] = UseRole();
     const [hasUpvoted, setHasUpvoted] = useState(false);
+    const navigate = useNavigate();
 
     const { _id, productName, productImage, productDescription, owner, upvotes, externalLink, tags, upVotedUsers } = product;
 
@@ -22,6 +23,11 @@ const ProductCard = ({ product, refetch, isLoading }) => {
     }, [user, upVotedUsers]);
 
     const updateUpvote = async () => {
+        if(!user){
+            navigate("/login");
+            return;
+        }
+
         if (hasUpvoted) {
             return;
         }
@@ -48,7 +54,7 @@ const ProductCard = ({ product, refetch, isLoading }) => {
 
     return (
         <div>
-            <div className="w-full shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-4 rounded-2xl flex flex-col justify-between h-full" data-aos="zoom-in-up" data-aos-duration="1500">
+            <div className="w-full shadow-[4px_4px_10px_rgba(0,0,0,0.35)] p-4 rounded-2xl flex flex-col justify-between h-full blink-purple-glow" data-aos="zoom-in-up" data-aos-duration="1500">
                 <div className="gap-x-4">
                     <img src={productImage} className="w-full h-48 lg:h-56 rounded-lg border mb-2" alt="" />
                     <h3 className="text-md lg:text-xl font-bold"> {productName} </h3>

@@ -89,7 +89,7 @@ const AddProducts = () => {
           <div className="grid md:grid-cols-2 gap-x-4">
 
             <div className="mb-6">
-              <p className='text-[#5a45ce] text-lg font-bold'>Product Name</p>
+              <p className='text-[#5a45ce] text-lg font-bold'> Product Name </p>
               <input
                 type="text"
                 name="productName"
@@ -100,7 +100,7 @@ const AddProducts = () => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#5a45ce] text-lg font-bold'>Product Description</p>
+              <p className='text-[#5a45ce] text-lg font-bold'> Product Description </p>
               <textarea
                 className="textarea textarea-bordered w-full border-[#5a45ce]"
                 name="productDescription"
@@ -110,7 +110,7 @@ const AddProducts = () => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#5a45ce] text-lg font-bold'>Owner Name</p>
+              <p className='text-[#5a45ce] text-lg font-bold'> Owner Name </p>
               <input
                 type="text"
                 name="ownerName"
@@ -122,7 +122,7 @@ const AddProducts = () => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#5a45ce] text-lg font-bold'>Owner Email</p>
+              <p className='text-[#5a45ce] text-lg font-bold'> Owner Email </p>
               <input
                 type="email"
                 name="ownerEmail"
@@ -134,7 +134,7 @@ const AddProducts = () => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#5a45ce] text-lg font-bold'>Owner Image</p>
+              <p className='text-[#5a45ce] text-lg font-bold'> Owner Image </p>
               <input
                 type="email"
                 name="ownerImage"
@@ -146,7 +146,7 @@ const AddProducts = () => {
             </div>
 
             <div className="mb-6">
-              <p className='text-[#5a45ce] text-lg font-bold'>External Link</p>
+              <p className='text-[#5a45ce] text-lg font-bold'> External Link </p>
               <input
                 type="text"
                 name="externalLink"

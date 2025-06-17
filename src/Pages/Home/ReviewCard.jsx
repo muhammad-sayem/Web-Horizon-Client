@@ -8,7 +8,7 @@ const ReviewCard = () => {
     return (
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-10'>
 
-            <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl p-4' data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+            <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl p-4' data-aos="fade-right" data-aos-duration="1500">
 
                 <div className='flex items-center gap-x-4 mb-6'>
                     <div>
@@ -38,7 +38,7 @@ const ReviewCard = () => {
 
             {/* ----------------- */}
 
-            <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl p-4' data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+            <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl p-4' data-aos="fade-up" data-aos-duration="1500">
 
                 <div className='flex items-center gap-x-4 mb-6'>
                     <div>
@@ -68,7 +68,7 @@ const ReviewCard = () => {
 
             {/* -------------- */}
 
-            <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl p-4' data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine" data-aos-duration="1500">
+            <div className='shadow-[4px_4px_10px_rgba(0,0,0,0.35)] rounded-2xl p-4' data-aos="fade-left" data-aos-duration="1500">
 
                 <div className='flex items-center gap-x-4 mb-6'>
                     <div>

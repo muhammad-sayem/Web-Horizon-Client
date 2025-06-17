@@ -35,7 +35,9 @@ const TrendingProducts = () => {
                 <div className="lg:w-1/3">
 
                 </div>
-                <h2 className="w-1/2 lg:w-1/3 text-[#5a45ce] text-xl md:text-3xl lg:text-4xl font-bold text-center"> {text} <Cursor></Cursor> </h2>
+                {/* <h2 className="w-1/2 lg:w-1/3 text-[#5a45ce] text-xl md:text-3xl lg:text-4xl font-bold text-center"> {text} <Cursor></Cursor> </h2> */}
+
+                <h2 className="w-1/2 lg:w-1/3 text-[#5a45ce] text-xl md:text-3xl lg:text-4xl font-bold text-center"> Trending Products </h2>
 
                 <div className="w-1/2 lg:w-1/3 flex justify-end">
                     <Link to='/products'>
